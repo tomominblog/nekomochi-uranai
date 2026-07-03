@@ -211,15 +211,16 @@
             left: 5%;
         }
 
-        .hero-cat {
-            width: 240px;
-            height: 240px;
-            object-fit: contain;
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+        .hero-visual {
+            width: 250px;
+            margin: 0 auto 24px;
             animation: float 3.5s ease-in-out infinite;
+        }
+
+        .hero-visual svg {
+            display: block;
+            width: 100%;
+            height: auto;
         }
 
         @keyframes float {
@@ -1199,7 +1200,41 @@
         <div class="blob b5"></div>
         <div class="inner">
             <span class="hero-eyebrow">🔮 数秘術 × 12匹のねこ</span>
-            <img src="hero-cat.png" alt="ねこもち占いのキャラクター" class="hero-cat">
+            <div class="hero-visual" aria-label="ねこもち占いロゴ">
+                    <svg viewBox="0 0 300 238" xmlns="http://www.w3.org/2000/svg" role="img">
+                        <!-- 肉球 -->
+                        <g fill="#F2A7B5">
+                            <circle cx="131" cy="22" r="7.5" />
+                            <circle cx="146" cy="15" r="7.5" />
+                            <circle cx="161" cy="17" r="7.5" />
+                            <circle cx="174" cy="26" r="7.5" />
+                            <ellipse cx="151" cy="40" rx="15" ry="12" />
+                        </g>
+                        <!-- ねこの間のピンク -->
+                        <g fill="#F2A7B5">
+                            <path d="M 90 150 L 114 150 L 102 116 Z" />
+                            <path d="M 186 150 L 210 150 L 198 116 Z" />
+                        </g>
+                        <!-- 3匹のねこ（後ろ姿） -->
+                        <g fill="#FFF8F0" stroke="#4A2D1F" stroke-width="5.5" stroke-linejoin="round"
+                            stroke-linecap="round">
+                            <path
+                                d="M 16 150 C 14 110 19 94 28 84 L 36 64 Q 39 60 42 64 L 49 82 Q 54 78 59 82 L 66 64 Q 69 60 72 64 L 80 84 C 89 94 94 110 92 150 Z" />
+                            <path
+                                d="M 208 150 C 206 110 211 94 220 84 L 228 64 Q 231 60 234 64 L 241 82 Q 246 78 251 82 L 258 64 Q 261 60 264 64 L 272 84 C 281 94 286 110 284 150 Z" />
+                            <path
+                                d="M 112 150 C 110 108 115 92 124 82 L 132 60 Q 135 56 138 60 L 145 78 Q 150 74 155 78 L 162 60 Q 165 56 168 60 L 176 82 C 185 92 190 108 188 150 Z" />
+                        </g>
+                        <!-- ワードマーク -->
+                        <text x="150" y="196" text-anchor="middle" font-size="34" font-weight="700"
+                            fill="#4A2D1F"
+                            font-family="'Zen Maru Gothic','Hiragino Maru Gothic ProN',sans-serif"
+                            letter-spacing="2">ねこもち占い</text>
+                        <text x="150" y="224" text-anchor="middle" font-size="12" fill="#6B625C"
+                            font-family="'Zen Maru Gothic',sans-serif" letter-spacing="4">NEKOMOCHI
+                            URANAI</text>
+                    </svg>
+            </div>
             <h1 class="hero-title">
                 自分を責めるのは、<br>
                 <span class="accent">もうおしまい。</span>
