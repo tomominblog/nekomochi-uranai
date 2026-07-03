@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鑑定メニュー | ねこもち占い</title>
+    <meta name="description" content="ねこもち占いの鑑定メニュー。総合鑑定・ふたりの相性鑑定・親子の子育て鑑定・お仕事とお金の鑑定。公式LINEから受付中です。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --cream: #FDFAF5;
+            --white: #FFFFFF;
+            --coral: #E8836A;
+            --coral-light: #F2A694;
+            --coral-pale: #FDE8E2;
+            --text-dark: #3D3530;
+            --text-mid: #7A6A60;
+            --text-light: #A89880;
+            --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.08);
+            --radius: 24px;
+        }
+
+        body {
+            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 20px;
+            background: rgba(253, 250, 245, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .site-nav .brand {
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: .04em;
+            white-space: nowrap;
+        }
+
+        .site-nav .links {
+            display: flex;
+            gap: 6px;
+        }
+
+        .site-nav .links a {
+            color: var(--text-mid);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 999px;
+            transition: background .2s, color .2s;
+            white-space: nowrap;
+        }
+
+        .site-nav .links a:hover,
+        .site-nav .links a.current {
+            background: var(--coral-pale);
+            color: var(--coral);
+        }
+
+        header.page-head {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 110px 24px 30px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--coral);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .lead {
+            color: var(--text-mid);
+            font-size: 0.95rem;
+        }
+
+        main {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 20px 24px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            padding: 30px 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .menu-icon {
+            font-size: 2rem;
+        }
+
+        .menu-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .menu-for {
+            background: var(--coral-pale);
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .menu-for b {
+            color: var(--coral);
+        }
+
+        .menu-desc {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+        }
+
+        .menu-items {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+            list-style: none;
+        }
+
+        .menu-items li::before {
+            content: "🐾 ";
+        }
+
+        .cta {
+            text-align: center;
+            padding: 30px 24px 90px;
+        }
+
+        .cta-box {
+            max-width: 560px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            padding: 36px 28px;
+        }
+
+        .cta-box h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-box p {
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--coral);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 15px 34px;
+            border-radius: 999px;
+            box-shadow: 0 6px 20px rgba(232, 131, 106, .35);
+            transition: transform .2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px 50px;
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--text-mid);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="site-nav">
+        <a href="index.html" class="brand">🐾 ねこもち占い</a>
+        <div class="links">
+            <a href="index.html">ホーム</a>
+            <a href="types.html">12匹のねこたち</a>
+            <a href="menu.html" class="current">鑑定メニュー</a>
+        </div>
+    </nav>
+
+    <header class="page-head">
+        <span class="eyebrow">✦ MENU</span>
+        <h1>鑑定メニュー</h1>
+        <p class="lead">どの鑑定も「当てる」ためではなく、あなたの毎日を「ほどく」ための鑑定書です。<br>やさしい絵本のような鑑定書PDFをお届けします🐾</p>
+    </header>
+
+    <main>
+        <article class="menu-card">
+            <span class="menu-icon">🔮</span>
+            <div class="menu-name">ねこもち総合鑑定</div>
+            <div class="menu-for"><b>こんな方へ：</b>自分の性格や才能をまるごと知りたい。「私ってどういう人？」を整理したい</div>
+            <p class="menu-desc">生年月日とお名前から、あなたの中に住む5匹のねこ（本質・強み・使命・本音・毛並み）を読み解く、いちばん人気の基本鑑定です。</p>
+            <ul class="menu-items">
+                <li>5匹のねこの詳しい解説</li>
+                <li>外から見える印象と本質の「ギャップの魅力」</li>
+                <li>5匹の作戦会議（あなたの中の葛藤と統合の鍵）</li>
+                <li>今年の運勢＋ラッキーアクション</li>
+            </ul>
+        </article>
+
+        <article class="menu-card">
+            <span class="menu-icon">💗</span>
+            <div class="menu-name">ふたりの相性鑑定</div>
+            <div class="menu-for"><b>こんな方へ：</b>パートナー・夫婦・親友・仕事仲間との関係をもっと深めたい</div>
+            <p class="menu-desc">おふたりの5匹のねこを並べて、関係の物語を読み解きます。相性に点数はつけません。「ふたりの間に生まれる魔法」を言葉にします。</p>
+            <ul class="menu-items">
+                <li>おふたりの5匹のねこ比較</li>
+                <li>ふたりのきずなナンバー（第3のエネルギー）</li>
+                <li>本音の響き合いと自然な役割分担</li>
+                <li>ふたりへの3つのアクション</li>
+            </ul>
+        </article>
+
+        <article class="menu-card">
+            <span class="menu-icon">🌱</span>
+            <div class="menu-name">親子の子育て鑑定</div>
+            <div class="menu-for"><b>こんな方へ：</b>子どもに怒って自己嫌悪してしまう。この子の気持ちがわからない</div>
+            <p class="menu-desc">親子それぞれのねこを読み解き、「なぜこの場面でぶつかるのか」を構造として見せます。困った行動を「才能の芽」に翻訳する鑑定です。</p>
+            <ul class="menu-items">
+                <li>お子さんの性質と才能の芽</li>
+                <li>響く声かけ＆傷つけてしまうNGワード</li>
+                <li>親子の組み合わせリーディング</li>
+                <li>今夜からできる3つのこと</li>
+            </ul>
+        </article>
+
+        <article class="menu-card">
+            <span class="menu-icon">💼</span>
+            <div class="menu-name">お仕事・お金の才能鑑定</div>
+            <div class="menu-for"><b>こんな方へ：</b>自分に合う働き方を知りたい。強みを仕事に活かしたい。お金との付き合い方を整えたい</div>
+            <p class="menu-desc">5匹のねこの配置から、あなただけの「成功パターン」と「お金の流れ」を読み解きます。輝ける環境と、消耗する環境もはっきりお伝えします。</p>
+            <ul class="menu-items">
+                <li>お仕事の才能とSUCCESS PATTERN</li>
+                <li>お金の才能と豊かな流れ</li>
+                <li>つまずきパターンと具体的な対策</li>
+                <li>今年の仕事運＋ラッキーアクション</li>
+            </ul>
+        </article>
+    </main>
+
+    <div class="cta">
+        <div class="cta-box">
+            <h2>🐱 鑑定のお申し込み・ご相談</h2>
+            <p>公式LINEにご登録のうえ、「鑑定希望」とメッセージをお送りください。<br>ご希望のメニューを選んで、生年月日をお知らせいただくだけでOKです。</p>
+            <a href="https://lin.ee/fwo76" target="_blank" rel="noopener" class="btn-primary">🐾 公式LINEで申し込む</a>
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="index.html">ホーム</a>　｜　<a href="types.html">12匹のねこたち</a>　｜　<a href="https://lin.ee/fwo76"
+                target="_blank" rel="noopener">公式LINE</a></p>
+        <p>© 2026 ねこもち占い</p>
+    </footer>
+</body>
+
+</html>
