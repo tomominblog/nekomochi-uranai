@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ねこもち占い | 自分を責めるのは、もうおしまい。</title>
-    <meta name="description" content="数秘術×12匹のねこで、あなたの中に住む5匹のねこを読み解きます。生きづらさを「ほどく」やさしい占い。公式LINEで鑑定書受付中。">
+    <title>ねこもち占い 公式サイト</title>
+    <meta name="description"
+        content="数秘術×12匹のねこで、あなたの中に住む5匹のねこを読み解く「ねこもち占い」公式サイト。12匹のねこたちの図鑑と鑑定メニューをお届けします🐾">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap"
         rel="stylesheet">
     <style>
         *,
@@ -25,32 +25,14 @@
             --cream: #FFF7F0;
             --white: #FFFFFF;
             --coral: #E98BA4;
-            /* アクセント見出し */
             --coral-light: #F7A7B5;
-            /* ソフトピンク */
             --coral-pale: #FBEAF0;
-            --pink-blob: #F8D9C7;
-            /* ピーチ */
-            --yellow-blob: #F7E08B;
-            /* はちみつイエロー */
-            --green-blob: #BFE8DB;
-            /* ミント */
-            --blue-blob: #DCEEFE;
-            /* ソラ */
-            --lavender-blob: #DCCEF4;
-            /* ラベンダー */
+            --peach: #F8D9C7;
             --text-dark: #4A2D1F;
-            /* ウォームブラウン（見出し） */
             --text-mid: #6B625C;
-            /* サブテキスト */
             --text-light: #A89880;
-            --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.07);
             --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.08);
             --radius: 24px;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
@@ -58,1060 +40,9 @@
             background: var(--cream);
             color: var(--text-dark);
             line-height: 1.8;
-            overflow-x: hidden;
         }
 
-        /* ===== BLOBS ===== */
-        .blob {
-            position: absolute;
-            border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
-            opacity: 0.55;
-            pointer-events: none;
-        }
-
-        /* ===== STICKY CTA ===== */
-        .sticky-cta {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(0, 0, 0, 0.06);
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-        }
-
-        .sticky-cta .cta-text {
-            font-size: 0.85rem;
-            color: var(--text-mid);
-        }
-
-        .btn-line {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #06C755;
-            color: #fff;
-            font-weight: 700;
-            font-size: 0.95rem;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 16px rgba(6, 199, 85, 0.35);
-        }
-
-        .btn-line:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 22px rgba(6, 199, 85, 0.45);
-        }
-
-        /* ===== SECTIONS ===== */
-        section {
-            padding: 80px 24px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .inner {
-            max-width: 680px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-eyebrow {
-            display: inline-block;
-            font-size: 0.78rem;
-            letter-spacing: 0.18em;
-            color: var(--coral);
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
-        .section-title {
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            font-weight: 700;
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-            font-weight: 600;
-            line-height: 1.55;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-
-        .section-title em {
-            font-style: normal;
-            color: var(--coral);
-        }
-
-        .section-lead {
-            font-size: 0.95rem;
-            color: var(--text-mid);
-            line-height: 2;
-            margin-bottom: 40px;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            background: var(--white);
-            min-height: 100dvh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 100px 24px 120px;
-            text-align: center;
-        }
-
-        .hero .b1 {
-            width: 260px;
-            height: 220px;
-            background: var(--pink-blob);
-            top: -60px;
-            left: -80px;
-        }
-
-        .hero .b2 {
-            width: 180px;
-            height: 160px;
-            background: var(--yellow-blob);
-            top: 30px;
-            right: -60px;
-            border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%;
-        }
-
-        .hero .b3 {
-            width: 200px;
-            height: 175px;
-            background: var(--green-blob);
-            bottom: 40px;
-            left: -70px;
-            border-radius: 55% 45% 60% 40% / 40% 60% 45% 55%;
-        }
-
-        .hero .b4 {
-            width: 150px;
-            height: 130px;
-            background: var(--blue-blob);
-            bottom: 20px;
-            right: -50px;
-            border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%;
-        }
-
-        .hero .b5 {
-            width: 100px;
-            height: 90px;
-            background: var(--lavender-blob);
-            top: 50%;
-            left: 5%;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(-2deg);
-            }
-
-            50% {
-                transform: translateY(-12px) rotate(2deg);
-            }
-        }
-
-        .hero-eyebrow {
-            display: inline-block;
-            background: var(--coral-pale);
-            color: var(--coral);
-            font-size: 1.05rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            padding: 8px 24px;
-            border-radius: 30px;
-            margin-bottom: 24px;
-        }
-
-        .hero-title {
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            font-weight: 700;
-            font-size: clamp(2.2rem, 7vw, 3.8rem);
-            font-weight: 700;
-            line-height: 1.35;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-
-        .hero-title .accent {
-            color: var(--coral);
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-title .accent::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 0;
-            right: 0;
-            height: 8px;
-            background: var(--yellow-blob);
-            border-radius: 4px;
-            z-index: -1;
-            opacity: 0.7;
-        }
-
-        .hero-sub {
-            font-size: 1rem;
-            color: var(--text-mid);
-            margin-bottom: 12px;
-        }
-
-        .hero-message {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 44px;
-            line-height: 2;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #06C755;
-            color: #fff;
-            font-weight: 700;
-            font-size: 1.05rem;
-            padding: 18px 44px;
-            border-radius: 60px;
-            text-decoration: none;
-            transition: all 0.25s ease;
-            box-shadow: 0 6px 24px rgba(6, 199, 85, 0.4);
-            letter-spacing: 0.04em;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 32px rgba(6, 199, 85, 0.5);
-        }
-
-        /* ===== EMPATHY ===== */
-        .empathy {
-            background: var(--cream);
-        }
-
-        .empathy .b1 {
-            width: 220px;
-            height: 190px;
-            background: var(--yellow-blob);
-            top: -50px;
-            right: -60px;
-        }
-
-        .empathy .b2 {
-            width: 160px;
-            height: 140px;
-            background: var(--pink-blob);
-            bottom: -40px;
-            left: -50px;
-        }
-
-        .empathy-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 36px;
-        }
-
-        .empathy-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 24px 20px;
-            box-shadow: var(--shadow-card);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .empathy-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .empathy-card .card-icon {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .empathy-card p {
-            font-size: 0.88rem;
-            color: var(--text-mid);
-            line-height: 1.8;
-        }
-
-        .empathy-box {
-            background: var(--coral-pale);
-            border-radius: var(--radius);
-            padding: 32px 28px;
-            text-align: center;
-        }
-
-        .empathy-box p {
-            font-size: 0.93rem;
-            color: var(--text-mid);
-            margin-bottom: 14px;
-        }
-
-        .empathy-box .highlight {
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            font-weight: 700;
-            font-size: clamp(1.05rem, 3vw, 1.3rem);
-            font-weight: 600;
-            color: var(--coral);
-            line-height: 1.7;
-        }
-
-        /* ===== ABOUT ===== */
-        .about {
-            background: var(--white);
-        }
-
-        .about .b1 {
-            width: 180px;
-            height: 160px;
-            background: var(--lavender-blob);
-            top: -40px;
-            left: -50px;
-        }
-
-        .about .b2 {
-            width: 140px;
-            height: 120px;
-            background: var(--green-blob);
-            bottom: 20px;
-            right: -40px;
-        }
-
-        .features-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .feature-card {
-            display: flex;
-            gap: 18px;
-            background: var(--cream);
-            border-radius: var(--radius);
-            padding: 24px 22px;
-            transition: transform 0.25s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateX(5px);
-        }
-
-        .feature-num-badge {
-            flex-shrink: 0;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            font-weight: 700;
-            font-weight: 700;
-            font-size: 1rem;
-            color: #fff;
-        }
-
-        .fn-1 {
-            background: var(--coral);
-        }
-
-        .fn-2 {
-            background: #88C097;
-        }
-
-        .fn-3 {
-            background: #7AAED4;
-        }
-
-        .feature-card h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 6px;
-        }
-
-        .feature-card p {
-            font-size: 0.88rem;
-            color: var(--text-mid);
-            line-height: 1.8;
-        }
-
-        /* ===== 5 CATS ===== */
-        .five-cats {
-            background: var(--cream);
-        }
-
-        .five-cats .b1 {
-            width: 200px;
-            height: 175px;
-            background: var(--blue-blob);
-            top: -50px;
-            right: -40px;
-        }
-
-        .five-cats .b2 {
-            width: 170px;
-            height: 150px;
-            background: var(--pink-blob);
-            bottom: -40px;
-            left: -50px;
-        }
-
-        .cats5-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 14px;
-        }
-
-        .cats5-center {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 36px;
-        }
-
-        .cat5-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 22px 18px;
-            text-align: center;
-            box-shadow: var(--shadow-card);
-            transition: transform 0.25s ease;
-        }
-
-        .cat5-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .cats5-center .cat5-card {
-            min-width: 200px;
-            background: var(--coral-pale);
-        }
-
-        .cat5-card .c5-emoji {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .cat5-card .c5-label {
-            font-size: 0.7rem;
-            color: var(--coral);
-            letter-spacing: 0.1em;
-            margin-bottom: 4px;
-        }
-
-        .cat5-card .c5-name {
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 4px;
-        }
-
-        .cat5-card .c5-desc {
-            font-size: 0.78rem;
-            color: var(--text-mid);
-            line-height: 1.6;
-        }
-
-        .cats5-msg {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 28px 24px;
-            text-align: center;
-            border-left: 4px solid var(--coral);
-        }
-
-        .cats5-msg p {
-            font-size: 0.92rem;
-            color: var(--text-mid);
-            line-height: 2.2;
-        }
-
-        .cats5-msg .coral {
-            color: var(--coral);
-            font-weight: 700;
-        }
-
-        /* ===== 12 CATS ===== */
-        .twelve-cats {
-            background: var(--white);
-        }
-
-        .twelve-cats .b1 {
-            width: 200px;
-            height: 180px;
-            background: var(--yellow-blob);
-            top: -60px;
-            left: -60px;
-        }
-
-        .twelve-cats .b2 {
-            width: 160px;
-            height: 140px;
-            background: var(--lavender-blob);
-            bottom: -40px;
-            right: -50px;
-        }
-
-        .cats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 36px;
-        }
-
-        .cat-chip {
-            background: var(--cream);
-            border-radius: 18px;
-            padding: 18px 10px;
-            text-align: center;
-            transition: all 0.25s ease;
-        }
-
-        .cat-chip:hover {
-            background: var(--coral-pale);
-            transform: translateY(-3px);
-        }
-
-        .cat-chip .cc-icon {
-            font-size: 1.6rem;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .cat-chip .cc-num {
-            font-size: 0.65rem;
-            color: var(--coral-light);
-            letter-spacing: 0.08em;
-        }
-
-        .cat-chip h4 {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin: 3px 0;
-        }
-
-        .cat-chip p {
-            font-size: 0.68rem;
-            color: var(--text-light);
-            line-height: 1.5;
-        }
-
-        /* ===== PRODUCT ===== */
-        .product {
-            background: var(--cream);
-        }
-
-        .product .b1 {
-            width: 180px;
-            height: 160px;
-            background: var(--green-blob);
-            top: -40px;
-            right: -50px;
-        }
-
-        .product .b2 {
-            width: 150px;
-            height: 130px;
-            background: var(--pink-blob);
-            bottom: -30px;
-            left: -40px;
-        }
-
-        .product-card {
-            background: var(--white);
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .product-card-header {
-            background: var(--coral-pale);
-            padding: 36px 32px;
-            text-align: center;
-        }
-
-        .product-card-header .p-tag {
-            display: inline-block;
-            background: var(--coral);
-            color: #fff;
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 4px 16px;
-            border-radius: 20px;
-            margin-bottom: 16px;
-        }
-
-        .product-card-header h3 {
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            font-weight: 700;
-            font-size: clamp(1.2rem, 3vw, 1.7rem);
-            font-weight: 700;
-            color: var(--text-dark);
-            line-height: 1.5;
-        }
-
-        .product-card-header .p-cat {
-            font-size: 4rem;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .product-card-body {
-            padding: 32px 28px;
-        }
-
-        .price-box {
-            text-align: center;
-            background: var(--cream);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 28px;
-        }
-
-        .price-box .p-label {
-            font-size: 0.82rem;
-            color: var(--text-light);
-            margin-bottom: 4px;
-        }
-
-        .price-box .p-price {
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            font-weight: 700;
-            font-size: 2.6rem;
-            font-weight: 700;
-            color: var(--coral);
-        }
-
-        .price-box .p-price span {
-            font-size: 1rem;
-        }
-
-        .product-intro {
-            margin-bottom: 28px;
-        }
-
-        .product-intro p {
-            font-size: 0.92rem;
-            color: var(--text-mid);
-            line-height: 2;
-            margin-bottom: 14px;
-        }
-
-        .product-intro p:last-child {
-            margin-bottom: 0;
-        }
-
-        .product-list {
-            list-style: none;
-            margin-bottom: 28px;
-        }
-
-        .product-list li {
-            display: flex;
-            gap: 14px;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--cream);
-        }
-
-        .product-list li:last-child {
-            border-bottom: none;
-        }
-
-        .pl-icon {
-            flex-shrink: 0;
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-
-        .pl-1 {
-            background: var(--coral-pale);
-        }
-
-        .pl-2 {
-            background: #FEF3C7;
-        }
-
-        .pl-3 {
-            background: #D1FAE5;
-        }
-
-        .pl-4 {
-            background: #DBEAFE;
-        }
-
-        .pl-5 {
-            background: #EDE9FE;
-        }
-
-        .pl-text h4 {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 3px;
-        }
-
-        .pl-text p {
-            font-size: 0.82rem;
-            color: var(--text-mid);
-            line-height: 1.7;
-        }
-
-        .product-cta-btn {
-            display: block;
-            width: 100%;
-            background: #06C755;
-            color: #fff;
-            font-weight: 700;
-            font-size: 1.05rem;
-            padding: 17px;
-            border-radius: 60px;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.25s ease;
-            box-shadow: 0 5px 20px rgba(6, 199, 85, 0.38);
-            margin-bottom: 12px;
-        }
-
-        .product-cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(6, 199, 85, 0.48);
-        }
-
-        .p-note {
-            text-align: center;
-            font-size: 0.78rem;
-            color: var(--text-light);
-        }
-
-        /* ===== FLOW ===== */
-        .flow {
-            background: var(--white);
-        }
-
-        .flow .b1 {
-            width: 170px;
-            height: 150px;
-            background: var(--blue-blob);
-            top: -40px;
-            left: -50px;
-        }
-
-        .flow-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .flow-step {
-            display: flex;
-            gap: 18px;
-            position: relative;
-        }
-
-        .flow-step:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 21px;
-            top: 46px;
-            bottom: -8px;
-            width: 2px;
-            background: var(--coral-pale);
-        }
-
-        .flow-num {
-            flex-shrink: 0;
-            width: 44px;
-            height: 44px;
-            background: var(--coral);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            font-weight: 700;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #fff;
-            z-index: 1;
-        }
-
-        .flow-body {
-            padding-bottom: 36px;
-        }
-
-        .flow-body h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 5px;
-            padding-top: 10px;
-        }
-
-        .flow-body p {
-            font-size: 0.87rem;
-            color: var(--text-mid);
-            line-height: 1.8;
-        }
-
-        .flow-cta-wrap {
-            text-align: center;
-            margin-top: 44px;
-        }
-
-        /* ===== TESTIMONIALS ===== */
-        .testimonials {
-            background: var(--cream);
-        }
-
-        .testimonials .b1 {
-            width: 190px;
-            height: 170px;
-            background: var(--yellow-blob);
-            bottom: -50px;
-            right: -60px;
-        }
-
-        .testi-list {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .testi-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 28px 24px 22px;
-            box-shadow: var(--shadow-card);
-            position: relative;
-        }
-
-        .testi-card::before {
-            content: '\201C';
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            font-weight: 700;
-            font-size: 6rem;
-            line-height: 1;
-            color: var(--yellow-blob);
-            position: absolute;
-            top: -4px;
-            left: 14px;
-        }
-
-        .testi-card p {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            line-height: 2;
-            margin-bottom: 16px;
-            padding-top: 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testi-author {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .t-avatar {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-
-        .ta-1 {
-            background: var(--pink-blob);
-        }
-
-        .ta-2 {
-            background: var(--yellow-blob);
-        }
-
-        .ta-3 {
-            background: var(--green-blob);
-        }
-
-        .t-name {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .t-caption {
-            font-size: 0.75rem;
-            color: var(--text-light);
-        }
-
-        /* ===== CLOSING ===== */
-        .closing {
-            background: var(--white);
-            text-align: center;
-        }
-
-        .closing .b1 {
-            width: 240px;
-            height: 210px;
-            background: var(--pink-blob);
-            top: -70px;
-            right: -70px;
-        }
-
-        .closing .b2 {
-            width: 200px;
-            height: 180px;
-            background: var(--blue-blob);
-            bottom: -60px;
-            left: -60px;
-        }
-
-        .closing .b3 {
-            width: 130px;
-            height: 110px;
-            background: var(--green-blob);
-            top: 40%;
-            left: -30px;
-        }
-
-        .closing-title {
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            font-weight: 700;
-            font-size: clamp(1.4rem, 4vw, 2rem);
-            font-weight: 700;
-            line-height: 1.6;
-            color: var(--text-dark);
-            margin-bottom: 28px;
-        }
-
-        .closing-text {
-            font-size: 0.93rem;
-            color: var(--text-mid);
-            line-height: 2.4;
-            margin-bottom: 44px;
-        }
-
-        .closing-sig {
-            display: inline-block;
-            margin-top: 40px;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            letter-spacing: 0.12em;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--cream);
-            border-top: 1px solid rgba(0, 0, 0, 0.06);
-            padding: 28px 24px 100px;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 0.78rem;
-            color: var(--text-light);
-        }
-
-        footer a {
-            color: var(--coral-light);
-            text-decoration: none;
-        }
-
-        /* ===== FADE IN ===== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.65s ease, transform 0.65s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== MOBILE ===== */
-        @media (max-width: 600px) {
-            section {
-                padding: 60px 20px;
-            }
-
-            .empathy-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .cats5-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .cats-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-            }
-
-            .cat-chip {
-                padding: 12px 6px;
-            }
-
-            .cat-chip .cc-icon {
-                font-size: 1.3rem;
-            }
-
-            .cat-chip h4 {
-                font-size: 0.74rem;
-            }
-
-            .cat-chip p {
-                font-size: 0.62rem;
-            }
-
-            .product-card-body {
-                padding: 24px 20px;
-            }
-
-            .sticky-cta .cta-text {
-                display: none;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- SITE NAV -->
-    <style>
+        /* ===== NAV ===== */
         .site-nav {
             position: fixed;
             top: 0;
@@ -1139,7 +70,7 @@
 
         .site-nav .links {
             display: flex;
-            gap: 6px;
+            gap: 4px;
         }
 
         .site-nav .links a {
@@ -1147,7 +78,7 @@
             text-decoration: none;
             font-size: 0.82rem;
             font-weight: 500;
-            padding: 6px 12px;
+            padding: 6px 10px;
             border-radius: 999px;
             transition: background .2s, color .2s;
             white-space: nowrap;
@@ -1159,419 +90,650 @@
             color: var(--coral);
         }
 
-        .hero {
-            padding-top: 56px;
-        }
-
-        @media (max-width: 560px) {
+        @media (max-width: 640px) {
             .site-nav {
-                padding: 8px 12px;
+                padding: 8px 10px;
             }
 
             .site-nav .brand {
-                font-size: 0.9rem;
+                font-size: 0.88rem;
             }
 
             .site-nav .links a {
-                font-size: 0.75rem;
-                padding: 5px 8px;
+                font-size: 0.7rem;
+                padding: 5px 6px;
             }
         }
+
+        /* ===== HEADER ===== */
+        header.site-head {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 96px 24px 8px;
+            text-align: center;
+        }
+
+        .site-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+        }
+
+        .site-tag {
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ===== 告知バナー ===== */
+        .notice-banner {
+            display: block;
+            max-width: 680px;
+            margin: 22px auto 0;
+            background: var(--white);
+            border: 1.5px solid var(--coral-light);
+            border-radius: 999px;
+            padding: 12px 22px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-card);
+            transition: transform .2s;
+        }
+
+        .notice-banner:hover {
+            transform: translateY(-2px);
+        }
+
+        .notice-banner .nb-accent {
+            color: var(--coral);
+            font-weight: 700;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 44px 24px 8px;
+        }
+
+        .section-eyebrow {
+            display: block;
+            text-align: center;
+            color: var(--coral);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .section-lead {
+            text-align: center;
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            margin-bottom: 28px;
+        }
+
+        /* ===== 診断フォーム ===== */
+        .shindan-card {
+            max-width: 640px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            padding: 34px 28px;
+        }
+
+        .shindan-card .sc-label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.92rem;
+            margin-bottom: 8px;
+        }
+
+        .shindan-card .sc-label .opt {
+            font-weight: 400;
+            font-size: 0.78rem;
+            color: var(--text-light);
+        }
+
+        .shindan-card .sc-label .req {
+            display: inline-block;
+            background: var(--coral);
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 1px 10px;
+            border-radius: 999px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .shindan-card input {
+            width: 100%;
+            border: none;
+            background: var(--coral-pale);
+            border-radius: 14px;
+            padding: 14px 16px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        .shindan-card input:focus {
+            box-shadow: 0 0 0 2px var(--coral-light);
+        }
+
+        .birth-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .birth-row .bi {
+            position: relative;
+            flex: 1;
+        }
+
+        .birth-row .bi span {
+            position: absolute;
+            right: 14px;
+            top: 15px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            pointer-events: none;
+        }
+
+        .shindan-btn {
+            display: block;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            background: var(--coral);
+            color: #fff;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 16px;
+            border-radius: 999px;
+            box-shadow: 0 6px 20px rgba(233, 139, 164, .35);
+            transition: transform .2s;
+        }
+
+        .shindan-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .shindan-btn small {
+            display: block;
+            font-weight: 400;
+            font-size: 0.75rem;
+            opacity: .9;
+        }
+
+        .shindan-error {
+            display: none;
+            text-align: center;
+            color: var(--coral);
+            font-size: 0.85rem;
+            margin-top: 12px;
+        }
+
+        /* ===== 診断結果 ===== */
+        .shindan-result {
+            display: none;
+            max-width: 640px;
+            margin: 24px auto 0;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: 0 6px 22px rgba(233, 139, 164, .25);
+            padding: 34px 28px;
+            text-align: center;
+        }
+
+        .shindan-result .sr-intro {
+            color: var(--text-mid);
+            font-size: 0.9rem;
+        }
+
+        .shindan-result img {
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            margin: 10px auto;
+        }
+
+        .shindan-result .sr-num {
+            color: var(--text-light);
+            font-size: 0.8rem;
+            letter-spacing: .1em;
+        }
+
+        .shindan-result h3 {
+            font-size: 1.5rem;
+            margin: 2px 0 8px;
+        }
+
+        .shindan-result .sr-catch {
+            color: var(--coral);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .shindan-result .sr-msg {
+            background: var(--coral-pale);
+            border-radius: 16px;
+            padding: 14px 18px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .shindan-result .sr-links a.more {
+            color: var(--coral);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        /* ===== 12匹グリッド ===== */
+        .cats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+        .cat-card {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-card);
+            padding: 18px 12px 16px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 22px rgba(233, 139, 164, .25);
+        }
+
+        .cat-card img {
+            width: 88px;
+            height: 88px;
+            object-fit: contain;
+        }
+
+        .cat-card .num {
+            font-size: 0.72rem;
+            color: var(--text-light);
+            letter-spacing: .1em;
+            margin-top: 6px;
+        }
+
+        .cat-card h3 {
+            font-size: 1.02rem;
+            font-weight: 700;
+            margin: 2px 0;
+        }
+
+        .cat-card p {
+            font-size: 0.78rem;
+            color: var(--coral);
+            font-weight: 500;
+        }
+
+        /* ===== 鑑定メニュー ===== */
+        .kantei-card {
+            max-width: 640px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            padding: 34px 28px;
+            text-align: center;
+        }
+
+        .kantei-card .kc-tag {
+            display: inline-block;
+            background: var(--coral-pale);
+            color: var(--coral);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+
+        .kantei-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+
+        .kantei-card .kc-price {
+            color: var(--coral);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .kantei-card p {
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--coral);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 999px;
+            box-shadow: 0 6px 20px rgba(233, 139, 164, .35);
+            transition: transform .2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ===== お知らせ ===== */
+        .news-list {
+            max-width: 640px;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        .news-list li {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-card);
+            padding: 14px 20px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 16px;
+            align-items: baseline;
+            font-size: 0.9rem;
+        }
+
+        .news-list .date {
+            color: var(--text-light);
+            font-size: 0.78rem;
+            white-space: nowrap;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            margin-top: 56px;
+            padding: 36px 20px 48px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .sns-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .sns-row a {
+            display: inline-block;
+            background: var(--coral-pale);
+            color: var(--coral);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 8px 22px;
+            border-radius: 999px;
+            transition: transform .2s;
+        }
+
+        .sns-row a:hover {
+            transform: translateY(-2px);
+        }
+
+        .foot-links {
+            font-size: 0.82rem;
+            margin-bottom: 14px;
+        }
+
+        .foot-links a {
+            color: var(--text-mid);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.78rem;
+        }
     </style>
+</head>
+
+<body>
     <nav class="site-nav">
         <a href="index.html" class="brand">🐾 ねこもち占い</a>
         <div class="links">
             <a href="index.html" class="current">ホーム</a>
             <a href="types.html">12匹のねこたち</a>
             <a href="menu.html">鑑定メニュー</a>
+            <a href="about.html">ねこもち占いとは</a>
         </div>
     </nav>
 
-    <!-- STICKY CTA -->
-    <div class="sticky-cta">
-        <span class="cta-text">🐾 新しいメニューやお知らせは公式LINEで</span>
-        <a href="https://lin.ee/fwo76" target="_blank" rel="noopener" class="btn-line" id="sticky-line-btn">🐱
-            公式LINEへ</a>
-    </div>
+    <header class="site-head">
+        <h1 class="site-title">ねこもち占い</h1>
+        <p class="site-tag">数秘術 × 12匹のねこ。あなたの中のねこたちを、やさしく読み解きます🐾</p>
+        <a href="menu.html" class="notice-banner">🐱 <span class="nb-accent">「5匹のねこもち総合鑑定」</span>の受付をはじめました →</a>
+    </header>
 
-    <!-- ① HERO -->
-    <section class="hero">
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="blob b3"></div>
-        <div class="blob b4"></div>
-        <div class="blob b5"></div>
-        <div class="inner">
-            <span class="hero-eyebrow">🔮 数秘術 × 12匹のねこ</span>
-            <h1 class="hero-title">
-                自分を責めるのは、<br>
-                <span class="accent">もうおしまい。</span>
-            </h1>
-            <p class="hero-sub">数秘 × ねこでほどく、一番やさしい「自分のトリセツ」</p>
-            <p class="hero-message">無理に変わらなくていい。<br>そのままのあなたを「飼いならす」方法、教えます。</p>
-            <a href="https://lin.ee/fwo76" target="_blank" rel="noopener" class="btn-primary" id="hero-line-btn">🐱
-                公式LINEで最新情報を受け取る</a>
+    <!-- 診断スタート -->
+    <section>
+        <span class="section-eyebrow">✦ START</span>
+        <h2 class="section-title">本質のねこ 診断</h2>
+        <p class="section-lead">生年月日から、あなたのいちばん奥に住む「本質のねこ」を無料で診断します。</p>
+        <div class="shindan-card">
+            <label class="sc-label" for="sd-name">ニックネーム <span class="opt">（任意）</span></label>
+            <input type="text" id="sd-name" placeholder="例：あや" maxlength="20">
+            <span class="sc-label">生年月日<span class="req">必須</span></span>
+            <div class="birth-row">
+                <div class="bi"><input type="number" id="sd-y" placeholder="1990" min="1900" max="2026"><span>年</span>
+                </div>
+                <div class="bi"><input type="number" id="sd-m" placeholder="5" min="1" max="12"><span>月</span></div>
+                <div class="bi"><input type="number" id="sd-d" placeholder="15" min="1" max="31"><span>日</span></div>
+            </div>
+            <button class="shindan-btn" id="sd-btn">🐾 無料で本質のねこを診断する<small>登録不要・無料</small></button>
+            <p class="shindan-error" id="sd-error">生年月日を正しく入力してくださいね🐾</p>
         </div>
-    </section>
-
-    <!-- ② EMPATHY -->
-    <section class="empathy">
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="inner">
-            <div class="fade-in">
-                <span class="section-eyebrow">✦ こんなこと、ありませんか？</span>
-                <h2 class="section-title">「なんだか生きづらい」<br>そう感じることは<br>ありませんか？</h2>
-            </div>
-            <div class="empathy-cards">
-                <div class="empathy-card fade-in" style="transition-delay:.08s"><span class="card-icon">💭</span>
-                    <p>人前では元気に振る舞うけれど、家に帰るとドッと疲れてしまう</p>
-                </div>
-                <div class="empathy-card fade-in" style="transition-delay:.16s"><span class="card-icon">🌀</span>
-                    <p>「やりたい！」と思った瞬間に、急に「やっぱり怖い」と動けなくなる</p>
-                </div>
-                <div class="empathy-card fade-in" style="transition-delay:.24s"><span class="card-icon">😔</span>
-                    <p>周りの期待に応えようとして、自分の本音がわからなくなる</p>
-                </div>
-                <div class="empathy-card fade-in" style="transition-delay:.32s"><span class="card-icon">🔮</span>
-                    <p>占いは好きだけど、悪い結果を言われるのが怖くて見れない</p>
-                </div>
-            </div>
-            <div class="empathy-box fade-in">
-                <p>もし一つでも当てはまるなら、<br>それはあなたが弱いからではありません。</p>
-                <p class="highlight">あなたの中に住んでいる「ねこたち」の声が、<br>すこし絡まっているだけなんです。🐾</p>
+        <div class="shindan-result" id="sd-result">
+            <p class="sr-intro" id="sr-intro">あなたの本質のねこは……</p>
+            <img id="sr-img" src="" alt="">
+            <div class="sr-num" id="sr-num"></div>
+            <h3 id="sr-name"></h3>
+            <p class="sr-catch" id="sr-catch"></p>
+            <div class="sr-msg" id="sr-msg"></div>
+            <div class="sr-links">
+                <a class="more" id="sr-more" href="#">このねこをもっと詳しく見る →</a><br>
+                <a class="btn-primary" href="menu.html">5匹ぜんぶ知りたい方は 総合鑑定へ🐾</a>
             </div>
         </div>
     </section>
 
-    <!-- ③ ABOUT -->
-    <section class="about">
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="inner">
-            <div class="fade-in" style="text-align:center;margin-bottom:40px;">
-                <span class="section-eyebrow">✦ ねこもち占いとは</span>
-                <h2 class="section-title">数秘術 × 12匹のねこ<br>= <em>ねこもち占い</em></h2>
-                <p class="section-lead">自分を「直す」のではなく「理解する」ための占いです。<br>難しい専門用語なし。あなたの性格や才能を、<br>個性豊かな「12匹のねこ」に例えてお伝えします。
-                </p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-num-badge fn-1">01</div>
-                    <div>
-                        <h3>「当てる」より「ほどく」</h3>
-                        <p>未来を予言して不安にさせることはありません。今のこころの絡まりを、やさしくほどきます。</p>
-                    </div>
-                </div>
-                <div class="feature-card fade-in" style="transition-delay:.1s">
-                    <div class="feature-num-badge fn-2">02</div>
-                    <div>
-                        <h3>多重人格でOK！</h3>
-                        <p>「前向きな私」も「休みたい私」も、全部あなたの中にいる大切な「ねこ」。全員いたっていいんです。</p>
-                    </div>
-                </div>
-                <div class="feature-card fade-in" style="transition-delay:.2s">
-                    <div class="feature-num-badge fn-3">03</div>
-                    <div>
-                        <h3>世界一ゆるい自己分析</h3>
-                        <p>「こうしなきゃ」はナシ。ねこのように「ま、いっか」と自分を許すためのヒントがいっぱいです。</p>
-                    </div>
-                </div>
-            </div>
+    <!-- 12匹のねこたち -->
+    <section>
+        <span class="section-eyebrow">✦ CHARACTERS</span>
+        <h2 class="section-title">12匹のねこたち</h2>
+        <p class="section-lead">気になるねこを選んでみてください。性格・SOSサイン・心の整え方がわかります。</p>
+        <div class="cats-grid">
+            <a class="cat-card" href="types.html#n1"><img src="img/cat_1.png?v=2" alt="いちばんねこ">
+                <div class="num">数秘 1</div>
+                <h3>いちばんねこ</h3>
+                <p>誇り高きハンター</p>
+            </a>
+            <a class="cat-card" href="types.html#n2"><img src="img/cat_2.png?v=2" alt="なかよしねこ">
+                <div class="num">数秘 2</div>
+                <h3>なかよしねこ</h3>
+                <p>心をつなぐバランサー</p>
+            </a>
+            <a class="cat-card" href="types.html#n3"><img src="img/cat_3.png?v=2" alt="ひらめきねこ">
+                <div class="num">数秘 3</div>
+                <h3>ひらめきねこ</h3>
+                <p>ワクワクの天才</p>
+            </a>
+            <a class="cat-card" href="types.html#n4"><img src="img/cat_4.png?v=2" alt="こつこつねこ">
+                <div class="num">数秘 4</div>
+                <h3>こつこつねこ</h3>
+                <p>誠実な建築家</p>
+            </a>
+            <a class="cat-card" href="types.html#n5"><img src="img/cat_5.png?v=2" alt="ふわりねこ">
+                <div class="num">数秘 5</div>
+                <h3>ふわりねこ</h3>
+                <p>自由を愛する冒険家</p>
+            </a>
+            <a class="cat-card" href="types.html#n6"><img src="img/cat_6.png?v=2" alt="まもりねこ">
+                <div class="num">数秘 6</div>
+                <h3>まもりねこ</h3>
+                <p>みんなの守護者</p>
+            </a>
+            <a class="cat-card" href="types.html#n7"><img src="img/cat_7.png?v=2" alt="ふしぎねこ">
+                <div class="num">数秘 7</div>
+                <h3>ふしぎねこ</h3>
+                <p>孤高の哲学者</p>
+            </a>
+            <a class="cat-card" href="types.html#n8"><img src="img/cat_8.png?v=2" alt="まっすぐねこ">
+                <div class="num">数秘 8</div>
+                <h3>まっすぐねこ</h3>
+                <p>不屈のチャレンジャー</p>
+            </a>
+            <a class="cat-card" href="types.html#n9"><img src="img/cat_9.png?v=2" alt="あんしんねこ">
+                <div class="num">数秘 9</div>
+                <h3>あんしんねこ</h3>
+                <p>深遠な賢者</p>
+            </a>
+            <a class="cat-card" href="types.html#n11"><img src="img/cat_11.png?v=2" alt="ひかりねこ">
+                <div class="num">数秘 11</div>
+                <h3>ひかりねこ</h3>
+                <p>直感のメッセンジャー</p>
+            </a>
+            <a class="cat-card" href="types.html#n22"><img src="img/cat_22.png?v=2" alt="しっかりねこ">
+                <div class="num">数秘 22</div>
+                <h3>しっかりねこ</h3>
+                <p>カリスマ建築家</p>
+            </a>
+            <a class="cat-card" href="types.html#n33"><img src="img/cat_33.png?v=2" alt="まほうねこ">
+                <div class="num">数秘 33</div>
+                <h3>まほうねこ</h3>
+                <p>宇宙規模の愛の奉仕者</p>
+            </a>
         </div>
     </section>
 
-    <!-- ④ 5匹のねこ -->
-    <section class="five-cats">
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="inner">
-            <div class="fade-in" style="text-align:center;margin-bottom:44px;">
-                <span class="section-eyebrow">✦ あなたの中の5匹のねこ</span>
-                <h2 class="section-title">1匹じゃない。<br>あなたの中には<br><em>5匹のねこが住んでいます。</em></h2>
-                <p class="section-lead">生年月日から導き出す5つの数秘ナンバー。<br>それぞれに「ねこ」がいて、あなたの内側で動いています。</p>
-            </div>
-            <div class="cats5-grid fade-in">
-                <div class="cat5-card"><span class="c5-emoji">🌟</span>
-                    <div class="c5-label">LP（ライフパス）</div>
-                    <div class="c5-name">本質のねこ</div>
-                    <div class="c5-desc">魂の根っこ。<br>人生全体を貫くエネルギー</div>
-                </div>
-                <div class="cat5-card"><span class="c5-emoji">🎯</span>
-                    <div class="c5-label">D（デスティニー）</div>
-                    <div class="c5-name">使命のねこ</div>
-                    <div class="c5-desc">あなたに与えられた<br>人生の役割</div>
-                </div>
-            </div>
-            <div class="cats5-grid fade-in" style="transition-delay:.12s">
-                <div class="cat5-card"><span class="c5-emoji">💫</span>
-                    <div class="c5-label">S（ソウル）</div>
-                    <div class="c5-name">本音のねこ</div>
-                    <div class="c5-desc">心の奥で<br>本当に求めること</div>
-                </div>
-                <div class="cat5-card"><span class="c5-emoji">🪞</span>
-                    <div class="c5-label">P（パーソナリティ）</div>
-                    <div class="c5-name">見た目のねこ</div>
-                    <div class="c5-desc">周りから見えている<br>あなた</div>
-                </div>
-            </div>
-            <div class="cats5-center fade-in" style="transition-delay:.24s">
-                <div class="cat5-card"><span class="c5-emoji">🎁</span>
-                    <div class="c5-label">B（バースデー）</div>
-                    <div class="c5-name">強みのねこ</div>
-                    <div class="c5-desc">生まれ持った<br>自然に使える才能</div>
-                </div>
-            </div>
-            <div class="cats5-msg fade-in">
-                <p>「なぜか人間関係でモヤモヤする」<br>「頑張っているのに報われない気がする」<br>「自分の本当にやりたいことが分からない」<br><br>それは、<span
-                        class="coral">5匹のねこが知っています。</span>🐾</p>
-            </div>
+    <!-- 鑑定メニュー -->
+    <section>
+        <span class="section-eyebrow">✦ MENU</span>
+        <h2 class="section-title">鑑定メニュー</h2>
+        <p class="section-lead">やさしい絵本のようなPDF鑑定書をお届けします。</p>
+        <div class="kantei-card">
+            <span class="kc-tag">🐾 いちばん人気</span>
+            <h3>5匹のねこもち総合鑑定</h3>
+            <div class="kc-price">¥3,300（税込）</div>
+            <p>あなたの本質・才能・仕事運・お金の流れ・人間関係の傾向を、<br>5匹のねこもちから総合的に読み解くPDF鑑定書です。</p>
+            <a href="menu.html" class="btn-primary">鑑定メニューを見る</a>
         </div>
     </section>
 
-    <!-- ⑤ 12匹 -->
-    <section class="twelve-cats">
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="inner">
-            <div class="fade-in" style="text-align:center;margin-bottom:36px;">
-                <span class="section-eyebrow">✦ 12タイプ一覧</span>
-                <h2 class="section-title">あなたの中には<br>どのねこが住んでいる？</h2>
-                <p class="section-lead">生年月日からすぐに分かります🐾</p>
-            </div>
-            <div class="cats-grid fade-in">
-                <div class="cat-chip"><span class="cc-icon">👑</span>
-                    <div class="cc-num">LP 1</div>
-                    <h4>いちばんねこ</h4>
-                    <p>誇り高きハンター</p>
-                </div>
-                <div class="cat-chip"><span class="cc-icon">🤝</span>
-                    <div class="cc-num">LP 2</div>
-                    <h4>なかよしねこ</h4>
-                    <p>心をつなぐバランサー</p>
-                </div>
-                <div class="cat-chip"><span class="cc-icon">🎉</span>
-                    <div class="cc-num">LP 3</div>
-                    <h4>ひらめきねこ</h4>
-                    <p>ワクワクの天才</p>
-                </div>
-                <div class="cat-chip"><span class="cc-icon">🧱</span>
-                    <div class="cc-num">LP 4</div>
-                    <h4>こつこつねこ</h4>
-                    <p>誠実な建築家</p>
-                </div>
-                <div class="cat-chip"><span class="cc-icon">✈️</span>
-                    <div class="cc-num">LP 5</div>
-                    <h4>ふわりねこ</h4>
-                    <p>自由を愛する冒険家</p>
-                </div>
-                <div class="cat-chip"><span class="cc-icon">🌹</span>
-                    <div class="cc-num">LP 6</div>
-                    <h4>まもりねこ</h4>
-                    <p>みんなの守護者</p>
-                </div>
-                <div class="cat-chip"><span class="cc-icon">📚</span>
-                    <div class="cc-num">LP 7</div>
-                    <h4>ふしぎねこ</h4>
-                    <p>孤高の哲学者</p>
-                </div>
-                <div class="cat-chip"><span class="cc-icon">🦁</span>
-                    <div class="cc-num">LP 8</div>
-                    <h4>まっすぐねこ</h4>
-                    <p>不屈のチャレンジャー</p>
-                </div>
-                <div class="cat-chip"><span class="cc-icon">🌍</span>
-                    <div class="cc-num">LP 9</div>
-                    <h4>あんしんねこ</h4>
-                    <p>深遠な賢者</p>
-                </div>
-                <div class="cat-chip"><span class="cc-icon">⚡</span>
-                    <div class="cc-num">LP 11</div>
-                    <h4>ひかりねこ</h4>
-                    <p>直感のメッセンジャー</p>
-                </div>
-                <div class="cat-chip"><span class="cc-icon">🏗️</span>
-                    <div class="cc-num">LP 22</div>
-                    <h4>しっかりねこ</h4>
-                    <p>カリスマ建築家</p>
-                </div>
-                <div class="cat-chip"><span class="cc-icon">🛸</span>
-                    <div class="cc-num">LP 33</div>
-                    <h4>まほうねこ</h4>
-                    <p>宇宙規模の愛の奉仕者</p>
-                </div>
-            </div>
-        </div>
+    <!-- お知らせ -->
+    <section>
+        <span class="section-eyebrow">✦ NEWS</span>
+        <h2 class="section-title">お知らせ</h2>
+        <p class="section-lead"></p>
+        <ul class="news-list">
+            <li><span class="date">2026.07.04</span><span>「5匹のねこもち総合鑑定」の受付をはじめました🐾</span></li>
+            <li><span class="date">2026.07.03</span><span>ねこもち占い 公式サイトをオープンしました🎉</span></li>
+        </ul>
     </section>
 
-    <!-- ⑥ PRODUCT -->
-    <section class="product">
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="inner">
-            <div class="fade-in" style="text-align:center;margin-bottom:36px;">
-                <span class="section-eyebrow">✦ 鑑定書</span>
-                <h2 class="section-title">あなただけの「ねこもち取扱説明書」を<br><em>お届けします</em></h2>
-            </div>
-            <div class="product-card fade-in">
-                <div class="product-card-header">
-                    <span class="p-cat">📖</span>
-                    <div class="p-tag">🐾 大ボリューム PDF鑑定書</div>
-                    <h3>5匹のねこもち総合鑑定</h3>
-                </div>
-                <div class="product-card-body">
-                    <div class="price-box">
-                        <div class="p-label">鑑定料金</div>
-                        <div class="p-price"><span>¥</span>3,300<span>（税込）</span></div>
-                    </div>
-                    <div class="product-intro">
-                        <p>あなたの本質・才能・仕事運・お金の流れ・人間関係の傾向を、5匹のねこもちから総合的に読み解くPDF鑑定書です。</p>
-                        <p>自分のことを深く知りたい方、人生の方向性を整理したい方、強みや魅力を再確認したい方におすすめの総合鑑定です。</p>
-                        <p>鑑定では、あなたの基本性格、生まれ持った才能、得意なこと、つまずきやすいパターン、仕事やお金の活かし方、人間関係で大切にするとよいことをまとめます。</p>
-                        <p>単品鑑定よりも広い視点で、あなたらしさをまるごと見つめる内容です。</p>
-                    </div>
-                    <!-- TODO: STORESショップのURLが決まったら href="#" を差し替える -->
-                    <a href="#" class="product-cta-btn" id="product-stores-btn">🛍️ STORESで購入する</a>
-                    <p class="p-note">📦 STORESでご購入後、5日以内にPDF鑑定書をお届けします</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ⑦ FLOW -->
-    <section class="flow">
-        <div class="blob b1"></div>
-        <div class="inner">
-            <div class="fade-in" style="text-align:center;margin-bottom:44px;">
-                <span class="section-eyebrow">✦ ご利用の流れ</span>
-                <h2 class="section-title">たったの<em>3ステップ</em>🐾</h2>
-            </div>
-            <div class="flow-steps">
-                <div class="flow-step fade-in">
-                    <div class="flow-num">1</div>
-                    <div class="flow-body">
-                        <h3>STORESで鑑定書を購入</h3>
-                        <p>STORESのショップから「ねこもち総合鑑定書」をご購入ください。</p>
-                    </div>
-                </div>
-                <div class="flow-step fade-in" style="transition-delay:.1s">
-                    <div class="flow-num">2</div>
-                    <div class="flow-body">
-                        <h3>お名前と生年月日を伝える</h3>
-                        <p>ご購入時の備考欄で、お名前（ローマ字）と生年月日をお知らせください。</p>
-                    </div>
-                </div>
-                <div class="flow-step fade-in" style="transition-delay:.2s">
-                    <div class="flow-num">3</div>
-                    <div class="flow-body" style="padding-bottom:0;">
-                        <h3>5日以内に鑑定書をお届け🎁</h3>
-                        <p>5日以内にPDFにて鑑定書をおとどけします。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="flow-cta-wrap fade-in">
-                <!-- TODO: STORESショップのURLが決まったら href="#" を差し替える -->
-                <a href="#" class="btn-primary" id="flow-stores-btn">🛍️ STORESで鑑定書を購入</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ⑧ TESTIMONIALS -->
-    <section class="testimonials">
-        <div class="blob b1"></div>
-        <div class="inner">
-            <div class="fade-in" style="text-align:center;margin-bottom:36px;">
-                <span class="section-eyebrow">✦ お客様の声</span>
-                <h2 class="section-title">ねこたちと出会った<br>方からの声</h2>
-            </div>
-            <div class="testi-list">
-                <div class="testi-card fade-in">
-                    <p>「私のことずっと見てました？」というくらいドンピシャで驚いてます！なんとなく思っていても言葉にならなかったことを言語化してもらったようで、じわっと泣けてきました。脳内会議と、5匹をチームにするというのが他にない鑑定書。「わかったけど、結局どうしたらいい？」となりがちなのに、しっかり解決策と今後へのアドバイスがあってスッキリしました。迷ったときはこの鑑定書を読めば、原点に帰れると思いました。</p>
-                    <div class="testi-author">
-                        <div class="t-avatar ta-1">💌</div>
-                        <div>
-                            <div class="t-name">ご購入者さま</div>
-                            <div class="t-caption">「原点に帰れる鑑定書、皆さんにもオススメしたい」</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testi-card fade-in" style="transition-delay:.05s">
-                    <p>ずっと「飽きっぽい自分」が嫌いでした。でも「ひらめきねこ」がいるからだと分かって、「それが才能なんだ」と初めて思えました。鑑定書を読んで、涙が出るくらい嬉しかったです。</p>
-                    <div class="testi-author">
-                        <div class="t-avatar ta-1">🐱</div>
-                        <div>
-                            <div class="t-name">30代女性</div>
-                            <div class="t-caption">「私、このままでよかったんだ！」</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testi-card fade-in" style="transition-delay:.1s">
-                    <p>外ではバリバリ働くライオンのような自分と、家では甘えん坊なねこの自分。どっちも私なんだと認められて、気持ちがとても軽くなりました。自分が好きになれた気がします。</p>
-                    <div class="testi-author">
-                        <div class="t-avatar ta-2">🐾</div>
-                        <div>
-                            <div class="t-name">40代女性</div>
-                            <div class="t-caption">「矛盾してていい、と楽になった」</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testi-card fade-in" style="transition-delay:.2s">
-                    <p>数秘術は難しいイメージがありましたが「ねこ」でたとえてくれるので、スラスラ読めてびっくり！家族のねことも比べてみたら、なぜいつもすれ違うのかが分かった気がしました。</p>
-                    <div class="testi-author">
-                        <div class="t-avatar ta-3">🌟</div>
-                        <div>
-                            <div class="t-name">20代女性</div>
-                            <div class="t-caption">「家族のことも理解できた！」</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ⑨ CLOSING -->
-    <section class="closing">
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="blob b3"></div>
-        <div class="inner fade-in">
-            <span class="section-eyebrow">✦ ねこもち占い より</span>
-            <h2 class="closing-title">ねこのように、しなやかに。<br>自分のペースで<br>生きていきましょう。</h2>
-            <div class="closing-text">
-                ねこは、他人と自分を比べません。<br>
-                無理して笑ったりもしません。<br>
-                ただ、自分の心地よい場所を知っていて、<br>
-                そこで堂々と生きています。<br><br>
-                あなたも、きっとそうなれます。<br>
-                新しい自分にならなくていい。<br>
-                ただ、あなたの中にいる「愛すべきねこたち」を<br>
-                思い出してあげるだけ。<br><br>
-                この占いが、今日一日に「OK」を出すための、<br>
-                小さなお守りになりますように🐾
-            </div>
-            <!-- TODO: STORESショップのURLが決まったら href="#" を差し替える -->
-            <a href="#" class="btn-primary" id="closing-stores-btn">🛍️ STORESで鑑定を申し込む</a>
-            <p style="margin-top:14px;font-size:0.85rem;"><a href="https://lin.ee/fwo76" target="_blank"
-                    rel="noopener" style="color:inherit;">🐱 新しい情報は公式LINEでお届けしています</a></p>
-            <div class="closing-sig">— ねこもち占い</div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer>
-        <p><a href="types.html">12匹のねこたち</a>　｜　<a href="menu.html">鑑定メニュー</a>　｜　<a href="https://lin.ee/fwo76" target="_blank" rel="noopener">公式LINE</a></p>
-        <p>© 2026 ねこもち占い</p>
+        <div class="sns-row">
+            <a href="https://note.com/nekomochi_uranai" target="_blank" rel="noopener">📖 note</a>
+            <a href="https://lin.ee/fwo76" target="_blank" rel="noopener">🐱 公式LINE</a>
+        </div>
+        <p class="foot-links"><a href="types.html">12匹のねこたち</a>｜<a href="menu.html">鑑定メニュー</a>｜<a
+                href="about.html">ねこもち占いとは</a></p>
+        <p class="copyright">© 2026 ねこもち占い</p>
     </footer>
 
     <script>
-        const fades = document.querySelectorAll('.fade-in');
-        const io = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.1 });
-        fades.forEach(el => io.observe(el));
-    </script>
+        const NEKO = {
+            1: { name: 'いちばんねこ', catch: '開拓・独立・リーダーシップ。「自分で決める」が生きがいの先駆者', msg: '頼ることは、弱さじゃないよ。たまには誰かに甘えて、ふかふかの毛布で休もう。' },
+            2: { name: 'なかよしねこ', catch: '調和・協調・感受性。空気を読みすぎて疲れる平和主義者', msg: '人のことより、まずは自分の小さなお皿を満たそう。あなたは、そこにいるだけで価値がある。' },
+            3: { name: 'ひらめきねこ', catch: '創造・表現・喜び。「楽しい！」だけで動く天性のエンターテイナー', msg: '飽きっぽいのは、ダメだからじゃない。あなたの頭が、世界より先に進んでいるだけ。' },
+            4: { name: 'こつこつねこ', catch: '継続・誠実・土台。石橋を叩いて渡る、信頼の職人', msg: '完璧じゃなくても、世界は壊れない。今日は少し、ルールをゆるめても大丈夫。' },
+            5: { name: 'ふわりねこ', catch: '自由・変化・冒険。ルールと定番が大嫌いな風来坊', msg: '落ち着かなくていい。あなたのその揺らぎが、新しい風を運んでくる。' },
+            6: { name: 'まもりねこ', catch: '愛情・責任・調和。誰かを守ることに生きがいを感じるお母さん気質', msg: '自分を犠牲にする愛は、いつか苦しくなる。まずはあなた自身を、世界一大切にしていい。' },
+            7: { name: 'ふしぎねこ', catch: '探求・内省・真理。「なぜ？」を掘り続ける孤高の哲学者', msg: '理解されなくてもいい。あなたのその独特な世界観こそが、いつか誰かの光になる。' },
+            8: { name: 'まっすぐねこ', catch: '達成・権力・豊かさ。結果で証明したい将軍タイプ', msg: '戦わなくても、あなたの価値は変わらない。鎧を脱いだあなたも、十分に愛されている。' },
+            9: { name: 'あんしんねこ', catch: '癒やし・包容・手放し。すべてを受け入れ見守る、器の大きなまとめ役', msg: 'いい人にならなくていい。誰かのためじゃなく、自分のために生きていいんだよ。' },
+            11: { name: 'ひかりねこ', catch: '直感・啓蒙・橋渡し。目に見えないメッセージを受け取る繊細なアンテナ', msg: 'その繊細さは、才能だよ。理屈で説明しなくていい、あなたの感覚を信じて。' },
+            22: { name: 'しっかりねこ', catch: '構築・ビジョン・現実化。圧倒的スケールで理想を形にする建築家', msg: '焦らなくていい。あなたの夢は大きいから、時間がかかるのは当たり前。' },
+            33: { name: 'まほうねこ', catch: '無条件の愛・癒やし・受容。常識を超えた愛で包む、宇宙からのメッセンジャー', msg: 'あなたはそのままで魔法みたいな存在。無理に普通にならなくていいんだよ。' }
+        };
 
+        function reduceNum(n) {
+            while (n > 9 && n !== 11 && n !== 22 && n !== 33) {
+                n = String(n).split('').reduce((s, d) => s + parseInt(d, 10), 0);
+            }
+            return n;
+        }
+
+        function calcLP(y, m, d) {
+            const digits = ('' + y + String(m).padStart(2, '0') + String(d).padStart(2, '0')).split('');
+            return reduceNum(digits.reduce((s, c) => s + parseInt(c, 10), 0));
+        }
+
+        document.getElementById('sd-btn').addEventListener('click', () => {
+            const y = parseInt(document.getElementById('sd-y').value, 10);
+            const m = parseInt(document.getElementById('sd-m').value, 10);
+            const d = parseInt(document.getElementById('sd-d').value, 10);
+            const err = document.getElementById('sd-error');
+            const valid = y >= 1900 && y <= 2026 && m >= 1 && m <= 12 && d >= 1 && d <= 31;
+            if (!valid) {
+                err.style.display = 'block';
+                return;
+            }
+            err.style.display = 'none';
+            const lp = calcLP(y, m, d);
+            const neko = NEKO[lp];
+            const nick = document.getElementById('sd-name').value.trim();
+            document.getElementById('sr-intro').textContent =
+                (nick ? nick + 'さんの' : 'あなたの') + '本質のねこは……';
+            document.getElementById('sr-img').src = 'img/cat_' + lp + '.png?v=2';
+            document.getElementById('sr-img').alt = neko.name;
+            document.getElementById('sr-num').textContent = '数秘 ' + lp;
+            document.getElementById('sr-name').textContent = neko.name;
+            document.getElementById('sr-catch').textContent = neko.catch;
+            document.getElementById('sr-msg').textContent = '「' + neko.msg + '」';
+            document.getElementById('sr-more').href = 'types.html#n' + lp;
+            const box = document.getElementById('sd-result');
+            box.style.display = 'block';
+            box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    </script>
 </body>
 
 </html>
-
