@@ -120,7 +120,7 @@
         .cats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
         .card, .empathy-card, .feature-card, .cat5-card, .cat-chip, .product-card, .testi-card, .cats5-msg, .empathy-box {
             background: #fff;
-            border: 1.5px solid rgba(247, 167, 181, 0.55);
+            border: 1.5px solid var(--coral-light);
             border-radius: 22px;
             box-shadow: var(--shadow);
             position: relative;
@@ -133,8 +133,8 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 7px;
-            background: var(--coral-pale);
+            height: 9px;
+            background: linear-gradient(90deg, var(--coral-pale), #fff, var(--coral-pale));
         }
         .feature-card { display: flex; gap: 18px; padding: 30px 24px 24px; }
         .feature-num-badge {
@@ -164,7 +164,7 @@
         .c5-desc, .cc-desc, .cat-chip p { color: var(--text-light); font-size: 0.8rem; }
         .product-card { overflow: hidden; }
         .product-card-header, .product-card-body { padding: 32px 28px; }
-        .product-card-header { text-align: center; border-bottom: 1px solid rgba(247, 167, 181, 0.55); background: var(--coral-pale); }
+        .product-card-header { text-align: center; border-bottom: 1.5px solid var(--coral-light); background: var(--coral-pale); }
         .p-cat { display: block; font-size: 3.4rem; margin-bottom: 10px; }
         .p-tag { display: inline-block; color: var(--coral); font-weight: 700; margin-bottom: 12px; background: #fff; border-radius: 999px; padding: 4px 14px; }
         .price-box { text-align: center; border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin-bottom: 24px; }
