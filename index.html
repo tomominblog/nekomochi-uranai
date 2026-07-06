@@ -712,6 +712,30 @@
             return reduceNum(digits.reduce((s, c) => s + parseInt(c, 10), 0));
         }
 
+        function setupDateStepper(id) {
+            const input = document.getElementById(id);
+            if (!input) return;
+            input.addEventListener('pointerdown', (event) => {
+                const rect = input.getBoundingClientRect();
+                const isStepperArea = event.clientX >= rect.right - 48;
+                if (!isStepperArea) return;
+                event.preventDefault();
+                input.focus();
+                try {
+                    if (event.clientY < rect.top + rect.height / 2) {
+                        input.stepUp();
+                    } else {
+                        input.stepDown();
+                    }
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    input.dispatchEvent(new Event('change', { bubbles: true }));
+                } catch (error) {
+                    // ブラウザが最小値・最大値の外に出そうとした時は何もしません。
+                }
+            });
+        }
+
+        ['sd-y', 'sd-m', 'sd-d'].forEach(setupDateStepper);
         document.getElementById('sd-btn').addEventListener('click', () => {
             const y = parseInt(document.getElementById('sd-y').value, 10);
             const m = parseInt(document.getElementById('sd-m').value, 10);
