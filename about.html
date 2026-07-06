@@ -13,6 +13,7 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
             --white: #ffffff;
+            --cream: #FFF7F0;
             --coral: #E98BA4;
             --coral-light: #F7A7B5;
             --text-dark: #4A2D1F;
@@ -24,7 +25,7 @@
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            background: #fff;
+            background: var(--cream);
             color: var(--text-dark);
             line-height: 1.85;
             overflow-x: hidden;
@@ -41,7 +42,7 @@
             justify-content: space-between;
             gap: 18px;
             padding: 14px 24px;
-            background: rgba(255, 255, 255, 0.96);
+            background: rgba(255, 247, 240, 0.96);
             border-bottom: 1px solid var(--line);
             backdrop-filter: blur(10px);
         }
@@ -66,7 +67,7 @@
             align-items: center;
             gap: 14px;
             padding: 12px 20px;
-            background: rgba(255, 255, 255, 0.96);
+            background: rgba(255, 247, 240, 0.96);
             border-top: 1px solid var(--line);
             backdrop-filter: blur(12px);
         }
@@ -88,7 +89,7 @@
         .btn-primary, .product-cta-btn { padding: 16px 34px; font-size: 1rem; }
         .product-cta-btn { display: flex; width: 100%; }
         .btn-line:hover, .btn-primary:hover, .product-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(6, 199, 85, 0.35); }
-        section, footer, .hero, .empathy, .about, .five-cats, .twelve-cats, .product, .flow, .testimonials, .closing { background: #fff !important; }
+        section, footer, .hero, .empathy, .about, .five-cats, .twelve-cats, .product, .flow, .testimonials, .closing { background: var(--cream) !important; }
         section { padding: 84px 24px; border-bottom: 1px solid var(--line); }
         .hero { min-height: calc(100dvh - 60px); display: flex; align-items: center; text-align: center; }
         .inner { width: min(680px, 100%); margin: 0 auto; }
