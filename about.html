@@ -16,6 +16,7 @@
             --cream: #FFF7F0;
             --coral: #E98BA4;
             --coral-light: #F7A7B5;
+            --coral-pale: #FBEAF0;
             --text-dark: #4A2D1F;
             --text-mid: #6B625C;
             --text-light: #A89880;
@@ -119,12 +120,23 @@
         .cats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
         .card, .empathy-card, .feature-card, .cat5-card, .cat-chip, .product-card, .testi-card, .cats5-msg, .empathy-box {
             background: #fff;
-            border: 1px solid var(--line);
+            border: 1.5px solid rgba(247, 167, 181, 0.55);
             border-radius: 22px;
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
-        .empathy-card, .cat5-card, .cat-chip { padding: 24px 20px; text-align: center; }
-        .feature-card { display: flex; gap: 18px; padding: 24px; }
+        .empathy-card, .cat5-card, .cat-chip { padding: 30px 20px 24px; text-align: center; }
+        .empathy-card::before, .feature-card::before, .cat5-card::before, .cat-chip::before, .product-card::before, .testi-card::before, .cats5-msg::before, .empathy-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 7px;
+            background: var(--coral-pale);
+        }
+        .feature-card { display: flex; gap: 18px; padding: 30px 24px 24px; }
         .feature-num-badge {
             flex: 0 0 44px;
             width: 44px;
@@ -141,20 +153,20 @@
         h3, h4 { color: var(--text-dark); line-height: 1.5; }
         p { color: var(--text-mid); }
         .features-grid, .testi-list, .flow-steps { display: flex; flex-direction: column; gap: 16px; }
-        .empathy-box, .cats5-msg, .testi-card { padding: 28px 24px; }
+        .empathy-box, .cats5-msg, .testi-card { padding: 34px 24px 28px; }
         .highlight { color: var(--coral); font-weight: 700; }
         .cats5-center { display: flex; justify-content: center; margin: 16px 0 36px; }
         .cats5-center .cat5-card { width: min(260px, 100%); }
         .c5-emoji, .card-icon, .cc-icon { display: block; font-size: 1.8rem; margin-bottom: 8px; }
         .cc-cat { width: 76px; height: 76px; object-fit: contain; display: block; margin: 0 auto 10px; }
-        .c5-label, .cc-num { color: var(--coral-light); font-size: 0.72rem; letter-spacing: 0.08em; }
+        .c5-label, .cc-num { color: var(--coral); font-size: 0.72rem; letter-spacing: 0.08em; font-weight: 700; }
         .c5-name { color: var(--text-dark); font-weight: 700; }
         .c5-desc, .cc-desc, .cat-chip p { color: var(--text-light); font-size: 0.8rem; }
         .product-card { overflow: hidden; }
         .product-card-header, .product-card-body { padding: 32px 28px; }
-        .product-card-header { text-align: center; border-bottom: 1px solid var(--line); }
+        .product-card-header { text-align: center; border-bottom: 1px solid rgba(247, 167, 181, 0.55); background: var(--coral-pale); }
         .p-cat { display: block; font-size: 3.4rem; margin-bottom: 10px; }
-        .p-tag { display: inline-block; color: var(--coral); font-weight: 700; margin-bottom: 12px; }
+        .p-tag { display: inline-block; color: var(--coral); font-weight: 700; margin-bottom: 12px; background: #fff; border-radius: 999px; padding: 4px 14px; }
         .price-box { text-align: center; border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin-bottom: 24px; }
         .p-label, .p-note { color: var(--text-light); font-size: 0.82rem; }
         .p-price { color: var(--coral); font-weight: 700; font-size: 2.2rem; }
