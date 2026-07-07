@@ -156,7 +156,7 @@
         .empathy-box, .cats5-msg, .testi-card { padding: 34px 24px 28px; }
         .highlight { color: var(--coral); font-weight: 700; }
         .cats5-center { display: flex; justify-content: center; margin: 16px 0 36px; }
-        .cats5-center .cat5-card { width: min(260px, 100%); }
+        .cats5-center .cat5-card { width: calc((100% - 16px) / 2); }
         .c5-emoji, .card-icon, .cc-icon { display: block; font-size: 1.8rem; margin-bottom: 8px; }
         .c5-cat { width: 150px; height: 150px; object-fit: contain; display: block; margin: 0 auto 16px; }
         .c5-cat-strong { width: 180px; height: 180px; margin-top: -14px; margin-bottom: 0; }
@@ -193,6 +193,7 @@
             .links a { font-size: 0.76rem; padding: 5px 8px; }
             section { padding: 68px 18px; }
             .cards-2, .cats5-grid, .cats-grid { grid-template-columns: 1fr; }
+            .cats5-center .cat5-card { width: 100%; }
             .feature-card, .flow-step { gap: 14px; }
             .sticky-cta { padding: 10px 12px; gap: 10px; }
             .cta-text { display: none; }
