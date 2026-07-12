@@ -216,7 +216,8 @@
             vertical-align: middle;
         }
 
-        .shindan-card input {
+        .shindan-card input,
+        .shindan-card select {
             width: 100%;
             border: none;
             background: var(--coral-pale);
@@ -229,7 +230,13 @@
             outline: none;
         }
 
-        .shindan-card input:focus {
+        .shindan-card select {
+            cursor: pointer;
+            appearance: auto;
+        }
+
+        .shindan-card input:focus,
+        .shindan-card select:focus {
             box-shadow: 0 0 0 2px var(--coral-light);
         }
 
@@ -377,8 +384,8 @@
         }
 
         .cat-card img {
-            width: 88px;
-            height: 88px;
+            width: 104px;
+            height: 104px;
             object-fit: contain;
         }
 
@@ -558,10 +565,9 @@
             <input type="text" id="sd-name" placeholder="例：あや" maxlength="20">
             <span class="sc-label">生年月日<span class="req">必須</span></span>
             <div class="birth-row">
-                <div class="bi"><input type="number" id="sd-y" placeholder="1990" min="1900" max="2026"><span>年</span>
-                </div>
-                <div class="bi"><input type="number" id="sd-m" placeholder="5" min="1" max="12"><span>月</span></div>
-                <div class="bi"><input type="number" id="sd-d" placeholder="15" min="1" max="31"><span>日</span></div>
+                <div class="bi"><select id="sd-y" aria-label="年"></select><span>年</span></div>
+                <div class="bi"><select id="sd-m" aria-label="月"></select><span>月</span></div>
+                <div class="bi"><select id="sd-d" aria-label="日"></select><span>日</span></div>
             </div>
             <button class="shindan-btn" id="sd-btn">🐾 無料で本質のねこを診断する<small>登録不要・無料</small></button>
             <p class="shindan-error" id="sd-error">生年月日を正しく入力してくださいね🐾</p>
@@ -692,7 +698,7 @@
     <footer>
         <div class="sns-row">
             <a href="https://note.com/nekomochi_uranai" target="_blank" rel="noopener">📖 note</a>
-            <a href="https://lin.ee/fwo76" target="_blank" rel="noopener">🐱 公式LINE</a>
+            <a href="https://lin.ee/PbAZVlC" target="_blank" rel="noopener">🐱 公式LINE</a>
         </div>
         <p class="foot-links"><a href="types.html">12匹のねこたち</a>｜<a href="menu.html">鑑定メニュー</a>｜<a
                 href="about.html">ねこもち占いとは</a></p>
@@ -727,6 +733,27 @@
             return reduceNum(digits.reduce((s, c) => s + parseInt(c, 10), 0));
         }
 
+        function fillDateSelect(id, start, end, placeholder, defaultValue) {
+            const select = document.getElementById(id);
+            if (!select) return;
+            select.innerHTML = '';
+            const placeholderOption = document.createElement('option');
+            placeholderOption.value = '';
+            placeholderOption.textContent = placeholder;
+            placeholderOption.disabled = true;
+            select.appendChild(placeholderOption);
+            for (let value = start; value <= end; value += 1) {
+                const option = document.createElement('option');
+                option.value = String(value);
+                option.textContent = String(value);
+                select.appendChild(option);
+            }
+            select.value = String(defaultValue);
+        }
+
+        fillDateSelect('sd-y', 1900, 2026, '1990', 1990);
+        fillDateSelect('sd-m', 1, 12, '5', 5);
+        fillDateSelect('sd-d', 1, 31, '15', 15);
         document.getElementById('sd-btn').addEventListener('click', () => {
             const y = parseInt(document.getElementById('sd-y').value, 10);
             const m = parseInt(document.getElementById('sd-m').value, 10);
