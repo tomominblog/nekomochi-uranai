@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>時間を読む｜ねこもち占いの教科書</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-head">
+  <p class="brand"><a href="index.html">🐾 ねこもち占いの教科書</a><span class="badge">Brain購入者特典</span></p>
+  <nav class="site-nav">
+    <a href="index.html">はじめに</a>
+    <a href="keisan.html">計算編</a>
+    <a href="zukan.html">12匹図鑑</a>
+    <a href="yomitoki.html">読み解き</a>
+    <a href="jikan.html" class="current">時間を読む</a>
+    <a href="kantei.html">鑑定文</a>
+  </nav>
+</header>
+
+<main>
+
+<h1>🗓️ 時間を読む——個人年と9年サイクル</h1>
+<p class="lead">がんばりの量は同じなのに、なぜか空回りする年。逆に、力んでいないのに追い風が吹く年。それは、あなたの実力が上下しているのではありません。5匹のねこが「<strong>空間の地図</strong>」（あなたという人の構造）だとしたら、ここで扱うのは「<strong>時間の地図</strong>」——あなたがいま、人生のどの<strong>季節</strong>にいるか、です🐾</p>
+
+<section>
+  <h2>🌱 うまくいかないのは「季節ちがい」なだけ</h2>
+  <p>ねこもち占いでは、運気を「良い・悪い」では読みません。1年ごとに巡ってくるテーマを「<strong>個人年（パーソナルイヤー）</strong>」という数字で計算し、<strong>1〜9の季節が順番に巡る9年サイクル</strong>として読みます。</p>
+  <p>畑にたとえると——種をまき（1）、芽吹き（2）、花が咲き（3）、根を張り（4）、枝葉を広げ（5）、実を育み（6）、土を休ませ（7）、大収穫を迎え（8）、次のために土を耕し直す（9）——そしてまた1へ。</p>
+  <p>「停滞期」と呼ばれる年は、じつは畑を休ませて次の収穫を仕込んでいる大切な季節。<strong>9年のどこにも、意味のない年はありません。</strong>冬に種をまいても芽は出ませんが、それは種のせいでも、まき方のせいでもないのです。</p>
+</section>
+
+<section>
+  <h2>🧮 個人年の計算——1分でできます</h2>
+  <p>計算は、これまででいちばん簡単です。</p>
+  <div class="quote"><strong>「知りたい年（西暦）」＋「生まれた月」＋「生まれた日」の数字を、ぜんぶバラして足すだけ。</strong></div>
+  <div class="quote">【計算例】5月28日生まれの人の、2026年の個人年<br>
+  2＋0＋2＋6（年）＋5（月）＋2＋8（日）＝25 → 2＋5＝<strong>7</strong><br>
+  → 2026年は「<em>サイクル7・ふしぎねこ</em>」の年（土を休ませる・内省の季節）です</div>
+  <div class="panel note">⚠️ <strong>コアナンバーの計算との大事なちがい</strong><br>個人年の計算では、<strong>マスターナンバー（11・22・33）を残しません</strong>。合計が11や22になっても、必ず1桁（1〜9）まで縮約してください。サイクルは9つの季節で一巡する、と覚えてくださいね。</div>
+
+  <div class="tool">
+    <h3>⚡ 個人年計算機</h3>
+    <div class="fields">
+      <div><label for="j-month">誕生月</label><input type="number" id="j-month" class="w-md" placeholder="5" min="1" max="12"></div>
+      <div><label for="j-day">誕生日</label><input type="number" id="j-day" class="w-md" placeholder="28" min="1" max="31"></div>
+      <div><label for="j-target">知りたい年（西暦）</label><input type="number" id="j-target" class="w-year" min="1900" max="2100"></div>
+      <div><button id="j-run">🐾 季節を見る</button></div>
+    </div>
+    <p style="font-size:.82rem">※誕生「年」は使いません。前後の年の流れも一緒に表示します。</p>
+    <div id="j-out" class="result"></div>
+  </div>
+</section>
+
+<section>
+  <h2>📅 9つの季節 早見表</h2>
+  <div class="table-wrap">
+    <table>
+      <tr><th>年</th><th>ねこ</th><th>季節のテーマ</th><th>この年の過ごし方（ひとこと版）</th></tr>
+      <tr><td>1</td><td>いちばんねこ</td><td>種まき・スタート</td><td>完璧な計画より「やりたい！」で最初の一歩を</td></tr>
+      <tr><td>2</td><td>なかよしねこ</td><td>芽吹き・パートナーシップ</td><td>急がず、人とのつながりを育てる</td></tr>
+      <tr><td>3</td><td>ひらめきねこ</td><td>花咲く・自己表現</td><td>楽しむ・表現する・発信する</td></tr>
+      <tr><td>4</td><td>こつこつねこ</td><td>根を張る・土台作り</td><td>地味な整備が9年分の土台になる</td></tr>
+      <tr><td>5</td><td>ふわりねこ</td><td>枝葉を広げる・変化</td><td>変化を恐れず行動範囲を広げる</td></tr>
+      <tr><td>6</td><td>まもりねこ</td><td>実を育む・ご自愛と愛情</td><td>大切な人と、自分自身をケアする</td></tr>
+      <tr><td>7</td><td>ふしぎねこ</td><td>土を休ませる・内省</td><td>外に出すより、学びと充電にあてる</td></tr>
+      <tr><td>8</td><td>まっすぐねこ</td><td>大収穫・豊かさの受け取り</td><td>これまでの成果を堂々と受け取る</td></tr>
+      <tr><td>9</td><td>あんしんねこ</td><td>土を耕す・手放しと整理</td><td>手放して、次の9年のスペースを空ける</td></tr>
+    </table>
+  </div>
+  <p>たとえばサイクル1の年は、新しい学びや道具への自己投資が何倍にもなって返ってくる「種まきの追い風」の年。逆にサイクル7の年に「結果が出ない」と焦るのは、休ませている畑の前で腕組みしているようなものです。焦らなくて大丈夫、次は収穫の8が控えています。</p>
+</section>
+
+<section>
+  <h2>✍️ やってみましょう：自分の「いま」と「これまで」を地図に置く</h2>
+  <ol>
+    <li><strong>今年の個人年を計算する</strong>：今年（西暦）＋誕生月＋誕生日 →（　）</li>
+    <li><strong>去年と一昨年も計算してみる</strong>：個人年は毎年1ずつ進みます。「去年は9＝手放しの年だった」と振り返ると、「だからあのとき、あの関係が終わったのか……」と腑に落ちることがよくあります。<strong>過去が腑に落ちると、未来の地図が信じられるようになります。</strong></li>
+    <li><strong>数年先を眺める</strong>：たとえば今が4（土台作り）なら、8（大収穫）は4年後。あなたの使命（D）のねこが花開くのはどの季節か——数年単位のゆるやかな見通しとして眺めてみてください。</li>
+  </ol>
+</section>
+
+<section>
+  <h2>❓ よくあるつまずき Q&amp;A</h2>
+  <div class="panel">
+    <p><strong>Q1. 計算したら11になりました。ひかりねこの年ですか？</strong></p>
+    <p>A. いいえ、個人年では1桁まで縮約するので「2・なかよしねこ」の年です。マスターナンバーを残すのは<a href="keisan.html">5つのコアナンバー</a>だけ。ここは本当に間違いやすいので、テストに出るつもりで覚えてください🐾</p>
+  </div>
+  <div class="panel">
+    <p><strong>Q2. 年の途中（誕生日ごろ）で空気が変わる気がします。1月1日で切り替わるのですか？</strong></p>
+    <p>A. どちらの感覚も正解です。ねこもち占いでは「カレンダーの年で世界のムードを意識しつつ、体感としては誕生日の前後3ヶ月くらいから、徐々に次のサイクルへ移っていく」というグラデーションの捉え方をおすすめしています。季節の変わり目と同じで、ある日突然冬になるわけではないのです。</p>
+  </div>
+  <div class="panel">
+    <p><strong>Q3. 家族と自分のサイクルが真逆です。</strong></p>
+    <p>A. すれ違いではなく「季節がちがう」だけです。「夫はいま7（冬眠中）、私は8（夏）なんだな」とお互いの季節を知っているだけで、無駄な衝突がぐっと減ります。<a href="yomitoki.html">相性の読み解き</a>に時間軸が加わると、読み解きは一段と立体的になりますよ。</p>
+  </div>
+</section>
+
+<section>
+  <h2>📚 もっと深く時間を読みたい方へ</h2>
+  <p>このページでお伝えしたのは、時間の読み解きの「入口」です。9つのサイクルそれぞれの、仕事運・人間関係運・金運の波、つまずきの罠、ラッキーアクションまでを1年ずつ徹底解説した姉妹本——<strong>『ねこもちバイオリズム教科書（ねこサイクル）』</strong>があります。本書で5匹の読み解きを身につけたあとに読むと、効果が倍増する構成になっています。</p>
+</section>
+
+<section class="matome">
+  <h3>🐾 時間を読むのまとめ</h3>
+  <ul class="paw">
+    <li>5匹が「空間の地図」なら、個人年は「時間の地図」。運気は良し悪しではなく季節で読む</li>
+    <li>計算は「西暦＋誕生月＋誕生日」をぜんぶ足して1桁まで縮約。<strong>マスターナンバーは残さない</strong></li>
+    <li>9年サイクル＝種まき→育成→収穫→手放しの畑の物語。意味のない年はひとつもない</li>
+    <li>過去のサイクルを振り返って「腑に落ちる」体験が、時間の地図を使いこなす第一歩</li>
+  </ul>
+</section>
+
+<div class="page-next"><a href="kantei.html">道具が揃ったら → 鑑定文の書き方へ</a></div>
+
+</main>
+
+<footer>
+  <div class="paw">🐾</div>
+  <p>『ねこもち占いの教科書』Brain購入者特典サイト</p>
+  <p><a href="https://tomominblog.github.io/nekomochi-uranai/">ねこもち占い 公式サイト</a>　／　<a href="https://lin.ee/fwo76">公式LINE</a></p>
+</footer>
+
+<script src="nekomochi.js"></script>
+<script>
+(function () {
+  document.getElementById("j-target").value = new Date().getFullYear();
+
+  var SEASONS = {
+    1: "種まき・スタート", 2: "芽吹き・パートナーシップ", 3: "花咲く・自己表現",
+    4: "根を張る・土台作り", 5: "枝葉を広げる・変化", 6: "実を育む・ご自愛と愛情",
+    7: "土を休ませる・内省", 8: "大収穫・豊かさの受け取り", 9: "土を耕す・手放しと整理"
+  };
+
+  document.getElementById("j-run").addEventListener("click", function () {
+    var out = document.getElementById("j-out");
+    var m = Number(document.getElementById("j-month").value);
+    var d = Number(document.getElementById("j-day").value);
+    var t = Number(document.getElementById("j-target").value);
+
+    var err = null;
+    if (!m || !d || !t) err = "誕生月・誕生日・知りたい年をすべて入れてください。";
+    else if (m < 1 || m > 12) err = "月は1〜12で入れてください。";
+    else if (d < 1 || d > 31) err = "日は1〜31で入れてください。";
+    else if (t < 1900 || t > 2100) err = "年は西暦4桁で入れてください。";
+    if (err) { out.innerHTML = '<p class="error">' + err + "</p>"; return; }
+
+    var py = calcPersonalYear(t, m, d);
+    var html =
+      '<div class="slot-card slot5">' +
+        '<div class="num-badge">年</div>' +
+        '<img src="../img/cat_' + py + '.png" alt="' + NEKO_TYPES[py].name + '">' +
+        '<div class="body">' +
+          '<div class="role">' + t + "年のあなたの個人年</div>" +
+          '<div class="neko-name"><span class="n">' + py + "</span>・" + NEKO_TYPES[py].name + "の年</div>" +
+          '<div class="catch">季節のテーマ：' + SEASONS[py] + "</div>" +
+          '<div class="more"><a href="zukan.html#type-' + py + '">→ この季節のねこを図鑑で見る</a></div>' +
+        "</div></div>";
+
+    // 前後の年の流れ
+    var flow = [];
+    for (var i = -2; i <= 2; i++) {
+      var yy = t + i;
+      var p = calcPersonalYear(yy, m, d);
+      flow.push((i === 0 ? "<strong>" : "") + yy + "年＝" + p + "・" + NEKO_TYPES[p].name + (i === 0 ? "</strong>" : ""));
+    }
+    html += '<div class="kensan">🌾 前後の流れ：' + flow.join(" ／ ") + "</div>";
+
+    out.innerHTML = html;
+  });
+})();
+</script>
+
+</body>
+</html>

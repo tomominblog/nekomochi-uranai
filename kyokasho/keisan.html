@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>計算編｜ねこもち占いの教科書</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-head">
+  <p class="brand"><a href="index.html">🐾 ねこもち占いの教科書</a><span class="badge">Brain購入者特典</span></p>
+  <nav class="site-nav">
+    <a href="index.html">はじめに</a>
+    <a href="keisan.html" class="current">計算編</a>
+    <a href="zukan.html">12匹図鑑</a>
+    <a href="yomitoki.html">読み解き</a>
+    <a href="jikan.html">時間を読む</a>
+    <a href="kantei.html">鑑定文</a>
+  </nav>
+</header>
+
+<main>
+
+<h1>🧮 計算編——あなたの5匹のねこを出す</h1>
+<p class="lead">ねこもち占いで使うのは、<strong>足し算だけ</strong>です。紙とペンと、あなたの「生年月日」と「名前」。それだけで、あなたの中に住む5匹のねこ全員に会えます。まずは自動計算ツールでさっと出すこともできますし、下の解説を読めば手計算でも出せるようになります🐾</p>
+
+<section>
+  <h2>⚡ 自動計算ツール</h2>
+  <div class="tool">
+    <h3>あなたの5匹のねこ＋今年の個人年</h3>
+    <div class="fields">
+      <div><label for="k-year">生まれた年（西暦）</label><input type="number" id="k-year" class="w-year" placeholder="1990" min="1900" max="2100"></div>
+      <div><label for="k-month">月</label><input type="number" id="k-month" class="w-md" placeholder="5" min="1" max="12"></div>
+      <div><label for="k-day">日</label><input type="number" id="k-day" class="w-md" placeholder="15" min="1" max="31"></div>
+    </div>
+    <div class="fields">
+      <div style="flex:1"><label for="k-name">お名前（ローマ字・空欄でもOK）</label><input type="text" id="k-name" class="w-name" placeholder="SATO HANAKO" autocapitalize="characters" autocomplete="off"></div>
+      <div><button id="k-run">🐾 5匹に会う</button></div>
+    </div>
+    <p style="font-size:.82rem">※お名前は、ふだん一番よく使っている表記（パスポート・名刺・SNSなど）で。空欄の場合は、生年月日からわかる2匹（本質・強み）だけを表示します。</p>
+    <div id="k-out" class="result"></div>
+  </div>
+</section>
+
+<section>
+  <h2>📐 準備するもの＆2つの基本ルール</h2>
+  <p>手計算で出すときは、まず次の2つを用意してください。</p>
+  <ol>
+    <li><strong>生年月日</strong>（西暦で。例：1990年5月15日）</li>
+    <li><strong>お名前のローマ字表記</strong>（例：SATO HANAKO）※ふだん一番よく使っている名前でOKです</li>
+  </ol>
+
+  <h3>ルール①：2桁になったら、足して1桁にする（縮約）</h3>
+  <p>計算の途中で合計が2桁になったら、<strong>その2桁をさらに足し合わせて、1桁になるまで繰り返します</strong>。これを「縮約（しゅくやく）」と呼びます。</p>
+  <div class="quote">例）合計が 30 → 3＋0＝<strong>3</strong>　／　合計が 25 → 2＋5＝<strong>7</strong></div>
+
+  <h3>ルール②：11・22・33 だけは、そのまま残す</h3>
+  <p>ただし例外がひとつ。途中の合計がちょうど <strong>11・22・33</strong> になったときは、1桁にせず<strong>そのまま残します</strong>。この3つは「マスターナンバー」と呼ばれる特別な数字で、ねこもち占いでは <strong>11＝ひかりねこ、22＝しっかりねこ、33＝まほうねこ</strong> という、ひときわ個性の強い3匹に対応しています。</p>
+  <div class="panel note">⚠️ いちばん多い計算ミスが「11や33をうっかり1桁にしてしまう」ことです。2桁が出たら、まず「11・22・33かな？」と確認するクセをつけてくださいね。</div>
+</section>
+
+<section>
+  <h2>🐈 STEP 1：生年月日から「一生ものの2匹」を出す</h2>
+  <p>まずは、名前が変わっても一生変わらない2匹からです。</p>
+
+  <h3>🛤️ 本質のねこ（ライフパス／LP）＝ 生年月日ぜんぶ</h3>
+  <p><strong>生年月日の数字を、ぜんぶバラバラにして足します。</strong></p>
+  <div class="quote">【計算例】1990年5月15日生まれ・はなさんの場合<br>
+  1＋9＋9＋0＋0＋5＋1＋5＝30 → 3＋0＝<strong>3</strong><br>
+  → はなさんの本質のねこは「<em>3・ひらめきねこ</em>」です</div>
+
+  <h3>🎁 強みのねこ（バースデー／B）＝ 生まれた日だけ</h3>
+  <p><strong>「生まれた日」だけを足します。</strong></p>
+  <div class="quote">【計算例】15日生まれ → 1＋5＝<strong>6</strong><br>
+  → はなさんの強みのねこは「<em>6・まもりねこ</em>」です<br>
+  ※7日生まれなど、もともと1桁の方はその数字がそのままBになります</div>
+</section>
+
+<section>
+  <h2>🔤 STEP 2：名前から「いまの3匹」を出す</h2>
+  <p>次は名前です。名前の3匹を出すには、アルファベットを数字に置き換える「換算表」を使います（ピタゴラス式といいます）。</p>
+
+  <div class="table-wrap">
+    <table>
+      <tr><th>数字</th><td style="text-align:center">1</td><td style="text-align:center">2</td><td style="text-align:center">3</td><td style="text-align:center">4</td><td style="text-align:center">5</td><td style="text-align:center">6</td><td style="text-align:center">7</td><td style="text-align:center">8</td><td style="text-align:center">9</td></tr>
+      <tr><th rowspan="3">文字</th><td style="text-align:center">A</td><td style="text-align:center">B</td><td style="text-align:center">C</td><td style="text-align:center">D</td><td style="text-align:center">E</td><td style="text-align:center">F</td><td style="text-align:center">G</td><td style="text-align:center">H</td><td style="text-align:center">I</td></tr>
+      <tr><td style="text-align:center">J</td><td style="text-align:center">K</td><td style="text-align:center">L</td><td style="text-align:center">M</td><td style="text-align:center">N</td><td style="text-align:center">O</td><td style="text-align:center">P</td><td style="text-align:center">Q</td><td style="text-align:center">R</td></tr>
+      <tr><td style="text-align:center">S</td><td style="text-align:center">T</td><td style="text-align:center">U</td><td style="text-align:center">V</td><td style="text-align:center">W</td><td style="text-align:center">X</td><td style="text-align:center">Y</td><td style="text-align:center">Z</td><td style="text-align:center"></td></tr>
+    </table>
+  </div>
+
+  <p>もうひとつだけ覚えてください。<strong>母音は A・I・U・E・O の5つ</strong>。それ以外は子音です（<strong>Yは子音</strong>として扱います）。</p>
+
+  <h3>🔥 使命のねこ（ディスティニー／D）＝ 名前のぜんぶ</h3>
+  <div class="quote">【計算例】SATO HANAKO さん<br>
+  S(1)＋A(1)＋T(2)＋O(6)＝10<br>
+  H(8)＋A(1)＋N(5)＋A(1)＋K(2)＋O(6)＝23<br>
+  合計 10＋23＝<strong>33</strong> → マスターナンバーなのでそのまま！<br>
+  → 使命のねこは「<em>33・まほうねこ</em>」です</div>
+
+  <h3>💖 本音のねこ（ソウル／S）＝ 母音だけ</h3>
+  <div class="quote">【計算例】SATO HANAKO の母音は A・O／A・A・O<br>
+  1＋6＋1＋1＋6＝15 → 1＋5＝<strong>6</strong><br>
+  → 本音のねこは「<em>6・まもりねこ</em>」です</div>
+
+  <h3>✨ 見た目のねこ（パーソナリティ／P）＝ 子音だけ</h3>
+  <div class="quote">【計算例】SATO HANAKO の子音は S・T／H・N・K<br>
+  1＋2＋8＋5＋2＝18 → 1＋8＝<strong>9</strong><br>
+  → 見た目のねこは「<em>9・あんしんねこ</em>」です</div>
+</section>
+
+<section>
+  <h2>✅ STEP 3：答え合わせ（検算）</h2>
+  <p>計算が合っているか、自分で確かめる方法があります。</p>
+  <div class="quote"><strong>「母音の合計」＋「子音の合計」を縮約すると、必ず「使命（D）」に一致します。</strong><br>（名前ぜんぶ＝母音＋子音、なので当然と言えば当然なのです）</div>
+  <div class="quote">【はなさんで検算】母音の合計 15 ＋ 子音の合計 18 ＝ 33<br>→ 使命のD＝33 と一致 ✅ 計算はぜんぶ合っています！</div>
+  <p>一致しなかったら、どこかで足し間違いか、母音・子音の仕分けミス（多いのはYを母音にしてしまうこと）があります。もう一度ゆっくり見直してみてくださいね。上の自動計算ツールも、この検算を毎回自動で行っています。</p>
+</section>
+
+<section>
+  <h2>📋 数字とねこの早見表</h2>
+  <div class="table-wrap">
+    <table>
+      <tr><th>数字</th><th>ねこ</th><th>数字</th><th>ねこ</th><th>数字</th><th>ねこ</th></tr>
+      <tr><td>1</td><td>いちばんねこ</td><td>5</td><td>ふわりねこ</td><td>9</td><td>あんしんねこ</td></tr>
+      <tr><td>2</td><td>なかよしねこ</td><td>6</td><td>まもりねこ</td><td>11</td><td>ひかりねこ</td></tr>
+      <tr><td>3</td><td>ひらめきねこ</td><td>7</td><td>ふしぎねこ</td><td>22</td><td>しっかりねこ</td></tr>
+      <tr><td>4</td><td>こつこつねこ</td><td>8</td><td>まっすぐねこ</td><td>33</td><td>まほうねこ</td></tr>
+    </table>
+  </div>
+  <p>それぞれのねこの詳しい性格は、<a href="zukan.html">12匹のねこ図鑑</a>でたっぷりご紹介しています。</p>
+</section>
+
+<section>
+  <h2>❓ よくあるつまずき Q&amp;A</h2>
+  <div class="panel">
+    <p><strong>Q1. 途中で「11」が出ました。1桁にするんでしたっけ？</strong></p>
+    <p>A. しません！ 11・22・33はマスターナンバーなので、そのまま残してください。「マスターナンバーかな？」の確認は、縮約のたびに毎回行うのがコツです。（※ただし<a href="jikan.html">個人年の計算</a>だけは例外で、必ず1桁まで縮約します）</p>
+  </div>
+  <div class="panel">
+    <p><strong>Q2. ローマ字のつづりに迷います。「ITO」と「ITOU」、どちらで計算すればいいですか？</strong></p>
+    <p>A. <strong>ふだん一番よく使っている表記</strong>（パスポートや名刺、SNSで使っているもの）で計算してください。じつは、つづりが変わると名前の3匹（使命・本音・見た目）も変わります。それは間違いではなく「その名前をまとったあなた」がいるということ。迷ったら両方計算して、しっくりくるほうを感じてみるのもおすすめです🐾</p>
+  </div>
+  <div class="panel">
+    <p><strong>Q3. 検算が合いません……。</strong></p>
+    <p>A. よくある原因は3つです。①Yを母音として数えた（Yは子音です） ②マスターナンバーを1桁にしてしまった ③換算表の読み間違い（となりの列とずれやすいのでご注意を）。ひとつずつ確認すれば、必ず見つかりますよ。</p>
+  </div>
+</section>
+
+<section class="matome">
+  <h3>🐾 計算編のまとめ</h3>
+  <ul class="paw">
+    <li>必要なのは足し算だけ。2桁になったら1桁になるまで足す（縮約）</li>
+    <li>ただし 11・22・33（ひかりねこ・しっかりねこ・まほうねこ）はそのまま残す</li>
+    <li>生年月日から本質（LP）と強み（B）、名前から使命（D）・本音（S）・見た目（P）。母音はAIUEO、Yは子音</li>
+    <li>「母音＋子音＝使命」で、いつでも自分で答え合わせができる</li>
+  </ul>
+</section>
+
+<div class="page-next"><a href="zukan.html">数字は出ましたか？ → 12匹のねこ図鑑へ</a></div>
+
+</main>
+
+<footer>
+  <div class="paw">🐾</div>
+  <p>『ねこもち占いの教科書』Brain購入者特典サイト</p>
+  <p><a href="https://tomominblog.github.io/nekomochi-uranai/">ねこもち占い 公式サイト</a>　／　<a href="https://lin.ee/fwo76">公式LINE</a></p>
+</footer>
+
+<script src="nekomochi.js"></script>
+<script>
+document.getElementById("k-run").addEventListener("click", function () {
+  var y = Number(document.getElementById("k-year").value);
+  var m = Number(document.getElementById("k-month").value);
+  var d = Number(document.getElementById("k-day").value);
+  var nameRaw = document.getElementById("k-name").value;
+  var out = document.getElementById("k-out");
+
+  var err = validateBirth(y, m, d);
+  if (!err && nameRaw && /[^A-Za-z\s\-'.]/.test(nameRaw)) {
+    err = "お名前はローマ字（アルファベット）で入れてください。";
+  }
+  if (err) { out.innerHTML = '<p class="error">' + err + "</p>"; return; }
+
+  var r = calcAllNumbers(y, m, d, nameRaw);
+  var html = "";
+
+  // 5枚（名前なしなら2枚）のスロットカード
+  var values = { lp: r.lp, b: r.b, d: r.d, s: r.s, p: r.p };
+  SLOTS.forEach(function (slot) {
+    var num = values[slot.key];
+    if (num !== null) html += slotCardHTML(slot, num, true);
+  });
+
+  // 名前の内訳と検算
+  if (r.letters.length > 0) {
+    var breakdown = r.letters.map(function (L) {
+      var s = L.ch + '<span class="v">' + L.val + "</span>";
+      return L.isVowel ? "<u>" + s + "</u>" : s;
+    }).join(" ");
+    html += '<div class="kensan">🔍 <strong>内訳</strong>（数字＝換算値、下線つき＝母音）<br>' +
+      '<span class="breakdown">' + breakdown + "</span><br>" +
+      "母音の合計 " + r.soulSum + " ＋ 子音の合計 " + r.personalitySum +
+      " ＝ " + (r.soulSum + r.personalitySum) + " → 縮約 " + reduceNum(r.soulSum + r.personalitySum) +
+      " ＝ 使命（D）" + r.d + (r.kensanOk ? " と一致 ✅ 検算OKです" : " と不一致 ⚠️") + "</div>";
+  } else {
+    html += '<div class="kensan">お名前を入れると、使命・本音・見た目の3匹と検算も表示されます🐾</div>';
+  }
+
+  // 今年の個人年
+  var thisYear = new Date().getFullYear();
+  var py = calcPersonalYear(thisYear, m, d);
+  html += '<div class="kensan">🗓️ <strong>' + thisYear + "年のあなたの個人年</strong>：<em>" +
+    py + "・" + NEKO_TYPES[py].name + "</em> の年です。季節の意味は<a href=\"jikan.html\">「時間を読む」</a>でどうぞ。" +
+    "（個人年はマスターナンバーを残さず、必ず1桁まで縮約します）</div>";
+
+  out.innerHTML = html;
+});
+</script>
+
+</body>
+</html>
