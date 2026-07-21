@@ -464,6 +464,44 @@
             transform: translateY(-2px);
         }
 
+        .purchase-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .purchase-actions .btn-primary {
+            min-width: 190px;
+            padding-inline: 26px;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            min-width: 190px;
+            background: var(--white);
+            color: var(--coral);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 12px 26px;
+            border: 2px solid var(--coral);
+            border-radius: 999px;
+            transition: transform .2s, background .2s;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            background: var(--coral-pale);
+        }
+
+        .purchase-note {
+            margin-top: 14px !important;
+            margin-bottom: 0 !important;
+            color: var(--text-light) !important;
+            font-size: 0.78rem !important;
+        }
+
         /* ===== お知らせ ===== */
         .news-list {
             max-width: 640px;
@@ -553,7 +591,7 @@
     <header class="site-head">
         <h1 class="site-title">ねこもち占い</h1>
         <p class="site-tag">数秘術 × 12匹のねこ。あなたの中のねこたちを、やさしく読み解きます🐾</p>
-        <a href="kanteisho.html" class="notice-banner">🐱 <span class="nb-accent">「5匹のねこもち総合鑑定」</span>の受付をはじめました →</a>
+        <a href="#kyokasho" class="notice-banner">🎉 <span class="nb-accent">『ねこもち占いの教科書』</span>をリリースしました →</a>
     </header>
 
     <!-- 診断スタート -->
@@ -670,17 +708,20 @@
         </div>
     </section>
 
-    <!-- 教科書（Brain） -->
-    <section>
+    <!-- ねこもち占いの教科書 -->
+    <section id="kyokasho">
         <span class="section-eyebrow">✦ NEW</span>
         <h2 class="section-title">ねこもち占いの教科書</h2>
         <p class="section-lead">自分と大切な人を、自分の手で読み解けるようになる一冊。</p>
         <div class="kantei-card">
-            <span class="kc-tag">🐾 2026.7.22 リリース</span>
+            <span class="kc-tag">🎉 2026.7.22 リリース</span>
             <h3>ねこもち占いの教科書</h3>
             <p>生年月日だけで、あなたと家族の中に住む「5匹のねこ」を計算して読み解く方法を、はじめから全部お伝えします。<br>読み終えるころには、自分で自分を、そして大切な人を鑑定できるようになります🐾</p>
-            <!-- TODO(7/22公開時): href="#" を Brain の販売URL に差し替え、ボタン文言を「教科書を見る 🐾」に変更する -->
-            <a href="#" class="btn-primary">7月22日 公開予定 🐾</a>
+            <div class="purchase-actions">
+                <a href="https://brain-market.com/u/tomomin0126/a/bwUTN1UjMgoTZsNWa0JXY" class="btn-primary" target="_blank" rel="noopener">Brainで購入する 🐾</a>
+                <a href="https://note.com/nekomochi_uranai/n/nbf12bc779fea?sub_rt=share_sb" class="btn-secondary" target="_blank" rel="noopener">noteで購入する 🐾</a>
+            </div>
+            <p class="purchase-note">お好きな販売サイトからご購入いただけます。</p>
         </div>
     </section>
 
@@ -690,7 +731,7 @@
         <h2 class="section-title">お知らせ</h2>
         <p class="section-lead"></p>
         <ul class="news-list">
-            <li><span class="date">2026.07.13</span><span>7/22にBrain『ねこもち占いの教科書』をリリースします🎉</span></li>
+            <li><span class="date">2026.07.22</span><span>『ねこもち占いの教科書』をリリースしました🎉</span></li>
             <li><span class="date">2026.07.04</span><span>「5匹のねこもち総合鑑定」の受付をはじめました🐾</span></li>
             <li><span class="date">2026.07.03</span><span>ねこもち占い 公式サイトをオープンしました🎉</span></li>
         </ul>
