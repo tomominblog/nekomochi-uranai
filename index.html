@@ -92,16 +92,37 @@
 
         @media (max-width: 640px) {
             .site-nav {
-                padding: 8px 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 3px;
+                padding: 6px 10px 5px;
             }
 
             .site-nav .brand {
+                width: 100%;
+                text-align: center;
                 font-size: 0.88rem;
+                line-height: 1.4;
+            }
+
+            .site-nav .links {
+                width: 100%;
+                justify-content: flex-start;
+                gap: 2px;
+                overflow-x: auto;
+                overscroll-behavior-x: contain;
+                scrollbar-width: none;
+                padding-bottom: 1px;
+            }
+
+            .site-nav .links::-webkit-scrollbar {
+                display: none;
             }
 
             .site-nav .links a {
+                flex: 0 0 auto;
                 font-size: 0.7rem;
-                padding: 5px 6px;
+                padding: 4px 7px;
             }
         }
 
@@ -123,6 +144,20 @@
             color: var(--text-mid);
             font-size: 0.9rem;
             margin-top: 4px;
+        }
+        @media (max-width: 640px) {
+            header.site-head {
+                padding: 116px 18px 8px;
+            }
+
+            .site-title {
+                font-size: 1.65rem;
+            }
+
+            .site-tag {
+                font-size: 0.84rem;
+                line-height: 1.65;
+            }
         }
 
         /* ===== 告知バナー ===== */
@@ -149,6 +184,15 @@
         .notice-banner .nb-accent {
             color: var(--coral);
             font-weight: 700;
+        }
+        @media (max-width: 640px) {
+            .notice-banner {
+                margin-top: 18px;
+                padding: 11px 15px;
+                border-radius: 20px;
+                font-size: 0.84rem;
+                line-height: 1.65;
+            }
         }
 
         /* ===== SECTIONS ===== */
@@ -500,6 +544,21 @@
             margin-bottom: 0 !important;
             color: var(--text-light) !important;
             font-size: 0.78rem !important;
+        }
+        @media (max-width: 640px) {
+            .purchase-actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+                margin-top: 18px;
+            }
+
+            .purchase-actions .btn-primary,
+            .purchase-actions .btn-secondary {
+                width: 100%;
+                min-width: 0;
+                padding-inline: 16px;
+            }
         }
 
         /* ===== お知らせ ===== */
