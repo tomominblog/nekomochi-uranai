@@ -453,6 +453,90 @@
             margin-top: 10px;
         }
 
+        /* ===== 診断結果 → 次の一歩（教科書／鑑定の分岐） ===== */
+        .shindan-result .sr-next {
+            margin: 26px 0 4px;
+        }
+
+        .shindan-result .sr-next-lead {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 14px;
+        }
+
+        .shindan-result .sr-next-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .shindan-result .sr-next-card {
+            display: block;
+            text-align: left;
+            text-decoration: none;
+            background: var(--white);
+            border: 1.5px solid var(--coral-pale);
+            border-radius: 18px;
+            padding: 16px 16px 18px;
+            transition: transform .2s, box-shadow .2s, border-color .2s;
+        }
+
+        .shindan-result .sr-next-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--coral-light);
+            box-shadow: var(--shadow-card);
+        }
+
+        .shindan-result .sr-next-tag {
+            display: inline-block;
+            background: var(--coral-pale);
+            color: var(--coral);
+            font-size: 0.68rem;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 4px 10px;
+            margin-bottom: 10px;
+        }
+
+        .shindan-result .sr-next-name {
+            display: block;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 4px;
+        }
+
+        .shindan-result .sr-next-price {
+            display: block;
+            color: var(--coral);
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .shindan-result .sr-next-desc {
+            display: block;
+            color: var(--text-mid);
+            font-size: 0.78rem;
+            line-height: 1.75;
+        }
+
+        .shindan-result .sr-next-go {
+            display: block;
+            color: var(--coral);
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .shindan-result .sr-next-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* ===== 12匹グリッド ===== */
         .cats-grid {
             display: grid;
@@ -743,8 +827,27 @@
                 <p class="sr-gift-note">登録は無料・いつでも解除できます🐾</p>
             </div>
             <div class="sr-links">
-                <a class="more" id="sr-more" href="#">このねこをもっと詳しく見る →</a><br>
-                <a class="more" href="kanteisho.html">5匹ぜんぶ知りたい方は 総合鑑定へ →</a>
+                <a class="more" id="sr-more" href="#">このねこをもっと詳しく見る →</a>
+            </div>
+
+            <div class="sr-next">
+                <p class="sr-next-lead">🐾 5匹ぜんぶ、知りたくなったら</p>
+                <div class="sr-next-cards">
+                    <a class="sr-next-card" href="#kyokasho">
+                        <span class="sr-next-tag">自分で出せるようになりたい方へ</span>
+                        <span class="sr-next-name">ねこもち占いの教科書</span>
+                        <span class="sr-next-price">¥980</span>
+                        <span class="sr-next-desc">5匹を自分で出せるようになる一冊です。買ったその日から読めます🐾</span>
+                        <span class="sr-next-go">教科書を見る →</span>
+                    </a>
+                    <a class="sr-next-card" href="kanteisho.html">
+                        <span class="sr-next-tag">読み解いてほしい方へ</span>
+                        <span class="sr-next-name">5匹のねこもち総合鑑定</span>
+                        <span class="sr-next-price">¥3,300</span>
+                        <span class="sr-next-desc">あなたの5匹を読み解いた、絵本のようなPDF鑑定書をお届けします🐈</span>
+                        <span class="sr-next-go">鑑定のご案内を見る →</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
