@@ -1,805 +1,122 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鑑定書のご案内｜ねこもち占い</title>
-    <meta name="description"
-        content="ねこもち占いの4つの鑑定書（総合・2人・家族の子育て・お金と才能）のご案内。あなたの中に住むねこたちを、水彩のやさしい世界観でお届けする「あなた専用のトリセツ」です🐾">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            /* ねこもち占い BRAND GUIDE 準拠 */
-            --cream: #FFF7F0;
-            --white: #FFFFFF;
-            --coral: #E98BA4;
-            --coral-light: #F7A7B5;
-            --coral-pale: #FBEAF0;
-            --peach: #F8D9C7;
-            --text-dark: #4A2D1F;
-            --text-mid: #6B625C;
-            --text-light: #A89880;
-            --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.08);
-            --radius: 24px;
-            /* 商品アクセント */
-            --p-sogo: #E98BA4;
-            /* 総合=コーラル */
-            --p-futari-a: #F2A6B4;
-            /* 2人=ローズ */
-            --p-futari-b: #A5C48E;
-            /* 2人=グリーン */
-            --p-kazoku: #C3B1DE;
-            /* 家族=ラベンダー */
-            --p-okane: #E9C878;
-            /* お金と才能=イエローゴールド */
-        }
-
-        body {
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            background: var(--cream);
-            color: var(--text-dark);
-            line-height: 1.8;
-        }
-
-        /* ===== NAV ===== */
-        .site-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 10px 20px;
-            background: rgba(255, 247, 240, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .site-nav .brand {
-            font-weight: 700;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: .04em;
-            white-space: nowrap;
-        }
-
-        .site-nav .links {
-            display: flex;
-            gap: 4px;
-        }
-
-        .site-nav .links a {
-            color: var(--text-mid);
-            text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 500;
-            padding: 6px 10px;
-            border-radius: 999px;
-            transition: background .2s, color .2s;
-            white-space: nowrap;
-        }
-
-        .site-nav .links a:hover,
-        .site-nav .links a.current {
-            background: var(--coral-pale);
-            color: var(--coral);
-        }
-
-        @media (max-width: 640px) {
-            .site-nav {
-                padding: 8px 10px;
-            }
-
-            .site-nav .brand {
-                font-size: 0.88rem;
-            }
-
-            .site-nav .links a {
-                font-size: 0.7rem;
-                padding: 5px 6px;
-            }
-        }
-
-        /* ===== HERO ===== */
-        .page-head {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 110px 24px 10px;
-            text-align: center;
-        }
-
-        .eyebrow {
-            color: var(--coral);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: .2em;
-        }
-
-        .page-head h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: .05em;
-            margin-top: 6px;
-        }
-
-        .page-lead {
-            color: var(--text-mid);
-            font-size: 0.95rem;
-            margin-top: 14px;
-        }
-
-        .hero-cats {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 22px;
-            flex-wrap: wrap;
-        }
-
-        .hero-cats img {
-            width: 64px;
-            height: 64px;
-            object-fit: contain;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .hero-cats img:nth-child(2n) {
-            animation-delay: .6s;
-        }
-
-        .hero-cats img:nth-child(3n) {
-            animation-delay: 1.2s;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-6px);
-            }
-        }
-
-        .hero-point {
-            max-width: 640px;
-            margin: 26px auto 0;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card);
-            padding: 22px 26px;
-            font-size: 0.92rem;
-            color: var(--text-mid);
-        }
-
-        .hero-point b {
-            color: var(--coral);
-        }
-
-        /* ===== PRODUCTS ===== */
-        .products {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 40px 24px 10px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
-            gap: 28px;
-        }
-
-        @media (max-width: 520px) {
-            .products {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .product {
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card);
-            padding: 30px 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            border-top: 6px solid var(--coral);
-        }
-
-        .product.sogo {
-            border-top-color: var(--p-sogo);
-        }
-
-        .product.futari {
-            border-top: 6px solid;
-            border-image: linear-gradient(90deg, var(--p-futari-a) 50%, var(--p-futari-b) 50%) 1;
-        }
-
-        .product.kazoku {
-            border-top-color: var(--p-kazoku);
-        }
-
-        .product.okane {
-            border-top-color: var(--p-okane);
-        }
-
-        .p-head {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .p-icon {
-            font-size: 1.8rem;
-        }
-
-        .p-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .p-badge {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--coral);
-            background: var(--coral-pale);
-            border-radius: 999px;
-            padding: 3px 12px;
-        }
-
-        .p-copy {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--coral);
-        }
-
-        .product.kazoku .p-copy {
-            color: #9B85C4;
-        }
-
-        .product.okane .p-copy {
-            color: #C9A03F;
-        }
-
-        .product.futari .p-copy {
-            color: #7FA361;
-        }
-
-        .p-desc {
-            font-size: 0.9rem;
-            color: var(--text-mid);
-        }
-
-        .p-cats {
-            display: flex;
-            gap: 4px;
-            align-items: flex-end;
-        }
-
-        .p-cats img {
-            width: 52px;
-            height: 52px;
-            object-fit: contain;
-        }
-
-        .p-for {
-            background: var(--coral-pale);
-            border-radius: 12px;
-            padding: 12px 16px;
-            font-size: 0.85rem;
-        }
-
-        .p-for b {
-            color: var(--coral);
-        }
-
-        .p-items {
-            list-style: none;
-            font-size: 0.85rem;
-            color: var(--text-mid);
-        }
-
-        .p-items li::before {
-            content: "🐾 ";
-        }
-
-        .p-variants {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .p-variants span {
-            font-size: 0.78rem;
-            font-weight: 700;
-            border-radius: 999px;
-            padding: 4px 14px;
-            background: var(--cream);
-            color: var(--text-mid);
-            border: 1.5px solid var(--peach);
-        }
-
-        /* ===== 見本ギャラリー ===== */
-        .samples {
-            margin-top: 4px;
-        }
-
-        .samples-label {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--text-mid);
-            margin-bottom: 8px;
-        }
-
-        .sample-thumbs {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 6px;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .sample-thumbs img {
-            width: 96px;
-            aspect-ratio: 3 / 4;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: var(--shadow-card);
-            border: 1.5px solid var(--peach);
-            cursor: zoom-in;
-            flex-shrink: 0;
-            transition: transform .15s;
-        }
-
-        .sample-thumbs img:hover {
-            transform: translateY(-3px);
-        }
-
-        .sample-note {
-            font-size: 0.72rem;
-            color: var(--text-light);
-            margin-top: 4px;
-        }
-
-        /* lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 2000;
-            background: rgba(74, 45, 31, 0.72);
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            cursor: zoom-out;
-        }
-
-        .lightbox.open {
-            display: flex;
-        }
-
-        .lightbox img {
-            max-width: min(92vw, 560px);
-            max-height: 88vh;
-            border-radius: 16px;
-            box-shadow: 0 12px 48px rgba(0, 0, 0, .4);
-            background: #fff;
-        }
-
-        .lightbox .lb-close {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            color: #fff;
-            font-size: 1.6rem;
-            font-weight: 700;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* ===== 流れ ===== */
-        .flow h2 {
-            font-size: 1.3rem;
-            margin-bottom: 24px;
-        }
-
-        .flow {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 50px 24px 10px;
-            text-align: center;
-        }
-
-        .flow-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            text-align: left;
-        }
-
-        .flow-step {
-            background: var(--white);
-            border-radius: 18px;
-            box-shadow: var(--shadow-card);
-            padding: 18px 22px;
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .flow-num {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--coral);
-            color: #fff;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .flow-step h3 {
-            font-size: 0.95rem;
-        }
-
-        .flow-step p {
-            font-size: 0.83rem;
-            color: var(--text-mid);
-        }
-
-        /* ===== CTA ===== */
-        .cta {
-            text-align: center;
-            padding: 50px 24px 90px;
-        }
-
-        .cta-box {
-            max-width: 560px;
-            margin: 0 auto;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card);
-            padding: 36px 28px;
-        }
-
-        .cta-box h2 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .cta-box p {
-            color: var(--text-mid);
-            font-size: 0.9rem;
-            margin-bottom: 22px;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--coral);
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            padding: 15px 34px;
-            border-radius: 999px;
-            box-shadow: 0 6px 20px rgba(233, 139, 164, .35);
-            transition: transform .2s;
-            margin: 4px;
-        }
-
-        .btn-secondary {
-            display: inline-block;
-            background: var(--white);
-            color: var(--coral);
-            border: 2px solid var(--coral-light);
-            text-decoration: none;
-            font-weight: 700;
-            padding: 13px 32px;
-            border-radius: 999px;
-            transition: transform .2s;
-            margin: 4px;
-        }
-
-        .btn-primary:hover,
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 20px 50px;
-            color: var(--text-light);
-            font-size: 0.8rem;
-        }
-
-        footer a {
-            color: var(--text-mid);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鑑定書のご案内｜5匹のねこと、10ページの一冊｜ねこもち占い</title>
+<meta name="description" content="生年月日とお名前から5匹のねこを読み解く、ねこもち占いの鑑定書。ご相談に合わせてお作りするA4縦・全10ページ、約4,000字のPDFです。必要情報の確認後5日以内にお届けします。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:#fff7f0;color:#4a2d1f;font-family:'Zen Maru Gothic','Hiragino Maru Gothic ProN',sans-serif;line-height:1.9}
+:root{--ink:#4a2d1f;--muted:#766459;--rose:#a74765;--line:#ead8ce;--pink:#fbeaf0}
+a{color:var(--rose);text-underline-offset:4px}img{max-width:100%;height:auto}button,summary{font:inherit}:focus-visible{outline:3px solid var(--rose);outline-offset:5px}
+.skip{position:absolute;top:8px;left:8px;background:white;padding:10px;transform:translateY(-160%);z-index:3}.skip:focus{transform:none}
+.site-nav{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 28px;border-bottom:1px solid var(--line)}
+.brand{color:var(--ink);font-weight:700;letter-spacing:.08em;text-decoration:none;white-space:nowrap}
+.nav-links{display:flex;flex-wrap:wrap;gap:6px 18px}.nav-links a{font-size:12px;text-decoration:none;padding:8px 0;color:var(--muted)}.nav-links a[aria-current]{color:var(--rose)}
+.wrap{max-width:1000px;margin:auto;padding-inline:28px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--rose);margin:0 0 12px}
+.hero{padding-block:56px 40px;display:grid;grid-template-columns:1.25fr 1fr;gap:42px;align-items:center}
+h1{font-size:clamp(28px,4vw,43px);line-height:1.65;letter-spacing:.04em;margin:0 0 22px}h1 small{display:block;font-size:14px;color:var(--rose);font-weight:500;margin-bottom:12px;letter-spacing:.06em}
+.hero-copy>p:not(.eyebrow){font-size:15px;margin:12px 0;color:var(--muted)}.hero-question{color:var(--ink)!important;font-weight:700}.hero-copy strong{color:var(--ink)}
+.hero-art{background:#fffdfa;border:1px solid var(--line);border-radius:160px 160px 22px 22px;padding:48px 18px 26px;text-align:center;box-shadow:8px 10px 0 #f0dfd5;position:relative}
+.hero-art .art-note{font-size:11px;letter-spacing:.2em;color:var(--rose);margin:0 0 8px}.hero-art h2{font-size:22px;line-height:1.7;margin:0}
+.cat-row{display:flex;align-items:flex-end;justify-content:center;margin:16px 0 0;gap:0}.cat-row img{width:20%;object-fit:contain}
+.art-caption{font-size:12px;color:var(--muted);margin:12px 0 0}.spec-chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.spec-chips span{background:#fffdf9;border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:12px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.button{display:inline-block;text-align:center;line-height:1.7;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:700;font-size:14px;background:var(--rose);color:white;border:1px solid var(--rose)}.button:hover{background:#913e58}.button.secondary{background:white;color:var(--rose)}.button.line{background:#087b3c;border-color:#087b3c}
+.jump-nav{display:flex;justify-content:center;gap:8px 26px;flex-wrap:wrap;border-block:1px solid var(--line);padding:12px 0}.jump-nav a{padding:7px 0;font-size:12px;color:var(--muted);text-decoration:none}
+.section{padding-block:54px;border-bottom:1px solid var(--line)}.section-heading{max-width:660px;margin:0 auto 28px;text-align:center}.section-heading h2{font-size:clamp(23px,3vw,30px);line-height:1.6;margin:0 0 12px}.section-heading p:not(.eyebrow){font-size:14px;color:var(--muted);margin:8px 0}
+.intro-note{max-width:710px;margin:auto;text-align:center;font-size:16px}.intro-note p{margin:0 0 16px}.intro-note strong{color:var(--rose)}
+.chapters{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}.chapter{display:flex;gap:15px;padding:23px 20px;background:#fffdfa;border:1px solid var(--line);border-radius:14px;min-width:0}.chapter-number{flex-shrink:0;font-size:24px;color:var(--rose);line-height:1.2;padding-top:3px;font-weight:500}.chapter-number small{display:block;font-size:9px;letter-spacing:.08em;margin-top:5px}.chapter h3{font-size:16px;line-height:1.65;margin:0 0 7px}.chapter p{font-size:13px;line-height:1.9;color:var(--muted);margin:0}.chapter:last-child{background:var(--pink)}
+.consultation{max-width:710px;margin:auto}.consultation>p{font-size:15px;margin:0 0 18px}.topic-list{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0}.topic-list li{text-align:center;background:white;border:1px solid var(--line);border-radius:10px;padding:14px 8px;font-size:13px}
+.related{background:#f4eee8;border-radius:16px;padding:25px;margin-top:28px}.related h3{font-size:18px;margin:0 0 10px}.related p{font-size:14px;margin:0 0 15px}.related a{display:inline-block;padding:6px 0;font-weight:700;font-size:14px}
+.for-list{list-style:none;margin:0 auto;padding:0;max-width:650px}.for-list li{padding:16px 20px;border-bottom:1px dashed #dfc7b8;font-size:15px}.for-list li::before{content:"✦";margin-right:12px;color:var(--rose)}
+.delivery{max-width:680px;margin:auto;display:grid;grid-template-columns:110px 1fr;background:#fffdfa;border:1px solid var(--line);border-radius:16px;padding:12px 24px;overflow:hidden}.delivery dt,.delivery dd{padding:15px 0;border-bottom:1px solid var(--line);margin:0;font-size:14px}.delivery dt{font-weight:700}.delivery dd{color:var(--muted)}.delivery dt:last-of-type,.delivery dd:last-of-type{border:0}.delivery-note{max-width:680px;margin:12px auto 0;color:var(--muted);font-size:12px}
+.steps{max-width:710px;margin:auto;padding:0;list-style:none;counter-reset:steps}.steps>li{counter-increment:steps;display:grid;grid-template-columns:42px 1fr;gap:17px;padding:24px 0;border-bottom:1px solid var(--line)}.steps>li::before{content:counter(steps);background:var(--pink);color:var(--rose);width:40px;height:40px;text-align:center;border-radius:50%;line-height:40px;font-weight:700}.steps h3{font-size:17px;margin:0 0 8px}.steps p,.steps ul{font-size:14px;margin:0 0 10px;color:var(--muted)}.required-info{padding-left:1.3em}.steps .name-note{padding:14px 16px;border-left:3px solid #d798aa;background:#fffdfa;font-size:13px}
+.closing{max-width:740px;margin:52px auto;text-align:center;background:#fffdfa;border:1px solid var(--line);border-radius:24px;padding:34px 24px}.closing img{width:90px;height:90px;object-fit:contain}.closing h2{font-size:25px;margin:4px 0 14px}.closing p{font-size:14px;color:var(--muted);margin:8px 0}.closing .actions{justify-content:center}.closing .small{font-size:11px}
+footer{text-align:center;border-top:1px solid var(--line);padding:25px 20px 36px;font-size:11px;color:var(--muted)}footer nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px}footer a{color:var(--muted);padding:6px 0}footer p{margin:15px 0 0}
+@media(max-width:720px){.site-nav{padding:14px 20px;flex-direction:column;gap:4px}.nav-links{justify-content:center;gap:4px 14px}.wrap{padding-inline:20px}.hero{grid-template-columns:1fr;gap:30px;padding-top:30px}.hero-copy{text-align:center}.hero-copy>p:not(.eyebrow){font-size:14px}.hero .actions,.spec-chips{justify-content:center}.hero-art{width:min(100%,330px);margin:auto;padding-top:36px}.hero-art h2{font-size:21px}.hero-art .cat-row{max-width:270px;margin-inline:auto}.section{padding-block:38px}.chapters{grid-template-columns:1fr;gap:10px}.chapter{padding:19px 17px}.topic-list{grid-template-columns:1fr 1fr}.intro-note{font-size:14px;text-align:left}.delivery{grid-template-columns:80px 1fr;padding-inline:17px}.delivery dt,.delivery dd{font-size:13px}.steps>li{gap:12px;grid-template-columns:36px 1fr}.steps>li::before{width:34px;height:34px;line-height:34px}.closing{margin-block:34px}.closing h2{font-size:22px}.actions .button{flex:1 1 180px}.nav-links a{font-size:11px}.jump-nav{gap:4px 18px}.for-list li{padding-inline:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
-
 <body>
-    <nav class="site-nav">
-        <a href="index.html" class="brand">🐾 ねこもち占い</a>
-        <div class="links">
-            <a href="index.html">ホーム</a>
-            <a href="types.html">12匹のねこたち</a>
-            <a href="kanteisho.html" class="current">鑑定書のご案内</a>
-            <a href="menu.html">鑑定メニュー</a>
-            <a href="about.html">ねこもち占いとは</a>
-        </div>
-    </nav>
-
-    <header class="page-head">
-        <span class="eyebrow">✦ KANTEISHO</span>
-        <h1>鑑定書のご案内</h1>
-        <p class="page-lead">
-            ねこもち占いの鑑定書は、生年月日とお名前から読み解いた<br>
-            <b>あなた専用の「ねこたちのトリセツ」</b>。<br>
-            水彩のやさしいねこたちが、何度でも読み返したくなる1冊にしてお届けします🐾
-        </p>
-        <div class="hero-cats">
-            <img src="img/cat_1.png" alt="いちばんねこ">
-            <img src="img/cat_4.png" alt="こつこつねこ">
-            <img src="img/cat_8.png" alt="まっすぐねこ">
-            <img src="img/cat_11.png" alt="ひかりねこ">
-            <img src="img/cat_3.png" alt="ひらめきねこ">
-            <img src="img/cat_33.png" alt="まほうねこ">
-        </div>
-        <div class="hero-point">
-            鑑定書はぜんぶで<b>4種類</b>。「いま知りたいこと」に合わせてお選びいただけます。<br>
-            どの鑑定書も、責めない・急かさない、<b>読むだけで心が整う</b>やさしい言葉でお書きしています。
-        </div>
-    </header>
-
-    <main class="products">
-
-        <!-- 総合鑑定書 -->
-        <section class="product sogo">
-            <div class="p-head">
-                <span class="p-icon">🐾</span>
-                <h2 class="p-name">総合鑑定書</h2>
-                <span class="p-badge">いちばん人気・全5ページ</span>
-            </div>
-            <p class="p-copy">あなたの中に住む「5匹のねこ」に、ぜんぶ会える。</p>
-            <div class="p-cats">
-                <img src="img/cat_8.png" alt="本質のねこ">
-                <img src="img/cat_5.png" alt="使命のねこ">
-                <img src="img/cat_11.png" alt="本音のねこ">
-                <img src="img/cat_3.png" alt="見た目のねこ">
-            </div>
-            <p class="p-desc">
-                生年月日とお名前から、本質・強み・使命・本音・見た目の5匹を読み解く、ねこもち占いの本命鑑定。
-                一生変わらない「土台の2匹」、名前とともに変わる3匹、そして5匹が話し合う「作戦会議」まで。
-                自分という存在が、まるごと愛おしくなる1冊です。
-            </p>
-            <ul class="p-items">
-                <li>5匹のねこ早わかり＆くわしい解説</li>
-                <li>結婚などの改姓で変わった「名前の変化」も読み解き</li>
-                <li>今年のテーマとラッキーアクション</li>
-                <li>がんばりすぎたあなたへの「癒やしの一言」つき</li>
-            </ul>
-            <div class="samples">
-                <div class="samples-label">📖 見本をちらっと（タップで拡大）</div>
-                <div class="sample-thumbs">
-                    <img src="img/samples/sogo_1.jpg" alt="総合鑑定書 見本1" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/sogo_2.jpg" alt="総合鑑定書 見本2" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/sogo_3.jpg" alt="総合鑑定書 見本3" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/sogo_4.jpg" alt="総合鑑定書 見本4" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/sogo_5.jpg" alt="総合鑑定書 見本5" loading="lazy" onerror="this.remove()">
-                </div>
-                <p class="sample-note">※見本は一部ページです。実際はあなた専用にお作りします。</p>
-            </div>
-            <div class="p-for"><b>こんな方に：</b>自分の本質や強みを知りたい／つい自分を責めてしまう／今年をどう過ごすかヒントがほしい</div>
-        </section>
-
-        <!-- 2人鑑定書 -->
-        <section class="product futari">
-            <div class="p-head">
-                <span class="p-icon">💞</span>
-                <h2 class="p-name">2人の鑑定書</h2>
-                <span class="p-badge">夫婦・恋人・相性／全4ページ</span>
-            </div>
-            <p class="p-copy">ふたりの違いが、「最高の相棒のパーツ」に変わる。</p>
-            <div class="p-cats">
-                <img src="img/cat_4.png" alt="妻のねこ">
-                <img src="img/cat_2.png" alt="妻のねこ2">
-                <img src="img/cat_1.png" alt="夫のねこ">
-                <img src="img/cat_8.png" alt="夫のねこ2">
-            </div>
-            <p class="p-desc">
-                おふたりのねこたちを並べて、それぞれの「ベストポジション」と、すれ違いやすいポイント＆うまくいくコツを読み解きます。
-                最後は4匹のねこたちが本音で語り合う「4匹のねこ会議」。
-                相手を直すためではなく、<b>ふたりのトリセツ</b>として使っていただける鑑定書です。
-            </p>
-            <ul class="p-items">
-                <li>ふたりの役割分担と「◯◯大臣」ベストポジション</li>
-                <li>すれ違いやすい点 → うまくいくコツを具体的に</li>
-                <li>4匹のねこ会議＋ともみんからの応援アドバイス</li>
-            </ul>
-            <div class="samples">
-                <div class="samples-label">📖 見本をちらっと（タップで拡大）</div>
-                <div class="sample-thumbs">
-                    <img src="img/samples/futari_1.jpg" alt="2人の鑑定書 見本1" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/futari_2.jpg" alt="2人の鑑定書 見本2" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/futari_3.jpg" alt="2人の鑑定書 見本3" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/futari_4.jpg" alt="2人の鑑定書 見本4" loading="lazy" onerror="this.remove()">
-                </div>
-                <p class="sample-note">※見本は一部ページです。実際はおふたり専用にお作りします。</p>
-            </div>
-            <div class="p-variants">
-                <span>💒 夫婦版（結婚生活のトリセツ）</span>
-                <span>💕 恋人版</span>
-                <span>🤝 相性版（友人・同僚・親子にも）</span>
-            </div>
-            <div class="p-for"><b>こんな方に：</b>結婚のお祝いに／パートナーとのすれ違いを減らしたい／大切な人との関係を深めたい</div>
-        </section>
-
-        <!-- 家族の子育て鑑定書 -->
-        <section class="product kazoku">
-            <div class="p-head">
-                <span class="p-icon">👨‍👩‍👧‍👧</span>
-                <h2 class="p-name">家族の子育て鑑定書</h2>
-                <span class="p-badge">ご家族みんな／全5ページ</span>
-            </div>
-            <p class="p-copy">この鑑定書は、誰かを直すためのものではありません。</p>
-            <div class="p-cats">
-                <img src="img/cat_8.png" alt="ママのねこ">
-                <img src="img/cat_4.png" alt="子どものねこ">
-                <img src="img/cat_6.png" alt="まもりねこ">
-                <img src="img/cat_22.png" alt="しっかりねこ">
-            </div>
-            <p class="p-desc">
-                パパ・ママ・お子さんたち、家族全員のねこを読み解く鑑定書。
-                親御さんには「限界サイン」と「おまもり」を、お子さんには「才能の芽」「響く声かけ」「NGワード」を。
-                強く言ってしまった夜に、そっと開いてほしい<b>家族のねこたちの取扱説明書</b>です。
-            </p>
-            <ul class="p-items">
-                <li>家族のねこたち早見表（全員分の5匹）</li>
-                <li>子どもの才能の芽・響く声かけ・サポートのコツ</li>
-                <li>親子の組み合わせリーディング（「今でしょ」と「まだだよ」など）</li>
-                <li>今夜からできる3つのこと</li>
-            </ul>
-            <div class="samples">
-                <div class="samples-label">📖 見本をちらっと（タップで拡大）</div>
-                <div class="sample-thumbs">
-                    <img src="img/samples/kazoku_1.jpg" alt="家族の子育て鑑定書 見本1" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/kazoku_2.jpg" alt="家族の子育て鑑定書 見本2" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/kazoku_3.jpg" alt="家族の子育て鑑定書 見本3" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/kazoku_4.jpg" alt="家族の子育て鑑定書 見本4" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/kazoku_5.jpg" alt="家族の子育て鑑定書 見本5" loading="lazy" onerror="this.remove()">
-                </div>
-                <p class="sample-note">※見本は一部ページです。実際はご家族専用にお作りします。</p>
-            </div>
-            <div class="p-for"><b>こんな方に：</b>子どもの個性に合った声かけを知りたい／きょうだいで接し方を変えたい／家族みんなのトリセツがほしい</div>
-        </section>
-
-        <!-- お金と才能鑑定書 -->
-        <section class="product okane">
-            <div class="p-head">
-                <span class="p-icon">💰</span>
-                <h2 class="p-name">お金と才能鑑定書</h2>
-                <span class="p-badge">お名前から読み解く／全5ページ</span>
-            </div>
-            <p class="p-copy">あなたの「豊かさの鍵」は、がんばることじゃない。</p>
-            <div class="p-cats">
-                <img src="img/cat_11.png" alt="使命のねこ">
-                <img src="img/cat_8.png" alt="本音のねこ">
-                <img src="img/cat_3.png" alt="見た目のねこ">
-            </div>
-            <p class="p-desc">
-                お名前のローマ字の響き（言霊の数秘）から、お仕事の才能・お金の循環パターン・周囲に伝わる魅力を読み解きます。
-                働き方やお金との付き合い方に、<b>あなたらしいやり方</b>があると分かる鑑定書。
-                最後は「ご自愛アドバイス」で、力の抜きどころまでお伝えします。
-            </p>
-            <ul class="p-items">
-                <li>持って生まれた強みと、仕事での輝き方</li>
-                <li>お金の流れ・増やし方・守り方</li>
-                <li>第一印象と魅力が伝わる場面（見た目の鑑定）</li>
-                <li>才能キーワード＆ご自愛アクション3つ</li>
-            </ul>
-            <div class="samples">
-                <div class="samples-label">📖 見本をちらっと（タップで拡大）</div>
-                <div class="sample-thumbs">
-                    <img src="img/samples/okane_1.jpg" alt="お金と才能鑑定書 見本1" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/okane_2.jpg" alt="お金と才能鑑定書 見本2" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/okane_3.jpg" alt="お金と才能鑑定書 見本3" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/okane_4.jpg" alt="お金と才能鑑定書 見本4" loading="lazy" onerror="this.remove()">
-                    <img src="img/samples/okane_5.jpg" alt="お金と才能鑑定書 見本5" loading="lazy" onerror="this.remove()">
-                </div>
-                <p class="sample-note">※見本は一部ページです。実際はあなた専用にお作りします。</p>
-            </div>
-            <div class="p-for"><b>こんな方に：</b>働き方を見直したい／自分の才能をお金につなげたい／がんばっているのに空回りしている気がする</div>
-        </section>
-    </main>
-
-    <!-- 流れ -->
-    <section class="flow">
-        <h2>✦ お届けまでの流れ ✦</h2>
-        <div class="flow-steps">
-            <div class="flow-step">
-                <div class="flow-num">1</div>
-                <div>
-                    <h3>鑑定書を選んでお申し込み</h3>
-                    <p>STORESまたは公式LINEから。迷ったら「総合鑑定書」がおすすめです。</p>
-                </div>
-            </div>
-            <div class="flow-step">
-                <div class="flow-num">2</div>
-                <div>
-                    <h3>お名前と生年月日を教えてください</h3>
-                    <p>2人鑑定・家族鑑定は、鑑定するみなさまの分をお願いします（旧姓での鑑定も可能です）。</p>
-                </div>
-            </div>
-            <div class="flow-step">
-                <div class="flow-num">3</div>
-                <div>
-                    <h3>あなた専用の鑑定書をお届け</h3>
-                    <p>ともみんが心を込めてお作りし、画像でお届けします。何度でも読み返してくださいね🐾</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-        <div class="cta-box">
-            <h2>🐾 鑑定書のお申し込み</h2>
-            <p>あなたの中のねこたちが、会える日を楽しみにしています。</p>
-            <a class="btn-primary" href="https://nekomochiuranai2026.stores.jp" target="_blank"
-                rel="noopener">STORESで申し込む</a>
-            <a class="btn-secondary" href="https://lin.ee/52eZzQR" target="_blank" rel="noopener">LINEで相談する</a>
-        </div>
-    </section>
-
-    <footer>
-        <p>🐾 ねこもち占い｜<a href="index.html">ホーム</a> ・ <a href="types.html">12匹のねこたち</a> ・ <a
-                href="menu.html">鑑定メニュー</a></p>
-    </footer>
-    <div class="lightbox" id="lightbox">
-        <button class="lb-close" aria-label="閉じる">×</button>
-        <img id="lb-img" src="" alt="鑑定書見本の拡大表示">
-    </div>
-    <script>
-        // 見本画像が1枚も置かれていないブロックは、ラベルごと隠す
-        // （img/samples/ に画像を置いた分だけ自動で表示される）
-        window.addEventListener('load', () => {
-            document.querySelectorAll('.samples').forEach(s => {
-                if (!s.querySelector('.sample-thumbs img')) s.style.display = 'none';
-            });
-        });
-
-        const lb = document.getElementById('lightbox');
-        const lbImg = document.getElementById('lb-img');
-        document.querySelectorAll('.sample-thumbs img').forEach(img => {
-            img.addEventListener('click', () => {
-                lbImg.src = img.src;
-                lb.classList.add('open');
-            });
-        });
-        lb.addEventListener('click', () => lb.classList.remove('open'));
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') lb.classList.remove('open');
-        });
-    </script>
+<a class="skip" href="#main">本文へ</a>
+<nav class="site-nav" aria-label="メインメニュー">
+<a class="brand" href="index.html">🐾 ねこもち占い</a>
+<div class="nav-links"><a href="index.html">無料診断</a><a href="types.html">12匹のねこたち</a><a href="kanteisho.html" aria-current="page">鑑定書のご案内</a><a href="menu.html">鑑定メニュー</a><a href="about.html">ねこもち占いとは</a></div>
+</nav>
+<main id="main" class="wrap">
+<header class="hero">
+<div class="hero-copy">
+<p class="eyebrow">NEKOMOCHI PERSONAL BOOK</p>
+<h1><small>ねこもち占いの鑑定書</small>つまずく日にも、<br>帰ってこられる一冊。</h1>
+<p class="hero-question">「なんで私は、いつも同じところで<br>つまずくんだろう」</p>
+<p>そう思う日が、ときどきありませんか。<br>それは性格の問題ではなくて、あなたの中に住んでいる<br>5匹のねこの、並び方の仕組みかもしれません。</p>
+<p>生年月日とお名前から、<br><strong>あなたの中に住む5匹のねこを読み解きます。</strong></p>
+<div class="spec-chips"><span>A4縦・全10ページ</span><span>約4,000字のPDF</span><span>ご相談に合わせた一冊</span></div>
+<div class="actions"><a class="button" href="#contents">10ページの中身を見る ↓</a><a class="button secondary" href="#order">お申し込みについて</a></div>
+</div>
+<div class="hero-art">
+<p class="art-note">5 CATS, YOUR STORY</p>
+<h2>あなたの中の5匹と、<br>あなたを知る10ページ。</h2>
+<div class="cat-row" aria-hidden="true"><img src="img/cat_2.png?v=2" alt="" width="80" height="80"><img src="img/cat_6.png?v=2" alt="" width="80" height="80"><img src="img/cat_11.png?v=2" alt="" width="80" height="80"><img src="img/cat_4.png?v=2" alt="" width="80" height="80"><img src="img/cat_3.png?v=2" alt="" width="80" height="80"></div>
+<p class="art-caption">何度でも、開いてほしい。<br>絵本のような、あなたのための鑑定書。</p>
+</div>
+</header>
+<nav class="jump-nav" aria-label="このページの目次"><a href="#contents">一冊の中身</a><a href="#consultation">ご相談について</a><a href="#delivery">お届け</a><a href="#flow">ご購入後の流れ</a></nav>
+<section class="section" aria-labelledby="book-heading">
+<div class="intro-note"><h2 id="book-heading" style="font-size:22px;line-height:1.7;margin:0 0 20px">読んで終わりではなく、<br>手元に置いて、何度でも。</h2>
+<p>この鑑定書は、一度読んで終わりの結果ページではありません。<br>手元に置いて、何度でも開ける一冊としてお作りしています。</p>
+<p><strong>A4縦・全10ページ。</strong><br>5匹それぞれを読み解きながら、あなたのご相談に向き合う、絵本のような鑑定書です。</p></div>
+</section>
+<section id="contents" class="section" aria-labelledby="contents-heading">
+<div class="section-heading"><p class="eyebrow">INSIDE THE BOOK</p><h2 id="contents-heading">5匹のねこと、10ページの中身</h2><p>はじめの一言から、最後のおまもりまで。<br>一冊を通して、あなたらしさをひもといていきます。</p></div>
+<ol class="chapters"><li class="chapter"><span class="chapter-number" aria-label="1ページ目">01<small aria-hidden="true">PAGE</small></span><div><h3>表紙と、5匹のねこの早わかり</h3><p>いちばん大事な一言を、はじめにお伝えします。</p></div></li>
+<li class="chapter"><span class="chapter-number" aria-label="2ページ目">02<small aria-hidden="true">PAGE</small></span><div><h3>ごあいさつ</h3><p>いただいたご相談を、そのまま受け止めます。</p></div></li>
+<li class="chapter"><span class="chapter-number" aria-label="3ページ目">03<small aria-hidden="true">PAGE</small></span><div><h3>見た目のねこ</h3><p>人から最初に受け取られている、あなたの印象。</p></div></li>
+<li class="chapter"><span class="chapter-number" aria-label="4ページ目">04<small aria-hidden="true">PAGE</small></span><div><h3>本音のねこ</h3><p>心の奥で、本当に望んでいること。</p></div></li>
+<li class="chapter"><span class="chapter-number" aria-label="5ページ目">05<small aria-hidden="true">PAGE</small></span><div><h3>使命のねこ</h3><p>人生をかけて育てていく、あなたのテーマ。</p></div></li>
+<li class="chapter"><span class="chapter-number" aria-label="6ページ目">06<small aria-hidden="true">PAGE</small></span><div><h3>本質のおさらいと、強みのねこ</h3><p>困ったときに助けてくれる力。そして、5匹の配置から見えてきた結論をお伝えします。</p></div></li>
+<li class="chapter"><span class="chapter-number" aria-label="7ページ目">07<small aria-hidden="true">PAGE</small></span><div><h3>5匹の重なり</h3><p>外から見える姿と、内側の気持ちの差。このギャップが、そのままご相談の答えになっていることがあります。</p></div></li>
+<li class="chapter"><span class="chapter-number" aria-label="8ページ目">08<small aria-hidden="true">PAGE</small></span><div><h3>5匹の会議</h3><p>あなたの中の5匹が、いただいたご相談について話し合います。</p></div></li>
+<li class="chapter"><span class="chapter-number" aria-label="9ページ目">09<small aria-hidden="true">PAGE</small></span><div><h3>今年の運勢</h3><p>今年やっておくと効く5つを、ご相談に合わせてお伝えします。</p></div></li>
+<li class="chapter"><span class="chapter-number" aria-label="10ページ目">10<small aria-hidden="true">PAGE</small></span><div><h3>今日のおまもり</h3><p>読み返すたびに、戻ってきていただける場所です。</p></div></li></ol>
+</section>
+<section id="consultation" class="section" aria-labelledby="consultation-heading">
+<div class="section-heading"><p class="eyebrow">YOUR QUESTION</p><h2 id="consultation-heading">ご相談は、鑑定書全体で答えます。</h2></div>
+<div class="consultation">
+<p>お申し込みのときに「いま気になっていること」を書いていただきます。</p>
+<p>お悩み専用のページを1枚作るのではなく、いただいたご相談に合わせて、<strong>読み解く角度そのものを決めます。</strong></p>
+<ul class="topic-list"><li>お仕事・働き方</li><li>お金・値付け</li><li>恋愛・パートナーシップ</li><li>人間関係</li><li>自分らしさ</li><li>子育てのなかでの<br>ご自身のこと</li></ul>
+<p>どのご相談も、この一冊でお答えしています。</p>
+<aside class="related"><h3>大切な人との関係を知りたい方へ</h3><p>ご夫婦・恋人・お友だちの「ふたり鑑定書」、ご家族の「家族まるごと鑑定書」もお作りしています。公式LINEからお気軽にご相談ください。</p><a href="https://lin.ee/tqouMjP" target="_blank" rel="noopener">ふたり・家族の鑑定をLINEで相談する ↗</a></aside>
+</div>
+</section>
+<section class="section" aria-labelledby="for-heading">
+<div class="section-heading"><p class="eyebrow">FOR YOU</p><h2 id="for-heading">こんな方に、届けたい一冊です。</h2></div>
+<ul class="for-list"><li>同じところで何度もつまずいている気がする</li><li>自分のことを、もう少し理解したい</li><li>手元に置いて、何度も読み返せるものがほしい</li></ul>
+</section>
+<section id="delivery" class="section" aria-labelledby="delivery-heading">
+<div class="section-heading"><p class="eyebrow">DELIVERY</p><h2 id="delivery-heading">お届けについて</h2></div>
+<dl class="delivery"><dt>形式</dt><dd>PDF（A4縦・全10ページ）</dd><dt>文量</dt><dd>約4,000字</dd><dt>納期</dt><dd>必要情報を確認してから5日以内</dd><dt>配送</dt><dd>データでのお渡しです。<br>紙の鑑定書の発送はありません。</dd></dl>
+<p class="delivery-note">ふたり鑑定書・家族まるごと鑑定書については、公式LINEでご相談ください。</p>
+</section>
+<section id="flow" class="section" aria-labelledby="flow-heading">
+<div class="section-heading"><p class="eyebrow">HOW TO ORDER</p><h2 id="flow-heading">ご購入後の流れ</h2></div>
+<ol class="steps">
+<li><div><h3>必要な情報をお知らせください</h3><p>ご購入後、メッセージまたは備考欄に、次の3つをご記入ください。</p><ul class="required-info"><li>生年月日（西暦）</li><li>お名前（ひらがな）</li><li>いま気になっていること</li></ul><p>相性鑑定・ご家族鑑定は、お相手様・ご家族様の情報もご記入ください。</p><p class="name-note">お名前は、5匹のうち3匹を出すために使わせていただきます。ニックネームではなく、<strong>ご本人のお名前をひらがな</strong>でお願いします。</p></div></li>
+<li><div><h3>5日以内にPDFをお届けします</h3><p>必要情報を確認してから、5日以内に鑑定書のPDFをお届けします。手元に置いて、気になったときに何度でも開いてくださいね。</p></div></li>
+</ol>
+</section>
+<section id="order" class="closing" aria-labelledby="order-heading">
+<img src="img/cat_6.png?v=2" alt="" width="90" height="90" loading="lazy">
+<p class="eyebrow">A BOOK FOR YOURSELF</p><h2 id="order-heading">あなたの5匹に、会いにきてください。</h2>
+<p>お申し込みはSTORESから。<br>ご相談や、ふたり・家族の鑑定のお問い合わせは公式LINEで承ります。</p>
+<div class="actions"><a class="button" href="https://nekomochiuranai2026.stores.jp" target="_blank" rel="noopener">STORESで鑑定書を見る ↗</a><a class="button line" href="https://lin.ee/tqouMjP" target="_blank" rel="noopener">公式LINEで相談する ↗</a></div>
+<p class="small">価格・ご購入については、販売ページでご確認いただけます。</p>
+</section>
+</main>
+<footer><nav aria-label="関連ページ"><a href="index.html">無料診断</a><a href="types.html">12匹のねこたち</a><a href="about.html">ねこもち占いとは</a><a href="https://lin.ee/tqouMjP" target="_blank" rel="noopener">公式LINE ↗</a></nav><p>© 2026 ねこもち占い</p></footer>
 </body>
-
 </html>
