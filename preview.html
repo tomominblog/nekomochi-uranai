@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>デザイン確認用｜ねこもち占い</title>
+    <meta name="description" content="生年月日から、あなたの本質のねこを無料で診断。数秘術×12匹のねこで、あなたらしさをやさしく読み解くねこもち占い。登録不要。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        :root { --cream:#fff7f0; --paper:#fffdfa; --ink:#4a2d1f; --muted:#766256; --rose:#a74765; --pink:#fbeaf0; --line:#ecd8ce; }
+        body { margin:0; font-family:'Zen Maru Gothic','Hiragino Maru Gothic ProN',sans-serif; color:var(--ink); background:#f3e7df; line-height:1.8; }
+        [hidden] { display:none !important; }
+        a { color:var(--rose); text-underline-offset:4px; }
+        button,input,select { font:inherit; }
+        button,a,input,select,summary { -webkit-tap-highlight-color:transparent; }
+        :focus-visible { outline:3px solid var(--rose); outline-offset:4px; }
+        .skip { position:fixed; top:8px; left:8px; transform:translateY(-160%); z-index:2; background:white; padding:8px 16px; }
+        .skip:focus { transform:none; }
+        .page { max-width:540px; margin:auto; min-height:100vh; background:var(--paper); box-shadow:0 0 64px #6b493b12; }
+        .masthead { padding:18px 24px 12px; text-align:center; border-bottom:1px solid var(--line); }
+        .brand { text-decoration:none; font-size:19px; font-weight:700; color:var(--ink); letter-spacing:.12em; }
+        .masthead p { margin:1px 0 0; font-size:11px; letter-spacing:.12em; color:var(--muted); }
+        .hero { text-align:center; padding:30px 20px 20px; background:radial-gradient(ellipse at 50% 65%,#fbe4e3,transparent 68%),var(--cream); }
+        .eyebrow { margin:0; color:var(--rose); font-size:11px; font-weight:700; letter-spacing:.18em; }
+        h1 { font-size:clamp(25px,6vw,32px); line-height:1.6; letter-spacing:.07em; margin:10px 0 0; }
+        .hero-cats { display:flex; align-items:flex-end; justify-content:center; gap:0; margin:6px auto 0; max-width:365px; }
+        .hero-cats img { display:block; width:32%; height:auto; object-fit:contain; }
+        .hero-cats img:nth-child(2) { width:36%; }
+        .hero p:last-child { font-size:13px; color:var(--muted); margin:8px 0 0; }
+        main { padding:0 22px 28px; }
+        .form-heading { text-align:center; padding:23px 0 18px; }
+        h2 { font-size:20px; margin:0; line-height:1.6; }
+        .form-heading p { color:var(--muted); font-size:12px; margin:5px 0 0; }
+        .shindan-card { border:1px solid var(--line); border-radius:18px; background:white; padding:24px 20px; }
+        fieldset { border:0; padding:0; margin:0 0 18px; min-width:0; }
+        legend,.sc-label { display:block; font-weight:700; font-size:14px; margin:0 0 9px; padding:0; }
+        .req,.opt { font-size:10px; margin-left:9px; padding:2px 7px; border-radius:4px; vertical-align:middle; }
+        .req { background:var(--rose); color:white; }
+        .opt { background:#f2ece8; color:var(--muted); font-weight:400; }
+        input,select { width:100%; min-width:0; min-height:50px; padding:11px 10px; border:1px solid #d9c6bb; border-radius:8px; color:var(--ink); background:var(--paper); font-size:16px; }
+        input::placeholder { color:#897b71; }
+        .birth-row { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:8px; }
+        .hint,.privacy { color:var(--muted); font-size:11px; line-height:1.8; margin:8px 0 0; }
+        .shindan-btn { width:100%; cursor:pointer; border:0; border-radius:999px; padding:15px 10px; background:var(--rose); color:white; font-weight:700; font-size:17px; margin-top:22px; box-shadow:0 5px 0 #793c4f; }
+        .shindan-btn:hover { background:#923c57; }
+        .privacy { text-align:center; margin-top:17px; }
+        .shindan-error { padding:10px; border:1px solid #b3283c; color:#a21c30; background:#fff4f4; font-size:13px; border-radius:6px; }
+        .help { font-size:12px; color:var(--muted); margin:22px 0 0; text-align:center; }
+        .help a { display:inline-block; padding:10px 0; }
+        .shindan-result { padding:26px 0 0; scroll-margin-top:16px; text-align:center; }
+        .sr-intro { font-size:14px; overflow-wrap:anywhere; }
+        #sr-img { width:190px; height:190px; object-fit:contain; }
+        .sr-num { font-size:12px; color:var(--muted); letter-spacing:.1em; }
+        #sr-name { font-size:28px; margin:5px 0; }
+        .sr-catch { font-size:14px; color:var(--rose); font-weight:700; }
+        .sr-story { text-align:left; white-space:pre-line; font-size:14px; line-height:2; margin:24px 0; padding:22px; background:var(--cream); border-radius:16px; }
+        .sr-gift { padding:20px; border:1px dashed #d7a4a4; border-radius:16px; background:#fcf2ec; }
+        .sr-line-lead { text-align:left; font-size:13px; }
+        .sr-line-invite { font-size:14px; font-weight:700; color:var(--rose); }
+        .btn-line { display:block; padding:12px 8px; border-radius:999px; background:#087b3c; color:white; text-decoration:none; font-weight:700; }
+        .sr-gift-note { font-size:11px; color:var(--muted); }
+        .sr-links { margin:16px 0; font-size:14px; }
+        .sr-next { margin:28px 0; }
+        .sr-next-lead { font-weight:700; font-size:16px; }
+        .sr-next-cards { display:grid; gap:12px; }
+        .sr-next-card { display:block; padding:18px; border:1px solid var(--line); border-radius:14px; color:var(--ink); text-align:left; text-decoration:none; }
+        .sr-next-card:hover { background:var(--cream); }
+        .sr-next-card span { display:block; }
+        .sr-next-tag { font-size:11px; color:var(--rose); }
+        .sr-next-name { font-weight:700; margin-top:5px; }
+        .sr-next-price { color:var(--rose); font-weight:700; }
+        .sr-next-desc { font-size:12px; color:var(--muted); margin-top:5px; }
+        .sr-next-go { font-size:12px; color:var(--rose); margin-top:10px; }
+        .back-btn { cursor:pointer; background:white; border:1px solid var(--rose); color:var(--rose); border-radius:999px; padding:12px 28px; }
+        .explore { margin:0 22px; border-top:1px solid var(--line); }
+        .explore summary { cursor:pointer; padding:18px 0; font-size:13px; }
+        .explore-links { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding-bottom:18px; }
+        .explore-links a { padding:12px; background:var(--cream); border-radius:8px; text-decoration:none; font-size:12px; text-align:center; }
+        #kyokasho { margin:0 22px; padding:20px 0; border-top:1px solid var(--line); scroll-margin-top:16px; }
+        #kyokasho h2 { font-size:14px; }
+        #kyokasho p { font-size:12px; color:var(--muted); }
+        .purchase-actions { display:flex; gap:10px; flex-wrap:wrap; }
+        .purchase-actions a { display:inline-block; padding:10px 16px; border:1px solid var(--line); border-radius:8px; font-size:12px; text-decoration:none; }
+        footer { border-top:1px solid var(--line); padding:20px 22px 28px; text-align:center; }
+        .footer-links { display:flex; flex-wrap:wrap; gap:4px 18px; justify-content:center; }
+        .footer-links a { font-size:11px; color:var(--muted); padding:8px 0; }
+        .copyright { color:var(--muted); font-size:10px; margin:14px 0 0; }
+        @media(max-width:360px) { main { padding-inline:16px; } .shindan-card { padding:20px 14px; } .birth-row { gap:6px; } select { padding-inline:6px; } .sr-story { padding:16px; } }
+
+    </style>
+</head>
+<body>
+<a class="skip" href="#sd-form">診断フォームへ</a>
+<div class="page">
+    <header class="masthead">
+        <a class="brand" href="preview.html">ねこもち占い</a>
+        <p>数秘術 × 12匹のねこ</p>
+    </header>
+    <div class="hero">
+        <p class="eyebrow">NEKOMOCHI FORTUNE</p>
+        <h1>あなたの中のねこに、<br>会いにいこう。</h1>
+        <div class="hero-cats" aria-hidden="true">
+            <img src="img/cat_2.png?v=2" alt="" width="160" height="160">
+            <img src="img/cat_6.png?v=2" alt="" width="180" height="180" fetchpriority="high">
+            <img src="img/cat_11.png?v=2" alt="" width="160" height="160">
+        </div>
+        <p>生まれた日に隠れた、あなたらしさをひもときます。</p>
+    </div>
+    <main>
+        <div id="input-view">
+            <div class="form-heading">
+                <h2>本質のねこ 無料診断</h2>
+                <p>占う人の生年月日を教えてください。</p>
+            </div>
+            <form class="shindan-card" id="sd-form" novalidate>
+                <fieldset aria-describedby="birth-hint sd-error">
+                    <legend>生年月日<span class="req">必須</span></legend>
+                    <div class="birth-row">
+                        <select id="sd-y" aria-label="生まれた年" required></select>
+                        <select id="sd-m" aria-label="生まれた月" required></select>
+                        <select id="sd-d" aria-label="生まれた日" required></select>
+                    </div>
+                    <p class="hint" id="birth-hint">出生時間・出生地は必要ありません。</p>
+                </fieldset>
+                <label class="sc-label" for="sd-name">ニックネーム<span class="opt">任意</span></label>
+                <input type="text" id="sd-name" placeholder="例：あや" maxlength="20" autocomplete="off">
+                <p class="shindan-error" id="sd-error" role="alert" tabindex="-1" hidden>生年月日を確認してください。実在する、今日までの日付を選んでくださいね。</p>
+                <button class="shindan-btn" id="sd-btn" type="submit">無料で占う <span aria-hidden="true">🐾</span></button>
+                <p class="privacy">登録不要・何度でも無料<br>入力した情報は、診断のためにこの画面内でのみ使用します。</p>
+                <noscript><p>診断にはJavaScriptが必要です。ブラウザーの設定で有効にしてください。</p></noscript>
+            </form>
+            <p class="help">12匹のねこの中から、本質を表す1匹がわかります。<br><a href="about.html">ねこもち占いについて →</a></p>
+        </div>
+        <div class="shindan-result" id="sd-result" hidden tabindex="-1" aria-labelledby="sr-name">
+            <p class="sr-intro" id="sr-intro">あなたの本質のねこは……</p>
+            <img id="sr-img" alt="">
+            <div class="sr-num" id="sr-num"></div>
+            <h3 id="sr-name"></h3>
+            <p class="sr-catch" id="sr-catch"></p>
+            <div class="sr-story" id="sr-story"></div>
+            <div class="sr-gift">
+                <p class="sr-line-lead">🐾 公式LINEでは<br>
+                    ・あなたの“5匹の見つけ方”<br>
+                    ・仕事・恋愛・お金で活かし方が変わる理由<br>
+                    ・ねこもち占い限定コンテンツ<br>
+                    をお届けしています。</p>
+                <p class="sr-line-invite">あなたの残り4匹にも、会いにきてください。</p>
+                <a class="btn-line" href="https://lin.ee/52eZzQR" target="_blank" rel="noopener">公式LINEに登録する 🐱</a>
+                <p class="sr-gift-note">登録は無料・いつでも解除できます🐾</p>
+            </div>
+            <div class="sr-links">
+                <a class="more" id="sr-more" href="#">このねこをもっと詳しく見る →</a>
+            </div>
+
+            <div class="sr-next">
+                <p class="sr-next-lead">🐾 5匹ぜんぶ、知りたくなったら</p>
+                <div class="sr-next-cards">
+                    <a class="sr-next-card" href="#kyokasho">
+                        <span class="sr-next-tag">自分で出せるようになりたい方へ</span>
+                        <span class="sr-next-name">ねこもち占いの教科書</span>
+                        <span class="sr-next-price">¥980</span>
+                        <span class="sr-next-desc">5匹を自分で出せるようになる一冊です。買ったその日から読めます🐾</span>
+                        <span class="sr-next-go">教科書を見る →</span>
+                    </a>
+                    <a class="sr-next-card" href="kanteisho.html">
+                        <span class="sr-next-tag">読み解いてほしい方へ</span>
+                        <span class="sr-next-name">5匹のねこもち総合鑑定</span>
+                        <span class="sr-next-price">¥3,300</span>
+                        <span class="sr-next-desc">あなたの5匹を読み解いた、絵本のようなPDF鑑定書をお届けします🐈</span>
+                        <span class="sr-next-go">鑑定のご案内を見る →</span>
+                    </a>
+                </div>
+            </div>
+            <button type="button" class="back-btn" id="sd-back">もう一度占う</button>
+        </div>
+
+
+    </main>
+    <details class="explore">
+        <summary>ねこもちの世界をもっと楽しむ</summary>
+        <nav class="explore-links" aria-label="ねこもちのご案内">
+            <a href="types.html">12匹のねこたち</a>
+            <a href="kanteisho.html">鑑定書のご案内</a>
+            <a href="menu.html">鑑定メニュー</a>
+            <a href="about.html">ねこもち占いとは</a>
+        </nav>
+    </details>
+    <section id="kyokasho" aria-labelledby="book-title">
+        <h2 id="book-title">自分でもっと読み解きたい方へ</h2>
+        <p>『ねこもち占いの教科書』では、あなたの中に住む5匹のねこの見つけ方をお伝えします。</p>
+        <div class="purchase-actions">
+            <a href="https://brain-market.com/u/tomomin0126/a/bwUTN1UjMgoTZsNWa0JXY" target="_blank" rel="noopener">Brainで教科書を見る ↗</a>
+            <a href="https://note.com/nekomochi_uranai/n/nbf12bc779fea?sub_rt=share_sb" target="_blank" rel="noopener">noteで教科書を見る ↗</a>
+        </div>
+    </section>
+    <footer>
+        <nav class="footer-links" aria-label="関連リンク">
+            <a href="https://note.com/nekomochi_uranai" target="_blank" rel="noopener">note ↗</a>
+            <a href="https://lin.ee/52eZzQR" target="_blank" rel="noopener">公式LINE ↗</a>
+            <a href="about.html">ねこもち占いとは</a>
+        </nav>
+        <p class="copyright">© 2026 ねこもち占い</p>
+    </footer>
+</div>
+<script>        const NEKO = {
+            1: { name: 'いちばんねこ', catch: '開拓・独立・リーダーシップ。「自分で決める」が生きがいの先駆者', msg: '頼ることは、弱さじゃないよ。たまには誰かに甘えて、ふかふかの毛布で休もう。' },
+            2: { name: 'なかよしねこ', catch: '調和・協調・感受性。空気を読みすぎて疲れる平和主義者', msg: '人のことより、まずは自分の小さなお皿を満たそう。あなたは、そこにいるだけで価値がある。' },
+            3: { name: 'ひらめきねこ', catch: '創造・表現・喜び。「楽しい！」だけで動く天性のエンターテイナー', msg: '飽きっぽいのは、ダメだからじゃない。あなたの頭が、世界より先に進んでいるだけ。' },
+            4: { name: 'こつこつねこ', catch: '継続・誠実・土台。石橋を叩いて渡る、信頼の職人', msg: '完璧じゃなくても、世界は壊れない。今日は少し、ルールをゆるめても大丈夫。' },
+            5: { name: 'ふわりねこ', catch: '自由・変化・冒険。ルールと定番が大嫌いな風来坊', msg: '落ち着かなくていい。あなたのその揺らぎが、新しい風を運んでくる。' },
+            6: { name: 'まもりねこ', catch: '愛情・責任・調和。誰かを守ることに生きがいを感じるお母さん気質', msg: '自分を犠牲にする愛は、いつか苦しくなる。まずはあなた自身を、世界一大切にしていい。' },
+            7: { name: 'ふしぎねこ', catch: '探求・内省・真理。「なぜ？」を掘り続ける孤高の哲学者', msg: '理解されなくてもいい。あなたのその独特な世界観こそが、いつか誰かの光になる。' },
+            8: { name: 'まっすぐねこ', catch: '達成・権力・豊かさ。結果で証明したい将軍タイプ', msg: '戦わなくても、あなたの価値は変わらない。鎧を脱いだあなたも、十分に愛されている。' },
+            9: { name: 'あんしんねこ', catch: '癒やし・包容・手放し。すべてを受け入れ見守る、器の大きなまとめ役', msg: 'いい人にならなくていい。誰かのためじゃなく、自分のために生きていいんだよ。' },
+            11: { name: 'ひかりねこ', catch: '直感・啓蒙・橋渡し。目に見えないメッセージを受け取る繊細なアンテナ', msg: 'その繊細さは、才能だよ。理屈で説明しなくていい、あなたの感覚を信じて。' },
+            22: { name: 'しっかりねこ', catch: '構築・ビジョン・現実化。圧倒的スケールで理想を形にする建築家', msg: '焦らなくていい。あなたの夢は大きいから、時間がかかるのは当たり前。' },
+            33: { name: 'まほうねこ', catch: '無条件の愛・癒やし・受容。常識を超えた愛で包む、宇宙からのメッセンジャー', msg: 'あなたはそのままで魔法みたいな存在。無理に普通にならなくていいんだよ。' }
+        };
+
+        const STORY = {
+            1: `あなたは、自分の道を自分で決めて進む、先頭を歩くねこです。
+
+「まず、やってみよう。」
+その一歩が、誰よりも早く出る人。
+
+でも、その強さは、ときどき「一人で抱えこむ」という形にもなります。
+
+だから、
+「なんで私ばっかり頑張ってるんだろう」
+と思ったことがあるなら、それは性格ではなく、いちばんねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「一人で進む私」の裏側には、
+本当は誰かに甘えたいねこがいる人もいれば、
+みんなと歩調を合わせたいねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`,
+            2: `あなたは、人の気持ちにそっと寄り添い、場のバランスを取るねこです。
+
+「まあ、いいよ。」
+相手を思って、つい先に折れられる人。
+
+でも、そのやさしさは、ときどき「自分の本音を後回しにする」という形にもなります。
+
+だから、
+「本当は私、どうしたかったんだろう」
+と分からなくなることがあるなら、それは性格ではなく、なかよしねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「みんなに合わせる私」の裏側には、
+自分で決めて進みたいねこがいる人もいれば、
+ひとりの時間で回復したいねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`,
+            3: `あなたは、「楽しい！」を見つける天才で、まわりを明るくするねこです。
+
+「面白そう！」
+その言葉が、いちばん最初に口から出る人。
+
+でも、そのワクワクは、ときどき「続かない」という形にもなります。
+
+だから、
+「なんで私は、いつも途中で飽きちゃうんだろう」
+と思ったことがあるなら、それは性格ではなく、ひらめきねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「楽しみたい私」の裏側には、
+コツコツ積み上げたいねこがいる人もいれば、
+ひとりで深く考えたいねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`,
+            4: `あなたは、確かなものを一つずつ積み上げていく、誠実なねこです。
+
+「ちゃんと、やらなきゃ。」
+まじめに向き合うことが、自然にできる人。
+
+でも、その誠実さは、ときどき「完璧じゃないと不安」という形にもなります。
+
+だから、
+「なんで私は、もっと器用に力を抜けないんだろう」
+と思ったことがあるなら、それは性格ではなく、こつこつねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「きちんとしたい私」の裏側には、
+自由に動きたいねこがいる人もいれば、
+思いつきを楽しみたいねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`,
+            5: `あなたは、自由と変化を愛し、風に乗って世界を広げていくねこです。
+
+「なんとかなる！」
+新しい方へ、軽やかに動き出せる人。
+
+でも、その身軽さは、ときどき「一つに絞れない」という形にもなります。
+
+だから、
+「なんで私は、いつも落ち着けないんだろう」
+と思ったことがあるなら、それは性格ではなく、ふわりねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「自由でいたい私」の裏側には、
+一つをコツコツ積み上げたいねこがいる人もいれば、
+安心できる居場所を守りたいねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`,
+            6: `あなたは、大切な人を守ることで力を発揮するねこです。
+
+「私がやるよ。」
+その一言が自然に出る人。
+
+でも、その優しさは、ときどき自分を後回しにする癖にもなります。
+
+だから、
+「なんで私ばっかり頑張ってるんだろう」
+と思ったことがあるなら、それは性格ではなく、まもりねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「人を守る私」の裏側には、
+自由を求めるねこがいる人もいれば、
+ひとりになりたいねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`,
+            7: `あなたは、物事の奥にある「本当のこと」を探し続ける、思索家のねこです。
+
+「それって、本当にそうなのかな？」
+立ち止まって深く考えることが、自然にできる人。
+
+でも、その探求心は、ときどき「一人で考えこみすぎる」という形にもなります。
+
+だから、
+「なんで私は、周りとうまく馴染めないんだろう」
+と感じたことがあるなら、それは性格ではなく、ふしぎねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「一人で深めたい私」の裏側には、
+人とつながって安心したいねこがいる人もいれば、
+考える前に動き出したいねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`,
+            8: `あなたは、思い描いた理想を、行動と結果で形にしていくねこです。
+
+「まだ、いける。」
+目標に向かって、最後までやり切れる人。
+
+でも、その強さは、ときどき「休むことに罪悪感を感じる」という形にもなります。
+
+だから、
+「弱音なんて、吐いちゃいけない気がする」
+と思ったことがあるなら、それは性格ではなく、まっすぐねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「強くありたい私」の裏側には、
+本当は誰かに甘えたいねこがいる人もいれば、
+立ち止まって休みたいねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`,
+            9: `あなたは、すべてをそっと受け入れ、まわりに安心を広げるねこです。
+
+「大丈夫だよ。」
+その一言で、人の心をなだめられる人。
+
+でも、そのやさしさは、ときどき「自分の気持ちを見失う」という形にもなります。
+
+だから、
+「気づけば、自分が本当はどうしたいのか分からなくなっている」
+と感じたことがあるなら、それは性格ではなく、あんしんねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「みんなを受け入れる私」の裏側には、
+自分の意志を通したいねこがいる人もいれば、
+ひとりの時間を求めるねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`,
+            11: `あなたは、目に見えないものを感じ取り、まわりに光を届けるねこです。
+
+「これ、なんだか違う気がする。」
+理由はうまく言えなくても、直感が働く人。
+
+でも、その繊細さは、ときどき「人の感情に飲み込まれて疲れる」という形にもなります。
+
+だから、
+「なんで私は、こんなに疲れやすいんだろう」
+と思ったことがあるなら、それは性格ではなく、ひかりねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「感じすぎる私」の裏側には、
+現実にしっかり足をつけたいねこがいる人もいれば、
+もっと自由に動きたいねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`,
+            22: `あなたは、大きな理想を、現実の形として建てていくねこです。
+
+「いつか、これを形にしたい。」
+スケールの大きな未来を、本気で描ける人。
+
+でも、その理想の高さは、ときどき「今の自分が追いつかない焦り」という形にもなります。
+
+だから、
+「理想ばかり大きくて、動けなくなってしまう」
+と感じたことがあるなら、それは性格ではなく、しっかりねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「大きな夢を背負う私」の裏側には、
+小さな一歩を楽しみたいねこがいる人もいれば、
+誰かに頼っていいと思えるねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`,
+            33: `あなたは、損得を超えて人をまるごと包む、癒やしのねこです。
+
+「この人のために、何かしたい。」
+理屈より先に、心が動いてしまう人。
+
+でも、そのやさしさは、ときどき「"普通"の枠に自分を押しこむ苦しさ」という形にもなります。
+
+だから、
+「みんなに合わせているのに、なぜか生きづらい」
+と感じたことがあるなら、それは性格ではなく、まほうねこの特徴かもしれません。
+
+でも、実はこれはあなたの5匹のうち、たった1匹の話。
+
+ねこもち占いでは、
+あなたの中には役割の違う5匹のねこが住んでいます。
+
+「無条件で愛する私」の裏側には、
+現実にしっかり足をつけたいねこがいる人もいれば、
+自分だけの世界を大切にしたいねこがいる人もいます。
+
+その組み合わせが分かると、"なんで私はこうなんだろう"が一気につながります。`
+        };
+
+        function reduceNum(n) {
+            while (n > 9 && n !== 11 && n !== 22 && n !== 33) {
+                n = String(n).split('').reduce((s, d) => s + parseInt(d, 10), 0);
+            }
+            return n;
+        }
+
+        function calcLP(y, m, d) {
+            const digits = ('' + y + String(m).padStart(2, '0') + String(d).padStart(2, '0')).split('');
+            return reduceNum(digits.reduce((s, c) => s + parseInt(c, 10), 0));
+        }
+
+
+        const form = document.getElementById('sd-form');
+        const result = document.getElementById('sd-result');
+        const year = document.getElementById('sd-y');
+        const month = document.getElementById('sd-m');
+        const day = document.getElementById('sd-d');
+        const error = document.getElementById('sd-error');
+        const today = new Date();
+
+        function fillSelect(select, start, end, placeholder) {
+            const options = [new Option(placeholder, '')];
+            for (let n = start; n <= end; n++) options.push(new Option(String(n), String(n)));
+            select.replaceChildren(...options);
+        }
+        fillSelect(year, 1900, today.getFullYear(), '年');
+        fillSelect(month, 1, 12, '月');
+        fillSelect(day, 1, 31, '日');
+
+        function daysInMonth(y, m) {
+            return new Date(y, m, 0).getDate();
+        }
+        function validBirthday(y, m, d, now) {
+            if (!Number.isInteger(y) || !Number.isInteger(m) || !Number.isInteger(d)) return false;
+            if (y < 1900 || y > now.getFullYear() || m < 1 || m > 12 || d < 1 || d > daysInMonth(y, m)) return false;
+            return new Date(y, m - 1, d) <= new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        }
+        function clearError() {
+            error.hidden = true;
+            for (const input of [year, month, day]) input.removeAttribute('aria-invalid');
+        }
+        function updateDays() {
+            const previous = day.value;
+            const max = month.value ? daysInMonth(Number(year.value) || 2000, Number(month.value)) : 31;
+            fillSelect(day, 1, max, '日');
+            day.value = previous && Number(previous) <= max ? previous : '';
+            clearError();
+        }
+        year.addEventListener('change', updateDays);
+        month.addEventListener('change', updateDays);
+        day.addEventListener('change', clearError);
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const y = Number(year.value), m = Number(month.value), d = Number(day.value);
+            if (!validBirthday(y, m, d, new Date())) {
+                error.hidden = false;
+                for (const input of [year, month, day]) input.setAttribute('aria-invalid', 'true');
+                error.focus();
+                return;
+            }
+            clearError();
+            const lp = calcLP(y, m, d);
+            const neko = NEKO[lp];
+            const nick = document.getElementById('sd-name').value.trim();
+            document.getElementById('sr-intro').textContent = (nick ? nick + 'さんの' : 'あなたの') + '本質のねこは……';
+            document.getElementById('sr-img').src = 'img/cat_' + lp + '.png?v=2';
+            document.getElementById('sr-img').alt = neko.name;
+            document.getElementById('sr-num').textContent = '数秘 ' + lp;
+            document.getElementById('sr-name').textContent = neko.name;
+            document.getElementById('sr-catch').textContent = neko.catch;
+            document.getElementById('sr-story').textContent = STORY[lp];
+            document.getElementById('sr-more').href = 'types.html#n' + lp;
+            document.getElementById('input-view').hidden = true;
+            result.hidden = false;
+            result.focus({ preventScroll: true });
+            result.scrollIntoView({ behavior: 'auto', block: 'start' });
+        });
+
+        document.getElementById('sd-back').addEventListener('click', () => {
+            result.hidden = true;
+            document.getElementById('input-view').hidden = false;
+            year.focus();
+        });
+</script>
+</body>
+</html>
