@@ -38,6 +38,29 @@ h1{font-size:clamp(28px,4vw,43px);line-height:1.65;letter-spacing:.04em;margin:0
 footer{text-align:center;border-top:1px solid var(--line);padding:25px 20px 36px;font-size:11px;color:var(--muted)}footer nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px}footer a{color:var(--muted);padding:6px 0}footer p{margin:15px 0 0}
 @media(max-width:720px){.site-nav{padding:14px 20px;flex-direction:column;gap:4px}.nav-links{justify-content:center;gap:4px 14px}.wrap{padding-inline:20px}.hero{grid-template-columns:1fr;gap:30px;padding-top:30px}.hero-copy{text-align:center}.hero-copy>p:not(.eyebrow){font-size:14px}.hero .actions,.spec-chips{justify-content:center}.hero-art{width:min(100%,330px);margin:auto;padding-top:36px}.hero-art h2{font-size:21px}.hero-art .cat-row{max-width:270px;margin-inline:auto}.section{padding-block:38px}.chapters{grid-template-columns:1fr;gap:10px}.chapter{padding:19px 17px}.topic-list{grid-template-columns:1fr 1fr}.intro-note{font-size:14px;text-align:left}.delivery{grid-template-columns:80px 1fr;padding-inline:17px}.delivery dt,.delivery dd{font-size:13px}.steps>li{gap:12px;grid-template-columns:36px 1fr}.steps>li::before{width:34px;height:34px;line-height:34px}.closing{margin-block:34px}.closing h2{font-size:22px}.actions .button{flex:1 1 180px}.nav-links a{font-size:11px}.jump-nav{gap:4px 18px}.for-list li{padding-inline:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* 鑑定書10ページの実例 */
+.sample-intro{max-width:690px;margin:0 auto 24px;padding:18px 22px;background:#fffdfa;border:1px solid var(--line);border-radius:14px;font-size:13px;color:var(--muted);text-align:center}
+.sample-intro strong{color:var(--ink)}.sample-intro p{margin:4px 0}
+.chapter{display:grid;grid-template-columns:135px minmax(0,1fr);align-items:start;gap:18px;padding:20px}
+.chapter-sample{display:block;position:relative;border:1px solid var(--line);border-radius:8px;background:white;text-decoration:none;overflow:hidden;box-shadow:0 3px 12px #4a2d1f12}
+.chapter-sample img{display:block;width:100%;height:auto}
+.chapter-sample .sample-open{display:block;background:#fbeaf0;color:var(--rose);padding:5px 4px;font-size:10px;text-align:center;font-weight:700}
+.chapter-copy .chapter-number{display:inline-flex;align-items:baseline;gap:7px;padding:0;margin:0 0 8px;font-size:22px}.chapter-copy .chapter-number small{display:inline;font-size:9px}
+.chapter-copy h3{font-size:15px}.chapter-copy p{font-size:12px}
+.sample-dialog{border:0;border-radius:14px;padding:0;background:#fff7f0;color:var(--ink);width:min(96vw,1120px);max-width:none;height:min(94dvh,1200px);max-height:94vh;overflow:hidden;box-shadow:0 16px 64px #0005}
+.sample-dialog[open]{display:flex;flex-direction:column}.sample-dialog::backdrop{background:#271b17d9}
+.sample-toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:11px 15px;border-bottom:1px solid var(--line);flex-shrink:0;background:#fffdfa}
+.sample-toolbar h2{font-size:14px;line-height:1.6;margin:0}.sample-close{flex-shrink:0;padding:9px 13px;border:1px solid var(--line);background:white;color:var(--ink);border-radius:7px;cursor:pointer}
+.sample-scroll{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;text-align:center;padding:14px}
+.sample-full{display:block;width:min(100%,820px);height:auto;max-width:none;margin:auto;background:white;box-shadow:0 2px 16px #4a2d1f12}
+.sample-scroll.is-zoomed .sample-full{width:1100px;margin-left:auto;margin-right:auto}
+.sample-controls{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;background:#fffdfa;border-top:1px solid var(--line)}
+.sample-controls button{font:inherit;font-size:12px;min-height:42px;cursor:pointer;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);padding:7px 12px}.sample-controls button:disabled{opacity:.35;cursor:default}
+.sample-counter{font-size:12px;white-space:nowrap}.sample-zoom[aria-pressed=true]{background:var(--rose);color:white}
+@media(max-width:720px){.chapter{grid-template-columns:110px minmax(0,1fr);gap:14px;padding:16px}.chapter-copy h3{font-size:14px}.chapter-copy p{font-size:12px}.sample-dialog{width:100vw;height:100dvh;max-height:100dvh;border-radius:0;margin:0}.sample-toolbar{padding:10px 12px}.sample-scroll{padding:10px}.sample-controls{padding:8px;gap:5px}.sample-controls button{padding-inline:9px}.sample-toolbar h2{font-size:12px}}
+@media(max-width:360px){.chapter{grid-template-columns:95px minmax(0,1fr);gap:11px;padding:13px}.chapter-copy .chapter-number{font-size:19px}.chapter-copy h3{font-size:13px}.chapter-copy p{font-size:11px}.sample-counter{font-size:11px}}
+
 </style>
 </head>
 <body>
@@ -72,16 +95,67 @@ footer{text-align:center;border-top:1px solid var(--line);padding:25px 20px 36px
 </section>
 <section id="contents" class="section" aria-labelledby="contents-heading">
 <div class="section-heading"><p class="eyebrow">INSIDE THE BOOK</p><h2 id="contents-heading">5匹のねこと、10ページの中身</h2><p>はじめの一言から、最後のおまもりまで。<br>一冊を通して、あなたらしさをひもといていきます。</p></div>
-<ol class="chapters"><li class="chapter"><span class="chapter-number" aria-label="1ページ目">01<small aria-hidden="true">PAGE</small></span><div><h3>表紙と、5匹のねこの早わかり</h3><p>いちばん大事な一言を、はじめにお伝えします。</p></div></li>
-<li class="chapter"><span class="chapter-number" aria-label="2ページ目">02<small aria-hidden="true">PAGE</small></span><div><h3>ごあいさつ</h3><p>いただいたご相談を、そのまま受け止めます。</p></div></li>
-<li class="chapter"><span class="chapter-number" aria-label="3ページ目">03<small aria-hidden="true">PAGE</small></span><div><h3>見た目のねこ</h3><p>人から最初に受け取られている、あなたの印象。</p></div></li>
-<li class="chapter"><span class="chapter-number" aria-label="4ページ目">04<small aria-hidden="true">PAGE</small></span><div><h3>本音のねこ</h3><p>心の奥で、本当に望んでいること。</p></div></li>
-<li class="chapter"><span class="chapter-number" aria-label="5ページ目">05<small aria-hidden="true">PAGE</small></span><div><h3>使命のねこ</h3><p>人生をかけて育てていく、あなたのテーマ。</p></div></li>
-<li class="chapter"><span class="chapter-number" aria-label="6ページ目">06<small aria-hidden="true">PAGE</small></span><div><h3>本質のおさらいと、強みのねこ</h3><p>困ったときに助けてくれる力。そして、5匹の配置から見えてきた結論をお伝えします。</p></div></li>
-<li class="chapter"><span class="chapter-number" aria-label="7ページ目">07<small aria-hidden="true">PAGE</small></span><div><h3>5匹の重なり</h3><p>外から見える姿と、内側の気持ちの差。このギャップが、そのままご相談の答えになっていることがあります。</p></div></li>
-<li class="chapter"><span class="chapter-number" aria-label="8ページ目">08<small aria-hidden="true">PAGE</small></span><div><h3>5匹の会議</h3><p>あなたの中の5匹が、いただいたご相談について話し合います。</p></div></li>
-<li class="chapter"><span class="chapter-number" aria-label="9ページ目">09<small aria-hidden="true">PAGE</small></span><div><h3>今年の運勢</h3><p>今年やっておくと効く5つを、ご相談に合わせてお伝えします。</p></div></li>
-<li class="chapter"><span class="chapter-number" aria-label="10ページ目">10<small aria-hidden="true">PAGE</small></span><div><h3>今日のおまもり</h3><p>読み返すたびに、戻ってきていただける場所です。</p></div></li></ol>
+<div class="sample-intro"><p><strong>ともみさんの鑑定書を、実例としてご紹介します。</strong></p><p>画像を選ぶと、ページを拡大してお読みいただけます。</p><p>個人情報にぼかしを入れた、2026年制作の見本です。お届けする内容は、お一人ずつのご相談に合わせてお作りします。</p></div>
+<ol class="chapters"><li class="chapter">
+<a class="chapter-sample" href="img/samples/tomomi-10p/page-01.png" data-sample-index="0" aria-label="1ページ目「表紙と、5匹のねこの早わかり」の見本を拡大">
+<img src="img/samples/tomomi-10p/page-01.png" alt="ともみさんの鑑定書 1ページ目：表紙と、5匹のねこの早わかり" loading="lazy" decoding="async" width="1024" height="1536">
+<span class="sample-open" aria-hidden="true">タップして拡大 ↗</span></a>
+<div class="chapter-copy"><span class="chapter-number" aria-label="1ページ目">01<small aria-hidden="true">PAGE</small></span><h3>表紙と、5匹のねこの早わかり</h3><p>いちばん大事な一言を、はじめにお伝えします。</p></div>
+</li>
+<li class="chapter">
+<a class="chapter-sample" href="img/samples/tomomi-10p/page-02.png" data-sample-index="1" aria-label="2ページ目「ごあいさつ」の見本を拡大">
+<img src="img/samples/tomomi-10p/page-02.png" alt="ともみさんの鑑定書 2ページ目：ごあいさつ" loading="lazy" decoding="async" width="1024" height="1536">
+<span class="sample-open" aria-hidden="true">タップして拡大 ↗</span></a>
+<div class="chapter-copy"><span class="chapter-number" aria-label="2ページ目">02<small aria-hidden="true">PAGE</small></span><h3>ごあいさつ</h3><p>いただいたご相談を、そのまま受け止めます。</p></div>
+</li>
+<li class="chapter">
+<a class="chapter-sample" href="img/samples/tomomi-10p/page-03.png" data-sample-index="2" aria-label="3ページ目「見た目のねこ」の見本を拡大">
+<img src="img/samples/tomomi-10p/page-03.png" alt="ともみさんの鑑定書 3ページ目：見た目のねこ" loading="lazy" decoding="async" width="1086" height="1448">
+<span class="sample-open" aria-hidden="true">タップして拡大 ↗</span></a>
+<div class="chapter-copy"><span class="chapter-number" aria-label="3ページ目">03<small aria-hidden="true">PAGE</small></span><h3>見た目のねこ</h3><p>人から最初に受け取られている、あなたの印象。</p></div>
+</li>
+<li class="chapter">
+<a class="chapter-sample" href="img/samples/tomomi-10p/page-04.png" data-sample-index="3" aria-label="4ページ目「本音のねこ」の見本を拡大">
+<img src="img/samples/tomomi-10p/page-04.png" alt="ともみさんの鑑定書 4ページ目：本音のねこ" loading="lazy" decoding="async" width="1024" height="1536">
+<span class="sample-open" aria-hidden="true">タップして拡大 ↗</span></a>
+<div class="chapter-copy"><span class="chapter-number" aria-label="4ページ目">04<small aria-hidden="true">PAGE</small></span><h3>本音のねこ</h3><p>心の奥で、本当に望んでいること。</p></div>
+</li>
+<li class="chapter">
+<a class="chapter-sample" href="img/samples/tomomi-10p/page-05.png" data-sample-index="4" aria-label="5ページ目「使命のねこ」の見本を拡大">
+<img src="img/samples/tomomi-10p/page-05.png" alt="ともみさんの鑑定書 5ページ目：使命のねこ" loading="lazy" decoding="async" width="1024" height="1536">
+<span class="sample-open" aria-hidden="true">タップして拡大 ↗</span></a>
+<div class="chapter-copy"><span class="chapter-number" aria-label="5ページ目">05<small aria-hidden="true">PAGE</small></span><h3>使命のねこ</h3><p>人生をかけて育てていく、あなたのテーマ。</p></div>
+</li>
+<li class="chapter">
+<a class="chapter-sample" href="img/samples/tomomi-10p/page-06.png" data-sample-index="5" aria-label="6ページ目「本質のおさらいと、強みのねこ」の見本を拡大">
+<img src="img/samples/tomomi-10p/page-06.png" alt="ともみさんの鑑定書 6ページ目：本質のおさらいと、強みのねこ" loading="lazy" decoding="async" width="1024" height="1536">
+<span class="sample-open" aria-hidden="true">タップして拡大 ↗</span></a>
+<div class="chapter-copy"><span class="chapter-number" aria-label="6ページ目">06<small aria-hidden="true">PAGE</small></span><h3>本質のおさらいと、強みのねこ</h3><p>困ったときに助けてくれる力。そして、5匹の配置から見えてきた結論をお伝えします。</p></div>
+</li>
+<li class="chapter">
+<a class="chapter-sample" href="img/samples/tomomi-10p/page-07.png" data-sample-index="6" aria-label="7ページ目「5匹の重なり」の見本を拡大">
+<img src="img/samples/tomomi-10p/page-07.png" alt="ともみさんの鑑定書 7ページ目：5匹の重なり" loading="lazy" decoding="async" width="1086" height="1448">
+<span class="sample-open" aria-hidden="true">タップして拡大 ↗</span></a>
+<div class="chapter-copy"><span class="chapter-number" aria-label="7ページ目">07<small aria-hidden="true">PAGE</small></span><h3>5匹の重なり</h3><p>外から見える姿と、内側の気持ちの差。このギャップが、そのままご相談の答えになっていることがあります。</p></div>
+</li>
+<li class="chapter">
+<a class="chapter-sample" href="img/samples/tomomi-10p/page-08.png" data-sample-index="7" aria-label="8ページ目「5匹の会議」の見本を拡大">
+<img src="img/samples/tomomi-10p/page-08.png" alt="ともみさんの鑑定書 8ページ目：5匹の会議" loading="lazy" decoding="async" width="1086" height="1448">
+<span class="sample-open" aria-hidden="true">タップして拡大 ↗</span></a>
+<div class="chapter-copy"><span class="chapter-number" aria-label="8ページ目">08<small aria-hidden="true">PAGE</small></span><h3>5匹の会議</h3><p>あなたの中の5匹が、いただいたご相談について話し合います。</p></div>
+</li>
+<li class="chapter">
+<a class="chapter-sample" href="img/samples/tomomi-10p/page-09.png" data-sample-index="8" aria-label="9ページ目「今年の運勢」の見本を拡大">
+<img src="img/samples/tomomi-10p/page-09.png" alt="ともみさんの鑑定書 9ページ目：今年の運勢" loading="lazy" decoding="async" width="1086" height="1448">
+<span class="sample-open" aria-hidden="true">タップして拡大 ↗</span></a>
+<div class="chapter-copy"><span class="chapter-number" aria-label="9ページ目">09<small aria-hidden="true">PAGE</small></span><h3>今年の運勢</h3><p>今年やっておくと効く5つを、ご相談に合わせてお伝えします。</p></div>
+</li>
+<li class="chapter">
+<a class="chapter-sample" href="img/samples/tomomi-10p/page-10.png" data-sample-index="9" aria-label="10ページ目「今日のおまもり」の見本を拡大">
+<img src="img/samples/tomomi-10p/page-10.png" alt="ともみさんの鑑定書 10ページ目：今日のおまもり" loading="lazy" decoding="async" width="1086" height="1448">
+<span class="sample-open" aria-hidden="true">タップして拡大 ↗</span></a>
+<div class="chapter-copy"><span class="chapter-number" aria-label="10ページ目">10<small aria-hidden="true">PAGE</small></span><h3>今日のおまもり</h3><p>読み返すたびに、戻ってきていただける場所です。</p></div>
+</li></ol>
 </section>
 <section id="consultation" class="section" aria-labelledby="consultation-heading">
 <div class="section-heading"><p class="eyebrow">YOUR QUESTION</p><h2 id="consultation-heading">ご相談は、鑑定書全体で答えます。</h2></div>
@@ -118,5 +192,42 @@ footer{text-align:center;border-top:1px solid var(--line);padding:25px 20px 36px
 </section>
 </main>
 <footer><nav aria-label="関連ページ"><a href="index.html">無料診断</a><a href="types.html">12匹のねこたち</a><a href="about.html">ねこもち占いとは</a><a href="https://lin.ee/tqouMjP" target="_blank" rel="noopener">公式LINE ↗</a></nav><p>© 2026 ねこもち占い</p></footer>
+<dialog class="sample-dialog" id="sample-dialog" aria-labelledby="sample-title">
+<div class="sample-toolbar"><h2 id="sample-title">鑑定書の見本</h2><button type="button" class="sample-close" id="sample-close" autofocus>閉じる ×</button></div>
+<div class="sample-scroll" id="sample-scroll"><img class="sample-full" id="sample-full" alt=""></div>
+<div class="sample-controls"><button type="button" id="sample-prev" aria-label="前のページ">← 前へ</button><span class="sample-counter" id="sample-counter" aria-live="polite" aria-atomic="true"></span><button type="button" id="sample-zoom" class="sample-zoom" aria-pressed="false">文字を拡大</button><button type="button" id="sample-next" aria-label="次のページ">次へ →</button></div>
+</dialog>
+<script>
+(()=>{'use strict';
+const links=Array.from(document.querySelectorAll('.chapter-sample'));
+const dialog=document.getElementById('sample-dialog');
+if(typeof dialog.showModal!=='function')return;
+const title=document.getElementById('sample-title'),image=document.getElementById('sample-full'),counter=document.getElementById('sample-counter');
+const scroll=document.getElementById('sample-scroll'),prev=document.getElementById('sample-prev'),next=document.getElementById('sample-next'),zoom=document.getElementById('sample-zoom');
+let current=0,opener=null,previousOverflow='';
+function show(index){
+current=Math.max(0,Math.min(links.length-1,index));
+const thumb=links[current].querySelector('img');
+image.src=links[current].href;image.alt=thumb.alt;
+title.textContent=thumb.alt;counter.textContent=(current+1)+' / '+links.length;
+prev.disabled=current===0;next.disabled=current===links.length-1;
+scroll.classList.remove('is-zoomed');zoom.setAttribute('aria-pressed','false');zoom.textContent='文字を拡大';scroll.scrollTo(0,0);
+}
+links.forEach((link,index)=>link.addEventListener('click',event=>{
+if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||event.button!==0)return;
+event.preventDefault();opener=link;previousOverflow=document.body.style.overflow;
+show(index);dialog.showModal();document.body.style.overflow='hidden';
+}));
+document.getElementById('sample-close').addEventListener('click',()=>dialog.close());
+prev.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));
+zoom.addEventListener('click',()=>{const active=scroll.classList.toggle('is-zoomed');zoom.setAttribute('aria-pressed',String(active));zoom.textContent=active?'全体を見る':'文字を拡大';scroll.scrollTo(0,0)});
+dialog.addEventListener('keydown',event=>{
+if(event.altKey||event.ctrlKey||event.metaKey||zoom.getAttribute('aria-pressed')==='true')return;
+if(event.key==='ArrowLeft'&&current>0){event.preventDefault();show(current-1)}
+if(event.key==='ArrowRight'&&current<links.length-1){event.preventDefault();show(current+1)}
+});
+dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()}});
+dialog.addEventListener('close',()=>{document.body.style.overflow=previousOverflow;image.removeAttribute('src');opener?.focus()});
+})();</script>
 </body>
 </html>
