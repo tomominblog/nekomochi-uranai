@@ -1,817 +1,142 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ねこもち占い 公式サイト</title>
-    <meta name="description"
-        content="数秘術×12匹のねこで、あなたの中に住む5匹のねこを読み解く「ねこもち占い」公式サイト。12匹のねこたちの図鑑と鑑定メニューをお届けします🐾">
+    <title>本質のねこ 無料診断｜ねこもち占い</title>
+    <meta name="description" content="生年月日から、あなたの本質のねこを無料で診断。数秘術×12匹のねこで、あなたらしさをやさしく読み解くねこもち占い。登録不要。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; }
+        :root { --cream:#fff7f0; --paper:#fffdfa; --ink:#4a2d1f; --muted:#766256; --rose:#a74765; --pink:#fbeaf0; --line:#ecd8ce; }
+        body { margin:0; font-family:'Zen Maru Gothic','Hiragino Maru Gothic ProN',sans-serif; color:var(--ink); background:#f3e7df; line-height:1.8; }
+        [hidden] { display:none !important; }
+        a { color:var(--rose); text-underline-offset:4px; }
+        button,input,select { font:inherit; }
+        button,a,input,select,summary { -webkit-tap-highlight-color:transparent; }
+        :focus-visible { outline:3px solid var(--rose); outline-offset:4px; }
+        .skip { position:fixed; top:8px; left:8px; transform:translateY(-160%); z-index:2; background:white; padding:8px 16px; }
+        .skip:focus { transform:none; }
+        .page { max-width:540px; margin:auto; min-height:100vh; background:var(--paper); box-shadow:0 0 64px #6b493b12; }
+        .masthead { padding:18px 24px 12px; text-align:center; border-bottom:1px solid var(--line); }
+        .brand { text-decoration:none; font-size:19px; font-weight:700; color:var(--ink); letter-spacing:.12em; }
+        .masthead p { margin:1px 0 0; font-size:11px; letter-spacing:.12em; color:var(--muted); }
+        .hero { text-align:center; padding:30px 20px 20px; background:radial-gradient(ellipse at 50% 65%,#fbe4e3,transparent 68%),var(--cream); }
+        .eyebrow { margin:0; color:var(--rose); font-size:11px; font-weight:700; letter-spacing:.18em; }
+        h1 { font-size:clamp(25px,6vw,32px); line-height:1.6; letter-spacing:.07em; margin:10px 0 0; }
+        .hero-cats { display:flex; align-items:flex-end; justify-content:center; gap:0; margin:6px auto 0; max-width:365px; }
+        .hero-cats img { display:block; width:32%; height:auto; object-fit:contain; }
+        .hero-cats img:nth-child(2) { width:36%; }
+        .hero p:last-child { font-size:13px; color:var(--muted); margin:8px 0 0; }
+        main { padding:0 22px 28px; }
+        .form-heading { text-align:center; padding:23px 0 18px; }
+        h2 { font-size:20px; margin:0; line-height:1.6; }
+        .form-heading p { color:var(--muted); font-size:12px; margin:5px 0 0; }
+        .shindan-card { border:1px solid var(--line); border-radius:18px; background:white; padding:24px 20px; }
+        fieldset { border:0; padding:0; margin:0 0 18px; min-width:0; }
+        legend,.sc-label { display:block; font-weight:700; font-size:14px; margin:0 0 9px; padding:0; }
+        .req,.opt { font-size:10px; margin-left:9px; padding:2px 7px; border-radius:4px; vertical-align:middle; }
+        .req { background:var(--rose); color:white; }
+        .opt { background:#f2ece8; color:var(--muted); font-weight:400; }
+        input,select { width:100%; min-width:0; min-height:50px; padding:11px 10px; border:1px solid #d9c6bb; border-radius:8px; color:var(--ink); background:var(--paper); font-size:16px; }
+        input::placeholder { color:#897b71; }
+        .birth-row { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:8px; }
+        .hint,.privacy { color:var(--muted); font-size:11px; line-height:1.8; margin:8px 0 0; }
+        .shindan-btn { width:100%; cursor:pointer; border:0; border-radius:999px; padding:15px 10px; background:var(--rose); color:white; font-weight:700; font-size:17px; margin-top:22px; box-shadow:0 5px 0 #793c4f; }
+        .shindan-btn:hover { background:#923c57; }
+        .privacy { text-align:center; margin-top:17px; }
+        .shindan-error { padding:10px; border:1px solid #b3283c; color:#a21c30; background:#fff4f4; font-size:13px; border-radius:6px; }
+        .help { font-size:12px; color:var(--muted); margin:22px 0 0; text-align:center; }
+        .help a { display:inline-block; padding:10px 0; }
+        .shindan-result { padding:26px 0 0; scroll-margin-top:16px; text-align:center; }
+        .sr-intro { font-size:14px; overflow-wrap:anywhere; }
+        #sr-img { width:190px; height:190px; object-fit:contain; }
+        .sr-num { font-size:12px; color:var(--muted); letter-spacing:.1em; }
+        #sr-name { font-size:28px; margin:5px 0; }
+        .sr-catch { font-size:14px; color:var(--rose); font-weight:700; }
+        .sr-story { text-align:left; white-space:pre-line; font-size:14px; line-height:2; margin:24px 0; padding:22px; background:var(--cream); border-radius:16px; }
+        .sr-gift { padding:20px; border:1px dashed #d7a4a4; border-radius:16px; background:#fcf2ec; }
+        .sr-line-lead { text-align:left; font-size:13px; }
+        .sr-line-invite { font-size:14px; font-weight:700; color:var(--rose); }
+        .btn-line { display:block; padding:12px 8px; border-radius:999px; background:#087b3c; color:white; text-decoration:none; font-weight:700; }
+        .sr-gift-note { font-size:11px; color:var(--muted); }
+        .sr-links { margin:16px 0; font-size:14px; }
+        .sr-next { margin:28px 0; }
+        .sr-next-lead { font-weight:700; font-size:16px; }
+        .sr-next-cards { display:grid; gap:12px; }
+        .sr-next-card { display:block; padding:18px; border:1px solid var(--line); border-radius:14px; color:var(--ink); text-align:left; text-decoration:none; }
+        .sr-next-card:hover { background:var(--cream); }
+        .sr-next-card span { display:block; }
+        .sr-next-tag { font-size:11px; color:var(--rose); }
+        .sr-next-name { font-weight:700; margin-top:5px; }
+        .sr-next-price { color:var(--rose); font-weight:700; }
+        .sr-next-desc { font-size:12px; color:var(--muted); margin-top:5px; }
+        .sr-next-go { font-size:12px; color:var(--rose); margin-top:10px; }
+        .back-btn { cursor:pointer; background:white; border:1px solid var(--rose); color:var(--rose); border-radius:999px; padding:12px 28px; }
+        .explore { margin:0 22px; border-top:1px solid var(--line); }
+        .explore summary { cursor:pointer; padding:18px 0; font-size:13px; }
+        .explore-links { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding-bottom:18px; }
+        .explore-links a { padding:12px; background:var(--cream); border-radius:8px; text-decoration:none; font-size:12px; text-align:center; }
+        #kyokasho { margin:0 22px; padding:20px 0; border-top:1px solid var(--line); scroll-margin-top:16px; }
+        #kyokasho h2 { font-size:14px; }
+        #kyokasho p { font-size:12px; color:var(--muted); }
+        .purchase-actions { display:flex; gap:10px; flex-wrap:wrap; }
+        .purchase-actions a { display:inline-block; padding:10px 16px; border:1px solid var(--line); border-radius:8px; font-size:12px; text-decoration:none; }
+        footer { border-top:1px solid var(--line); padding:20px 22px 28px; text-align:center; }
+        .footer-links { display:flex; flex-wrap:wrap; gap:4px 18px; justify-content:center; }
+        .footer-links a { font-size:11px; color:var(--muted); padding:8px 0; }
+        .copyright { color:var(--muted); font-size:10px; margin:14px 0 0; }
+        @media(max-width:360px) { main { padding-inline:16px; } .shindan-card { padding:20px 14px; } .birth-row { gap:6px; } select { padding-inline:6px; } .sr-story { padding:16px; } }
 
-        :root {
-            /* ねこもち占い BRAND GUIDE 準拠 */
-            --cream: #FFF7F0;
-            --white: #FFFFFF;
-            --coral: #E98BA4;
-            --coral-light: #F7A7B5;
-            --coral-pale: #FBEAF0;
-            --peach: #F8D9C7;
-            --text-dark: #4A2D1F;
-            --text-mid: #6B625C;
-            --text-light: #A89880;
-            --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.08);
-            --radius: 24px;
-        }
-
-        body {
-            font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-            background: var(--cream);
-            color: var(--text-dark);
-            line-height: 1.8;
-        }
-
-        /* ===== NAV ===== */
-        .site-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 10px 20px;
-            background: rgba(255, 247, 240, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .site-nav .brand {
-            font-weight: 700;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: .04em;
-            white-space: nowrap;
-        }
-
-        .site-nav .links {
-            display: flex;
-            gap: 4px;
-        }
-
-        .site-nav .links a {
-            color: var(--text-mid);
-            text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 500;
-            padding: 6px 10px;
-            border-radius: 999px;
-            transition: background .2s, color .2s;
-            white-space: nowrap;
-        }
-
-        .site-nav .links a:hover,
-        .site-nav .links a.current {
-            background: var(--coral-pale);
-            color: var(--coral);
-        }
-
-        @media (max-width: 640px) {
-            .site-nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 3px;
-                padding: 6px 10px 5px;
-            }
-
-            .site-nav .brand {
-                width: 100%;
-                text-align: center;
-                font-size: 0.88rem;
-                line-height: 1.4;
-            }
-
-            .site-nav .links {
-                width: 100%;
-                justify-content: flex-start;
-                gap: 2px;
-                overflow-x: auto;
-                overscroll-behavior-x: contain;
-                scrollbar-width: none;
-                padding-bottom: 1px;
-            }
-
-            .site-nav .links::-webkit-scrollbar {
-                display: none;
-            }
-
-            .site-nav .links a {
-                flex: 0 0 auto;
-                font-size: 0.7rem;
-                padding: 4px 7px;
-            }
-        }
-
-        /* ===== HEADER ===== */
-        header.site-head {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 96px 24px 8px;
-            text-align: center;
-        }
-
-        .site-title {
-            font-size: 1.9rem;
-            font-weight: 700;
-            letter-spacing: .06em;
-        }
-
-        .site-tag {
-            color: var(--text-mid);
-            font-size: 0.9rem;
-            margin-top: 4px;
-        }
-        @media (max-width: 640px) {
-            header.site-head {
-                padding: 116px 18px 8px;
-            }
-
-            .site-title {
-                font-size: 1.65rem;
-            }
-
-            .site-tag {
-                font-size: 0.84rem;
-                line-height: 1.65;
-            }
-        }
-
-        /* ===== 告知バナー ===== */
-        .notice-banner {
-            display: block;
-            max-width: 680px;
-            margin: 22px auto 0;
-            background: var(--white);
-            border: 1.5px solid var(--coral-light);
-            border-radius: 999px;
-            padding: 12px 22px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            font-weight: 500;
-            box-shadow: var(--shadow-card);
-            transition: transform .2s;
-        }
-
-        .notice-banner:hover {
-            transform: translateY(-2px);
-        }
-
-        .notice-banner .nb-accent {
-            color: var(--coral);
-            font-weight: 700;
-        }
-        @media (max-width: 640px) {
-            .notice-banner {
-                margin-top: 18px;
-                padding: 11px 15px;
-                border-radius: 20px;
-                font-size: 0.84rem;
-                line-height: 1.65;
-            }
-        }
-
-        /* ===== SECTIONS ===== */
-        section {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 44px 24px 8px;
-        }
-
-        .section-eyebrow {
-            display: block;
-            text-align: center;
-            color: var(--coral);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: .15em;
-            margin-bottom: 8px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .section-lead {
-            text-align: center;
-            color: var(--text-mid);
-            font-size: 0.9rem;
-            margin-bottom: 28px;
-        }
-
-        /* ===== 診断フォーム ===== */
-        .shindan-card {
-            max-width: 640px;
-            margin: 0 auto;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card);
-            padding: 34px 28px;
-        }
-
-        .shindan-card .sc-label {
-            display: block;
-            font-weight: 700;
-            font-size: 0.92rem;
-            margin-bottom: 8px;
-        }
-
-        .shindan-card .sc-label .opt {
-            font-weight: 400;
-            font-size: 0.78rem;
-            color: var(--text-light);
-        }
-
-        .shindan-card .sc-label .req {
-            display: inline-block;
-            background: var(--coral);
-            color: #fff;
-            font-size: 0.7rem;
-            padding: 1px 10px;
-            border-radius: 999px;
-            margin-left: 6px;
-            vertical-align: middle;
-        }
-
-        .shindan-card input,
-        .shindan-card select {
-            width: 100%;
-            border: none;
-            background: var(--coral-pale);
-            border-radius: 14px;
-            padding: 14px 16px;
-            font-family: inherit;
-            font-size: 1rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            outline: none;
-        }
-
-        .shindan-card select {
-            cursor: pointer;
-            appearance: auto;
-        }
-
-        .shindan-card input:focus,
-        .shindan-card select:focus {
-            box-shadow: 0 0 0 2px var(--coral-light);
-        }
-
-        .birth-row {
-            display: flex;
-            gap: 10px;
-        }
-
-        .birth-row .bi {
-            position: relative;
-            flex: 1;
-        }
-
-        .birth-row .bi span {
-            position: absolute;
-            right: 14px;
-            top: 15px;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            pointer-events: none;
-        }
-
-        .shindan-btn {
-            display: block;
-            width: 100%;
-            border: none;
-            cursor: pointer;
-            background: var(--coral);
-            color: #fff;
-            font-family: inherit;
-            font-weight: 700;
-            font-size: 1.05rem;
-            padding: 16px;
-            border-radius: 999px;
-            box-shadow: 0 6px 20px rgba(233, 139, 164, .35);
-            transition: transform .2s;
-        }
-
-        .shindan-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .shindan-btn small {
-            display: block;
-            font-weight: 400;
-            font-size: 0.75rem;
-            opacity: .9;
-        }
-
-        .shindan-error {
-            display: none;
-            text-align: center;
-            color: var(--coral);
-            font-size: 0.85rem;
-            margin-top: 12px;
-        }
-
-        /* ===== 診断結果 ===== */
-        .shindan-result {
-            display: none;
-            max-width: 640px;
-            margin: 24px auto 0;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: 0 6px 22px rgba(233, 139, 164, .25);
-            padding: 34px 28px;
-            text-align: center;
-        }
-
-        .shindan-result .sr-intro {
-            color: var(--text-mid);
-            font-size: 0.9rem;
-        }
-
-        .shindan-result img {
-            width: 130px;
-            height: 130px;
-            object-fit: contain;
-            margin: 10px auto;
-        }
-
-        .shindan-result .sr-num {
-            color: var(--text-light);
-            font-size: 0.8rem;
-            letter-spacing: .1em;
-        }
-
-        .shindan-result h3 {
-            font-size: 1.5rem;
-            margin: 2px 0 8px;
-        }
-
-        .shindan-result .sr-catch {
-            color: var(--coral);
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 14px;
-        }
-
-        .shindan-result .sr-msg {
-            background: var(--coral-pale);
-            border-radius: 16px;
-            padding: 14px 18px;
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-
-        .shindan-result .sr-links a.more {
-            color: var(--coral);
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 16px;
-        }
-
-        .shindan-result .sr-gift {
-            background: #FCEEE6;
-            border: 1.5px dashed var(--coral-light);
-            border-radius: 20px;
-            padding: 20px 18px 22px;
-            margin: 4px 0 20px;
-        }
-
-        .shindan-result .sr-story {
-            text-align: left;
-            white-space: pre-line;
-            font-size: 0.92rem;
-            line-height: 1.9;
-            color: var(--text-dark);
-            margin: 6px 0 22px;
-        }
-
-        .shindan-result .sr-line-lead {
-            text-align: left;
-            font-size: 0.9rem;
-            line-height: 1.85;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-        }
-
-        .shindan-result .sr-line-invite {
-            font-weight: 700;
-            color: var(--coral);
-            font-size: 0.95rem;
-            margin-bottom: 16px;
-        }
-
-        .shindan-result .btn-line {
-            display: inline-block;
-            background: #06C755;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            padding: 14px 34px;
-            border-radius: 999px;
-            box-shadow: 0 6px 20px rgba(6, 199, 85, .30);
-            transition: transform .2s;
-        }
-
-        .shindan-result .btn-line:hover {
-            transform: translateY(-2px);
-        }
-
-        .shindan-result .sr-gift-note {
-            font-size: 0.72rem;
-            color: var(--text-mid);
-            margin-top: 10px;
-        }
-
-        /* ===== 診断結果 → 次の一歩（教科書／鑑定の分岐） ===== */
-        .shindan-result .sr-next {
-            margin: 26px 0 4px;
-        }
-
-        .shindan-result .sr-next-lead {
-            font-weight: 700;
-            color: var(--text-dark);
-            font-size: 1rem;
-            margin-bottom: 14px;
-        }
-
-        .shindan-result .sr-next-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .shindan-result .sr-next-card {
-            display: block;
-            text-align: left;
-            text-decoration: none;
-            background: var(--white);
-            border: 1.5px solid var(--coral-pale);
-            border-radius: 18px;
-            padding: 16px 16px 18px;
-            transition: transform .2s, box-shadow .2s, border-color .2s;
-        }
-
-        .shindan-result .sr-next-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--coral-light);
-            box-shadow: var(--shadow-card);
-        }
-
-        .shindan-result .sr-next-tag {
-            display: inline-block;
-            background: var(--coral-pale);
-            color: var(--coral);
-            font-size: 0.68rem;
-            font-weight: 700;
-            border-radius: 999px;
-            padding: 4px 10px;
-            margin-bottom: 10px;
-        }
-
-        .shindan-result .sr-next-name {
-            display: block;
-            color: var(--text-dark);
-            font-weight: 700;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 4px;
-        }
-
-        .shindan-result .sr-next-price {
-            display: block;
-            color: var(--coral);
-            font-weight: 700;
-            font-size: 1.05rem;
-            margin-bottom: 8px;
-        }
-
-        .shindan-result .sr-next-desc {
-            display: block;
-            color: var(--text-mid);
-            font-size: 0.78rem;
-            line-height: 1.75;
-        }
-
-        .shindan-result .sr-next-go {
-            display: block;
-            color: var(--coral);
-            font-weight: 700;
-            font-size: 0.8rem;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 600px) {
-            .shindan-result .sr-next-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== 12匹グリッド ===== */
-        .cats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        @media (max-width: 640px) {
-            .cats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .cat-card {
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: var(--shadow-card);
-            padding: 18px 12px 16px;
-            text-align: center;
-            text-decoration: none;
-            color: var(--text-dark);
-            transition: transform .2s, box-shadow .2s;
-        }
-
-        .cat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 22px rgba(233, 139, 164, .25);
-        }
-
-        .cat-card img {
-            width: 104px;
-            height: 104px;
-            object-fit: contain;
-        }
-
-        .cat-card .num {
-            font-size: 0.72rem;
-            color: var(--text-light);
-            letter-spacing: .1em;
-            margin-top: 6px;
-        }
-
-        .cat-card h3 {
-            font-size: 1.02rem;
-            font-weight: 700;
-            margin: 2px 0;
-        }
-
-        .cat-card p {
-            font-size: 0.78rem;
-            color: var(--coral);
-            font-weight: 500;
-        }
-
-        /* ===== 鑑定メニュー ===== */
-        .kantei-card {
-            max-width: 640px;
-            margin: 0 auto;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card);
-            padding: 34px 28px;
-            text-align: center;
-        }
-
-        .kantei-card .kc-tag {
-            display: inline-block;
-            background: var(--coral-pale);
-            color: var(--coral);
-            font-size: 0.78rem;
-            font-weight: 700;
-            padding: 4px 14px;
-            border-radius: 999px;
-            margin-bottom: 10px;
-        }
-
-        .kantei-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 6px;
-        }
-
-        .kantei-card .kc-price {
-            color: var(--coral);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .kantei-card p {
-            color: var(--text-mid);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--coral);
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            padding: 14px 32px;
-            border-radius: 999px;
-            box-shadow: 0 6px 20px rgba(233, 139, 164, .35);
-            transition: transform .2s;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-        }
-
-        .purchase-actions {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 22px;
-        }
-
-        .purchase-actions .btn-primary {
-            min-width: 190px;
-            padding-inline: 26px;
-        }
-
-        .btn-secondary {
-            display: inline-block;
-            min-width: 190px;
-            background: var(--white);
-            color: var(--coral);
-            text-decoration: none;
-            font-weight: 700;
-            padding: 12px 26px;
-            border: 2px solid var(--coral);
-            border-radius: 999px;
-            transition: transform .2s, background .2s;
-        }
-
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-            background: var(--coral-pale);
-        }
-
-        .purchase-note {
-            margin-top: 14px !important;
-            margin-bottom: 0 !important;
-            color: var(--text-light) !important;
-            font-size: 0.78rem !important;
-        }
-        @media (max-width: 640px) {
-            .purchase-actions {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-                margin-top: 18px;
-            }
-
-            .purchase-actions .btn-primary,
-            .purchase-actions .btn-secondary {
-                width: 100%;
-                min-width: 0;
-                padding-inline: 16px;
-            }
-        }
-
-        /* ===== お知らせ ===== */
-        .news-list {
-            max-width: 640px;
-            margin: 0 auto;
-            list-style: none;
-        }
-
-        .news-list li {
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: var(--shadow-card);
-            padding: 14px 20px;
-            margin-bottom: 12px;
-            display: flex;
-            gap: 16px;
-            align-items: baseline;
-            font-size: 0.9rem;
-        }
-
-        .news-list .date {
-            color: var(--text-light);
-            font-size: 0.78rem;
-            white-space: nowrap;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            margin-top: 56px;
-            padding: 36px 20px 48px;
-            background: var(--white);
-            text-align: center;
-        }
-
-        .sns-row {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .sns-row a {
-            display: inline-block;
-            background: var(--coral-pale);
-            color: var(--coral);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 700;
-            padding: 8px 22px;
-            border-radius: 999px;
-            transition: transform .2s;
-        }
-
-        .sns-row a:hover {
-            transform: translateY(-2px);
-        }
-
-        .foot-links {
-            font-size: 0.82rem;
-            margin-bottom: 14px;
-        }
-
-        .foot-links a {
-            color: var(--text-mid);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .copyright {
-            color: var(--text-light);
-            font-size: 0.78rem;
-        }
     </style>
 </head>
-
 <body>
-    <nav class="site-nav">
-        <a href="index.html" class="brand">🐾 ねこもち占い</a>
-        <div class="links">
-            <a href="index.html" class="current">ホーム</a>
-            <a href="types.html">12匹のねこたち</a>
-            <a href="kanteisho.html">鑑定書のご案内</a>
-            <a href="menu.html">鑑定メニュー</a>
-            <a href="about.html">ねこもち占いとは</a>
-        </div>
-    </nav>
-
-    <header class="site-head">
-        <h1 class="site-title">ねこもち占い</h1>
-        <p class="site-tag">数秘術 × 12匹のねこ。あなたの中のねこたちを、やさしく読み解きます🐾</p>
-        <a href="#kyokasho" class="notice-banner">🎉 <span class="nb-accent">『ねこもち占いの教科書』</span>をリリースしました →</a>
+<a class="skip" href="#sd-form">診断フォームへ</a>
+<div class="page">
+    <header class="masthead">
+        <a class="brand" href="index.html">ねこもち占い</a>
+        <p>数秘術 × 12匹のねこ</p>
     </header>
-
-    <!-- 診断スタート -->
-    <section>
-        <span class="section-eyebrow">✦ START</span>
-        <h2 class="section-title">本質のねこ 診断</h2>
-        <p class="section-lead">生年月日から、あなたのいちばん奥に住む「本質のねこ」を無料で診断します。</p>
-        <div class="shindan-card">
-            <label class="sc-label" for="sd-name">ニックネーム <span class="opt">（任意）</span></label>
-            <input type="text" id="sd-name" placeholder="例：あや" maxlength="20">
-            <span class="sc-label">生年月日<span class="req">必須</span></span>
-            <div class="birth-row">
-                <div class="bi"><select id="sd-y" aria-label="年"></select><span>年</span></div>
-                <div class="bi"><select id="sd-m" aria-label="月"></select><span>月</span></div>
-                <div class="bi"><select id="sd-d" aria-label="日"></select><span>日</span></div>
-            </div>
-            <button class="shindan-btn" id="sd-btn">🐾 無料で本質のねこを診断する<small>登録不要・無料</small></button>
-            <p class="shindan-error" id="sd-error">生年月日を正しく入力してくださいね🐾</p>
+    <div class="hero">
+        <p class="eyebrow">NEKOMOCHI FORTUNE</p>
+        <h1>あなたの中のねこに、<br>会いにいこう。</h1>
+        <div class="hero-cats" aria-hidden="true">
+            <img src="img/cat_2.png?v=2" alt="" width="160" height="160">
+            <img src="img/cat_6.png?v=2" alt="" width="180" height="180" fetchpriority="high">
+            <img src="img/cat_11.png?v=2" alt="" width="160" height="160">
         </div>
-        <div class="shindan-result" id="sd-result">
+        <p>生まれた日に隠れた、あなたらしさをひもときます。</p>
+    </div>
+    <main>
+        <div id="input-view">
+            <div class="form-heading">
+                <h2>本質のねこ 無料診断</h2>
+                <p>占う人の生年月日を教えてください。</p>
+            </div>
+            <form class="shindan-card" id="sd-form" novalidate>
+                <fieldset aria-describedby="birth-hint sd-error">
+                    <legend>生年月日<span class="req">必須</span></legend>
+                    <div class="birth-row">
+                        <select id="sd-y" aria-label="生まれた年" required></select>
+                        <select id="sd-m" aria-label="生まれた月" required></select>
+                        <select id="sd-d" aria-label="生まれた日" required></select>
+                    </div>
+                    <p class="hint" id="birth-hint">出生時間・出生地は必要ありません。</p>
+                </fieldset>
+                <label class="sc-label" for="sd-name">ニックネーム<span class="opt">任意</span></label>
+                <input type="text" id="sd-name" placeholder="例：あや" maxlength="20" autocomplete="off">
+                <p class="shindan-error" id="sd-error" role="alert" tabindex="-1" hidden>生年月日を確認してください。実在する、今日までの日付を選んでくださいね。</p>
+                <button class="shindan-btn" id="sd-btn" type="submit">無料で占う <span aria-hidden="true">🐾</span></button>
+                <p class="privacy">登録不要・何度でも無料<br>入力した情報は、診断のためにこの画面内でのみ使用します。</p>
+                <noscript><p>診断にはJavaScriptが必要です。ブラウザーの設定で有効にしてください。</p></noscript>
+            </form>
+            <p class="help">12匹のねこの中から、本質を表す1匹がわかります。<br><a href="about.html">ねこもち占いについて →</a></p>
+        </div>
+        <div class="shindan-result" id="sd-result" hidden tabindex="-1" aria-labelledby="sr-name">
             <p class="sr-intro" id="sr-intro">あなたの本質のねこは……</p>
-            <img id="sr-img" src="" alt="">
+            <img id="sr-img" alt="">
             <div class="sr-num" id="sr-num"></div>
             <h3 id="sr-name"></h3>
             <p class="sr-catch" id="sr-catch"></p>
@@ -849,133 +174,38 @@
                     </a>
                 </div>
             </div>
+            <button type="button" class="back-btn" id="sd-back">もう一度占う</button>
+        </div>
+
+
+    </main>
+    <details class="explore">
+        <summary>ねこもちの世界をもっと楽しむ</summary>
+        <nav class="explore-links" aria-label="ねこもちのご案内">
+            <a href="types.html">12匹のねこたち</a>
+            <a href="kanteisho.html">鑑定書のご案内</a>
+            <a href="menu.html">鑑定メニュー</a>
+            <a href="about.html">ねこもち占いとは</a>
+        </nav>
+    </details>
+    <section id="kyokasho" aria-labelledby="book-title">
+        <h2 id="book-title">自分でもっと読み解きたい方へ</h2>
+        <p>『ねこもち占いの教科書』では、あなたの中に住む5匹のねこの見つけ方をお伝えします。</p>
+        <div class="purchase-actions">
+            <a href="https://brain-market.com/u/tomomin0126/a/bwUTN1UjMgoTZsNWa0JXY" target="_blank" rel="noopener">Brainで教科書を見る ↗</a>
+            <a href="https://note.com/nekomochi_uranai/n/nbf12bc779fea?sub_rt=share_sb" target="_blank" rel="noopener">noteで教科書を見る ↗</a>
         </div>
     </section>
-
-    <!-- 12匹のねこたち -->
-    <section>
-        <span class="section-eyebrow">✦ CHARACTERS</span>
-        <h2 class="section-title">12匹のねこたち</h2>
-        <p class="section-lead">気になるねこを選んでみてください。性格・SOSサイン・心の整え方がわかります。</p>
-        <div class="cats-grid">
-            <a class="cat-card" href="types.html#n1"><img src="img/cat_1.png?v=2" alt="いちばんねこ">
-                <div class="num">数秘 1</div>
-                <h3>いちばんねこ</h3>
-                <p>誇り高きハンター</p>
-            </a>
-            <a class="cat-card" href="types.html#n2"><img src="img/cat_2.png?v=2" alt="なかよしねこ">
-                <div class="num">数秘 2</div>
-                <h3>なかよしねこ</h3>
-                <p>心をつなぐバランサー</p>
-            </a>
-            <a class="cat-card" href="types.html#n3"><img src="img/cat_3.png?v=2" alt="ひらめきねこ">
-                <div class="num">数秘 3</div>
-                <h3>ひらめきねこ</h3>
-                <p>ワクワクの天才</p>
-            </a>
-            <a class="cat-card" href="types.html#n4"><img src="img/cat_4.png?v=2" alt="こつこつねこ">
-                <div class="num">数秘 4</div>
-                <h3>こつこつねこ</h3>
-                <p>誠実な建築家</p>
-            </a>
-            <a class="cat-card" href="types.html#n5"><img src="img/cat_5.png?v=2" alt="ふわりねこ">
-                <div class="num">数秘 5</div>
-                <h3>ふわりねこ</h3>
-                <p>自由を愛する冒険家</p>
-            </a>
-            <a class="cat-card" href="types.html#n6"><img src="img/cat_6.png?v=2" alt="まもりねこ">
-                <div class="num">数秘 6</div>
-                <h3>まもりねこ</h3>
-                <p>みんなの守護者</p>
-            </a>
-            <a class="cat-card" href="types.html#n7"><img src="img/cat_7.png?v=2" alt="ふしぎねこ">
-                <div class="num">数秘 7</div>
-                <h3>ふしぎねこ</h3>
-                <p>孤高の哲学者</p>
-            </a>
-            <a class="cat-card" href="types.html#n8"><img src="img/cat_8.png?v=2" alt="まっすぐねこ">
-                <div class="num">数秘 8</div>
-                <h3>まっすぐねこ</h3>
-                <p>不屈のチャレンジャー</p>
-            </a>
-            <a class="cat-card" href="types.html#n9"><img src="img/cat_9.png?v=2" alt="あんしんねこ">
-                <div class="num">数秘 9</div>
-                <h3>あんしんねこ</h3>
-                <p>深遠な賢者</p>
-            </a>
-            <a class="cat-card" href="types.html#n11"><img src="img/cat_11.png?v=2" alt="ひかりねこ">
-                <div class="num">数秘 11</div>
-                <h3>ひかりねこ</h3>
-                <p>直感のメッセンジャー</p>
-            </a>
-            <a class="cat-card" href="types.html#n22"><img src="img/cat_22.png?v=2" alt="しっかりねこ">
-                <div class="num">数秘 22</div>
-                <h3>しっかりねこ</h3>
-                <p>カリスマ建築家</p>
-            </a>
-            <a class="cat-card" href="types.html#n33"><img src="img/cat_33.png?v=2" alt="まほうねこ">
-                <div class="num">数秘 33</div>
-                <h3>まほうねこ</h3>
-                <p>宇宙規模の愛の奉仕者</p>
-            </a>
-        </div>
-    </section>
-
-    <!-- 鑑定メニュー -->
-    <section>
-        <span class="section-eyebrow">✦ MENU</span>
-        <h2 class="section-title">鑑定メニュー</h2>
-        <p class="section-lead">やさしい絵本のようなPDF鑑定書をお届けします。</p>
-        <div class="kantei-card">
-            <span class="kc-tag">🐾 いちばん人気</span>
-            <h3>5匹のねこもち総合鑑定</h3>
-            <div class="kc-price">¥3,300（税込）</div>
-            <p>あなたの本質・才能・仕事運・お金の流れ・人間関係の傾向を、<br>5匹のねこもちから総合的に読み解くPDF鑑定書です。</p>
-            <a href="kanteisho.html" class="btn-primary">鑑定書のご案内を見る🐾</a>
-        </div>
-    </section>
-
-    <!-- ねこもち占いの教科書 -->
-    <section id="kyokasho">
-        <span class="section-eyebrow">✦ NEW</span>
-        <h2 class="section-title">ねこもち占いの教科書</h2>
-        <p class="section-lead">自分と大切な人を、自分の手で読み解けるようになる一冊。</p>
-        <div class="kantei-card">
-            <span class="kc-tag">🎉 2026.7.22 リリース</span>
-            <h3>ねこもち占いの教科書</h3>
-            <p>生年月日だけで、あなたと家族の中に住む「5匹のねこ」を計算して読み解く方法を、はじめから全部お伝えします。<br>読み終えるころには、自分で自分を、そして大切な人を鑑定できるようになります🐾</p>
-            <div class="purchase-actions">
-                <a href="https://brain-market.com/u/tomomin0126/a/bwUTN1UjMgoTZsNWa0JXY" class="btn-primary" target="_blank" rel="noopener">Brainで購入する 🐾</a>
-                <a href="https://note.com/nekomochi_uranai/n/nbf12bc779fea?sub_rt=share_sb" class="btn-secondary" target="_blank" rel="noopener">noteで購入する 🐾</a>
-            </div>
-            <p class="purchase-note">お好きな販売サイトからご購入いただけます。</p>
-        </div>
-    </section>
-
-    <!-- お知らせ -->
-    <section>
-        <span class="section-eyebrow">✦ NEWS</span>
-        <h2 class="section-title">お知らせ</h2>
-        <p class="section-lead"></p>
-        <ul class="news-list">
-            <li><span class="date">2026.07.22</span><span>『ねこもち占いの教科書』をリリースしました🎉</span></li>
-            <li><span class="date">2026.07.04</span><span>「5匹のねこもち総合鑑定」の受付をはじめました🐾</span></li>
-            <li><span class="date">2026.07.03</span><span>ねこもち占い 公式サイトをオープンしました🎉</span></li>
-        </ul>
-    </section>
-
     <footer>
-        <div class="sns-row">
-            <a href="https://note.com/nekomochi_uranai" target="_blank" rel="noopener">📖 note</a>
-            <a href="https://lin.ee/tqouMjP" target="_blank" rel="noopener">🐱 公式LINE</a>
-        </div>
-        <p class="foot-links"><a href="types.html">12匹のねこたち</a>｜<a href="kanteisho.html">鑑定書のご案内</a>｜<a
-                href="menu.html">鑑定メニュー</a>｜<a href="about.html">ねこもち占いとは</a></p>
+        <nav class="footer-links" aria-label="関連リンク">
+            <a href="https://note.com/nekomochi_uranai" target="_blank" rel="noopener">note ↗</a>
+            <a href="https://lin.ee/tqouMjP" target="_blank" rel="noopener">公式LINE ↗</a>
+            <a href="about.html">ねこもち占いとは</a>
+        </nav>
         <p class="copyright">© 2026 ねこもち占い</p>
     </footer>
-
-    <script>
-        const NEKO = {
+</div>
+<script>        const NEKO = {
             1: { name: 'いちばんねこ', catch: '開拓・独立・リーダーシップ。「自分で決める」が生きがいの先駆者', msg: '頼ることは、弱さじゃないよ。たまには誰かに甘えて、ふかふかの毛布で休もう。' },
             2: { name: 'なかよしねこ', catch: '調和・協調・感受性。空気を読みすぎて疲れる平和主義者', msg: '人のことより、まずは自分の小さなお皿を満たそう。あなたは、そこにいるだけで価値がある。' },
             3: { name: 'ひらめきねこ', catch: '創造・表現・喜び。「楽しい！」だけで動く天性のエンターテイナー', msg: '飽きっぽいのは、ダメだからじゃない。あなたの頭が、世界より先に進んでいるだけ。' },
@@ -1257,43 +487,61 @@
             return reduceNum(digits.reduce((s, c) => s + parseInt(c, 10), 0));
         }
 
-        function fillDateSelect(id, start, end, placeholder, defaultValue) {
-            const select = document.getElementById(id);
-            if (!select) return;
-            select.innerHTML = '';
-            const placeholderOption = document.createElement('option');
-            placeholderOption.value = '';
-            placeholderOption.textContent = placeholder;
-            placeholderOption.disabled = true;
-            select.appendChild(placeholderOption);
-            for (let value = start; value <= end; value += 1) {
-                const option = document.createElement('option');
-                option.value = String(value);
-                option.textContent = String(value);
-                select.appendChild(option);
-            }
-            select.value = String(defaultValue);
-        }
 
-        fillDateSelect('sd-y', 1900, 2026, '1990', 1990);
-        fillDateSelect('sd-m', 1, 12, '5', 5);
-        fillDateSelect('sd-d', 1, 31, '15', 15);
-        document.getElementById('sd-btn').addEventListener('click', () => {
-            const y = parseInt(document.getElementById('sd-y').value, 10);
-            const m = parseInt(document.getElementById('sd-m').value, 10);
-            const d = parseInt(document.getElementById('sd-d').value, 10);
-            const err = document.getElementById('sd-error');
-            const valid = y >= 1900 && y <= 2026 && m >= 1 && m <= 12 && d >= 1 && d <= 31;
-            if (!valid) {
-                err.style.display = 'block';
+        const form = document.getElementById('sd-form');
+        const result = document.getElementById('sd-result');
+        const year = document.getElementById('sd-y');
+        const month = document.getElementById('sd-m');
+        const day = document.getElementById('sd-d');
+        const error = document.getElementById('sd-error');
+        const today = new Date();
+
+        function fillSelect(select, start, end, placeholder) {
+            const options = [new Option(placeholder, '')];
+            for (let n = start; n <= end; n++) options.push(new Option(String(n), String(n)));
+            select.replaceChildren(...options);
+        }
+        fillSelect(year, 1900, today.getFullYear(), '年');
+        fillSelect(month, 1, 12, '月');
+        fillSelect(day, 1, 31, '日');
+
+        function daysInMonth(y, m) {
+            return new Date(y, m, 0).getDate();
+        }
+        function validBirthday(y, m, d, now) {
+            if (!Number.isInteger(y) || !Number.isInteger(m) || !Number.isInteger(d)) return false;
+            if (y < 1900 || y > now.getFullYear() || m < 1 || m > 12 || d < 1 || d > daysInMonth(y, m)) return false;
+            return new Date(y, m - 1, d) <= new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        }
+        function clearError() {
+            error.hidden = true;
+            for (const input of [year, month, day]) input.removeAttribute('aria-invalid');
+        }
+        function updateDays() {
+            const previous = day.value;
+            const max = month.value ? daysInMonth(Number(year.value) || 2000, Number(month.value)) : 31;
+            fillSelect(day, 1, max, '日');
+            day.value = previous && Number(previous) <= max ? previous : '';
+            clearError();
+        }
+        year.addEventListener('change', updateDays);
+        month.addEventListener('change', updateDays);
+        day.addEventListener('change', clearError);
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const y = Number(year.value), m = Number(month.value), d = Number(day.value);
+            if (!validBirthday(y, m, d, new Date())) {
+                error.hidden = false;
+                for (const input of [year, month, day]) input.setAttribute('aria-invalid', 'true');
+                error.focus();
                 return;
             }
-            err.style.display = 'none';
+            clearError();
             const lp = calcLP(y, m, d);
             const neko = NEKO[lp];
             const nick = document.getElementById('sd-name').value.trim();
-            document.getElementById('sr-intro').textContent =
-                (nick ? nick + 'さんの' : 'あなたの') + '本質のねこは……';
+            document.getElementById('sr-intro').textContent = (nick ? nick + 'さんの' : 'あなたの') + '本質のねこは……';
             document.getElementById('sr-img').src = 'img/cat_' + lp + '.png?v=2';
             document.getElementById('sr-img').alt = neko.name;
             document.getElementById('sr-num').textContent = '数秘 ' + lp;
@@ -1301,11 +549,17 @@
             document.getElementById('sr-catch').textContent = neko.catch;
             document.getElementById('sr-story').textContent = STORY[lp];
             document.getElementById('sr-more').href = 'types.html#n' + lp;
-            const box = document.getElementById('sd-result');
-            box.style.display = 'block';
-            box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            document.getElementById('input-view').hidden = true;
+            result.hidden = false;
+            result.focus({ preventScroll: true });
+            result.scrollIntoView({ behavior: 'auto', block: 'start' });
         });
-    </script>
-</body>
 
+        document.getElementById('sd-back').addEventListener('click', () => {
+            result.hidden = true;
+            document.getElementById('input-view').hidden = false;
+            year.focus();
+        });
+</script>
+</body>
 </html>
